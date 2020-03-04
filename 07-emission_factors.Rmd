@@ -1,4 +1,4 @@
-# Emission factors
+# Emission Factors
 
 For some categories, emission factors vary over time. A good category to demonstrate this with is `#749` "Agricultural Land Preparation". 
 

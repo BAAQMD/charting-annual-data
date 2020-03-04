@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Comparing Inventories | Charting Annual Emissions</title>
+  <meta name="description" content="This is an introduction to charting annual emissions inventory data." />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Comparing Inventories | Charting Annual Emissions" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an introduction to charting annual emissions inventory data." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Comparing Inventories | Charting Annual Emissions" />
+  
+  <meta name="twitter:description" content="This is an introduction to charting annual emissions inventory data." />
+  
+
+<meta name="author" content="David Holstius" />
+
+
+<meta name="date" content="2020-03-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="08-control_factors.html"/>
+<link rel="next" href="appendix.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Charting Annual Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="02-setup.html"><a href="02-setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
+<li class="chapter" data-level="2.1" data-path="02-setup.html"><a href="02-setup.html#loading-required-libraries"><i class="fa fa-check"></i><b>2.1</b> Loading required libraries</a></li>
+<li class="chapter" data-level="2.2" data-path="02-setup.html"><a href="02-setup.html#peeking-at-data"><i class="fa fa-check"></i><b>2.2</b> Peeking at data</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03-emissions.html"><a href="03-emissions.html"><i class="fa fa-check"></i><b>3</b> Emissions</a><ul>
+<li class="chapter" data-level="3.1" data-path="03-emissions.html"><a href="03-emissions.html#charting-annual-emissions"><i class="fa fa-check"></i><b>3.1</b> Charting annual emissions</a></li>
+<li class="chapter" data-level="3.2" data-path="03-emissions.html"><a href="03-emissions.html#coloring-by-category"><i class="fa fa-check"></i><b>3.2</b> Coloring by category</a></li>
+<li class="chapter" data-level="3.3" data-path="03-emissions.html"><a href="03-emissions.html#flagging-specific-values"><i class="fa fa-check"></i><b>3.3</b> Flagging specific values</a></li>
+<li class="chapter" data-level="3.4" data-path="03-emissions.html"><a href="03-emissions.html#humanizing-category-names"><i class="fa fa-check"></i><b>3.4</b> Humanizing category names</a></li>
+<li class="chapter" data-level="3.5" data-path="03-emissions.html"><a href="03-emissions.html#titling-and-captioning"><i class="fa fa-check"></i><b>3.5</b> Titling and captioning</a></li>
+<li class="chapter" data-level="3.6" data-path="03-emissions.html"><a href="03-emissions.html#making-an-area-chart"><i class="fa fa-check"></i><b>3.6</b> Making an area chart</a></li>
+<li class="chapter" data-level="3.7" data-path="03-emissions.html"><a href="03-emissions.html#more-than-one-pollutant"><i class="fa fa-check"></i><b>3.7</b> More than one pollutant</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="04-throughputs.html"><a href="04-throughputs.html"><i class="fa fa-check"></i><b>4</b> Throughputs</a><ul>
+<li class="chapter" data-level="4.1" data-path="04-throughputs.html"><a href="04-throughputs.html#obtaining-throughput-data"><i class="fa fa-check"></i><b>4.1</b> Obtaining throughput data</a></li>
+<li class="chapter" data-level="4.2" data-path="04-throughputs.html"><a href="04-throughputs.html#charting-annual-throughputs"><i class="fa fa-check"></i><b>4.2</b> Charting annual throughputs</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html"><i class="fa fa-check"></i><b>5</b> Growth Profiles</a><ul>
+<li class="chapter" data-level="5.1" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#normalized-growth-factors"><i class="fa fa-check"></i><b>5.1</b> Normalized growth factors</a></li>
+<li class="chapter" data-level="5.2" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#county-specific-growth-profiles"><i class="fa fa-check"></i><b>5.2</b> County-specific growth profiles</a></li>
+<li class="chapter" data-level="5.3" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#raw-growth-profile-data"><i class="fa fa-check"></i><b>5.3</b> Raw growth profile data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="06-relative_changes.html"><a href="06-relative_changes.html"><i class="fa fa-check"></i><b>6</b> Relative Changes</a><ul>
+<li class="chapter" data-level="6.1" data-path="06-relative_changes.html"><a href="06-relative_changes.html#relative-changes-in-emissions"><i class="fa fa-check"></i><b>6.1</b> Relative changes in emissions</a></li>
+<li class="chapter" data-level="6.2" data-path="06-relative_changes.html"><a href="06-relative_changes.html#relative-changes-in-throughputs"><i class="fa fa-check"></i><b>6.2</b> Relative changes in throughputs</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="07-emission_factors.html"><a href="07-emission_factors.html"><i class="fa fa-check"></i><b>7</b> Emission Factors</a></li>
+<li class="chapter" data-level="8" data-path="08-control_factors.html"><a href="08-control_factors.html"><i class="fa fa-check"></i><b>8</b> Control Factors</a><ul>
+<li class="chapter" data-level="8.1" data-path="08-control_factors.html"><a href="08-control_factors.html#example-domestic-woodstoves"><i class="fa fa-check"></i><b>8.1</b> Example: domestic woodstoves</a></li>
+<li class="chapter" data-level="8.2" data-path="08-control_factors.html"><a href="08-control_factors.html#example-gasoline-filling-stations"><i class="fa fa-check"></i><b>8.2</b> Example: gasoline filling stations</a></li>
+<li class="chapter" data-level="8.3" data-path="08-control_factors.html"><a href="08-control_factors.html#control-effectiveness-vs.annualized-control-factors"><i class="fa fa-check"></i><b>8.3</b> Control effectiveness vs. annualized control factors</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html"><i class="fa fa-check"></i><b>9</b> Comparing Inventories</a><ul>
+<li class="chapter" data-level="9.1" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#combining-data"><i class="fa fa-check"></i><b>9.1</b> Combining data</a></li>
+<li class="chapter" data-level="9.2" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#comparing-inventories-1"><i class="fa fa-check"></i><b>9.2</b> Comparing inventories</a></li>
+<li class="chapter" data-level="9.3" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#multiple-categories"><i class="fa fa-check"></i><b>9.3</b> Groups of categories</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>10</b> Appendix</a><ul>
+<li class="chapter" data-level="10.1" data-path="appendix.html"><a href="appendix.html#appendix-BY2011-cat_283-forecast"><i class="fa fa-check"></i><b>10.1</b> Changes in forecasts for category #283</a></li>
+<li class="chapter" data-level="10.2" data-path="appendix.html"><a href="appendix.html#appendix-deriving_county_fractions"><i class="fa fa-check"></i><b>10.2</b> Calculating county fractions from raw growth profile data</a></li>
+<li class="chapter" data-level="10.3" data-path="appendix.html"><a href="appendix.html#appendix-control_factors-documentation"><i class="fa fa-check"></i><b>10.3</b> Control factors: documentation</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Charting Annual Emissions</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="comparing-inventories" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Comparing Inventories</h1>
+<p>This chapter is about comparing one inventory to another. You might wish, for example, to see the differences between the BY2011 and BY2008 versions of one of the categories that we charted in previous chapters.</p>
+<p>Let’s use #288 Domestic Woodstoves as a simple example of how to do this with a single category.</p>
+<div id="combining-data" class="section level2">
+<h2><span class="header-section-number">9.1</span> Combining data</h2>
+<p>First, we need to gain access to the BY2008 data, via <code>library(BY2008)</code>. This is just like we did in <a href="#Setup">Chapter 2</a>, with <code>library(BY2011)</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">library</span>(BY2008)</a></code></pre></div>
+<p>Now we combine <code>BY2011_annual_emission_data</code> and <code>BY2008_annual_emission_data</code> into a single dataset named <code>BY_data</code>. We do this with <code>bind_inventories()</code>.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="co"># Using `bind_inventories()` creates a new column named `inventory`.</span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb32-4" data-line-number="4">BY_data &lt;-</a>
+<a class="sourceLine" id="cb32-5" data-line-number="5"><span class="st">  </span><span class="kw">bind_inventories</span>(</a>
+<a class="sourceLine" id="cb32-6" data-line-number="6">    <span class="dt">BY2011 =</span> BY2011_annual_emission_data,</a>
+<a class="sourceLine" id="cb32-7" data-line-number="7">    <span class="dt">BY2008 =</span> BY2008_annual_emission_data)</a></code></pre></div>
+</div>
+<div id="comparing-inventories-1" class="section level2">
+<h2><span class="header-section-number">9.2</span> Comparing inventories</h2>
+<p>With our <code>BY_data</code>, we can use the same old <code>chart_annual_emissions_by()</code>. We do just two things differently:</p>
+<ul>
+<li>We add <code>linetype = inventory</code>. This causes each to be drawn separately, so that we can compare them.</li>
+<li>We supply <code>c(288, &quot;A288&quot;)</code> instead of just <code>288</code>. See the note below.</li>
+</ul>
+<div class="note">
+<p>
+In <code>BY2008_annual_emission_data</code>, category IDs are prefixed by either “P” or “A”, and the numeric part of the ID doesn’t have to be unique! This is a convention that is no longer followed, from BY2011 onwards.
+</p>
+</div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="co"># Treat both of the following as &quot;Domestic Wood Stoves&quot;:</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="co"># - BY2011 category #288</span></a>
+<a class="sourceLine" id="cb33-5" data-line-number="5"><span class="co"># - BY2008 category #A288</span></a>
+<a class="sourceLine" id="cb33-6" data-line-number="6"><span class="co">#</span></a>
+<a class="sourceLine" id="cb33-7" data-line-number="7">chart_data &lt;-</a>
+<a class="sourceLine" id="cb33-8" data-line-number="8"><span class="st">  </span>BY_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb33-9" data-line-number="9"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb33-10" data-line-number="10">    <span class="st">&quot;Domestic Wood Stoves&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">288</span>, <span class="st">&quot;A288&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb33-11" data-line-number="11"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb33-12" data-line-number="12">    <span class="st">&quot;NOx&quot;</span>, </a>
+<a class="sourceLine" id="cb33-13" data-line-number="13">    <span class="st">&quot;CO&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co"># Chart by inventory, so we can compare.</span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">chart_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
+<a class="sourceLine" id="cb34-6" data-line-number="6">    <span class="dt">linetype =</span> inventory,</a>
+<a class="sourceLine" id="cb34-7" data-line-number="7">    <span class="dt">color =</span> category,</a>
+<a class="sourceLine" id="cb34-8" data-line-number="8">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2010</span>, <span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb34-9" data-line-number="9">    <span class="dt">title =</span> <span class="st">&quot;Domestic Woodstoves: BY2011 Updates&quot;</span>,</a>
+<a class="sourceLine" id="cb34-10" data-line-number="10">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb34-11" data-line-number="11">      <span class="st">&quot;- CY1990-2005 estimates are about 10% lower.&quot;</span>,</a>
+<a class="sourceLine" id="cb34-12" data-line-number="12">      <span class="st">&quot;- Estimates circa CY2010 are about 40% lower.&quot;</span>,</a>
+<a class="sourceLine" id="cb34-13" data-line-number="13">      <span class="st">&quot;- Forecast is flat, rather than increasing.&quot;</span>,</a>
+<a class="sourceLine" id="cb34-14" data-line-number="14">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY_data-domestic-woodstoves-chart-1.svg" width="900" height="450" /></p>
+<p>The <code>c()</code> tells <code>filter_categories()</code> to recode both of these categories as just “Domestic Wood Stoves”, which is what you see in the chart.</p>
+</div>
+<div id="multiple-categories" class="section level2">
+<h2><span class="header-section-number">9.3</span> Groups of categories</h2>
+<p>What if we want to chart more than just a single category?</p>
+<p>When groups of related category identifiers change from one year to the next, we can still visualize the data effectively using <code>filter_categories()</code> and <code>chart_annual_emissions()</code>.</p>
+<p>Here is a concrete example.</p>
+<ul>
+<li><p>In <code>BY2008_annual_emission_data</code>, we can see that both <code>&quot;P304&quot;</code> and <code>&quot;A304&quot;</code> occur in <code>cat_id</code>.</p>
+<ul>
+<li>These are estimates of emissions from stationary-source liquid-fueled reciprocating engines.</li>
+<li>The scope of <code>P304</code> is limited to permitted sources, and is calculated using a point-source methodology.</li>
+<li>The scope of <code>A304</code> comprises any remaining emissions from the same kind of source, and is calculated using an area-source methodology.</li>
+</ul></li>
+<li><p>In <code>BY2011_annual_emission_data</code>, emissions from the same real-world activities are assigned to BY2011 categories <code>#304</code> (point) and <code>#1578</code> (area).</p></li>
+</ul>
+<div class="note">
+<p>
+This can create some confusion. It means that when someone is speaking about “category 304”, they could be referring to BY2011 category #304 (point sources only). Or, if they have BY2008 in mind, they might be speaking about both <code>P304</code> and <code>A304</code> together.
+</p>
+</div>
+<div id="comparing-totals" class="section level3 unnumbered">
+<h3>Comparing totals</h3>
+<p>First, let’s consider all of these categories as one big group.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="co"># Treat all of the following as &quot;Recip Eng, Liquid Fuel&quot;:</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="co"># - BY2011 category #304 (point)</span></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="co"># - BY2008 category #P304 (point)</span></a>
+<a class="sourceLine" id="cb35-6" data-line-number="6"><span class="co"># - BY2011 category #1578 (area)</span></a>
+<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="co"># - BY2008 category #A304 (area)</span></a>
+<a class="sourceLine" id="cb35-8" data-line-number="8"><span class="co">#</span></a>
+<a class="sourceLine" id="cb35-9" data-line-number="9">chart_data &lt;-</a>
+<a class="sourceLine" id="cb35-10" data-line-number="10"><span class="st">  </span>BY_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-11" data-line-number="11"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb35-12" data-line-number="12">    <span class="st">&quot;Recip Eng, Liquid&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">304</span>, <span class="st">&quot;P304&quot;</span>, <span class="dv">1578</span>, <span class="st">&quot;A304&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-13" data-line-number="13"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb35-14" data-line-number="14">    <span class="st">&quot;NOx&quot;</span>,</a>
+<a class="sourceLine" id="cb35-15" data-line-number="15">    <span class="st">&quot;CO&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co"># Chart by inventory, so we can compare the totals.</span></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">chart_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
+<a class="sourceLine" id="cb36-6" data-line-number="6">    <span class="dt">linetype =</span> inventory,</a>
+<a class="sourceLine" id="cb36-7" data-line-number="7">    <span class="dt">title =</span> <span class="st">&quot;Reciprocating Engines (Liquid Fuel): BY2011 Updates&quot;</span>,</a>
+<a class="sourceLine" id="cb36-8" data-line-number="8">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb36-9" data-line-number="9">      <span class="st">&quot;BY2008 = Categories P304 (point) and A304 (area).&quot;</span>,</a>
+<a class="sourceLine" id="cb36-10" data-line-number="10">      <span class="st">&quot;BY2011 = Categories #304 (point) and #1578 (area).&quot;</span>,</a>
+<a class="sourceLine" id="cb36-11" data-line-number="11">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY_data-recip_eng-liquid_fuel-chart-1-1.svg" width="900" height="450" /></p>
+</div>
+<div id="comparing-subtotals" class="section level3 unnumbered">
+<h3>Comparing subtotals</h3>
+<p>We can see above that, for these categories, there are some considerable differences between BY2011 and BY2008 estimates of NO<sub>x</sub> and CO emissions. What’s responsible?</p>
+<p>Let’s try grouping the “point” and “area” subsets <em>separately</em> in our call to <code>filter_categories()</code>, and see what happens.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="co"># Treat these as &quot;Recip Eng, Liquid Fuel (Point)&quot;:</span></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="co"># - BY2011 category #304</span></a>
+<a class="sourceLine" id="cb37-5" data-line-number="5"><span class="co"># - BY2008 category #P304</span></a>
+<a class="sourceLine" id="cb37-6" data-line-number="6"><span class="co">#</span></a>
+<a class="sourceLine" id="cb37-7" data-line-number="7"><span class="co"># ... and treat these as &quot;Recip Eng, Liquid Fuel (Area)&quot;:</span></a>
+<a class="sourceLine" id="cb37-8" data-line-number="8"><span class="co">#</span></a>
+<a class="sourceLine" id="cb37-9" data-line-number="9"><span class="co"># - BY2011 category #1578</span></a>
+<a class="sourceLine" id="cb37-10" data-line-number="10"><span class="co"># - BY2008 category #A304</span></a>
+<a class="sourceLine" id="cb37-11" data-line-number="11"><span class="co">#</span></a>
+<a class="sourceLine" id="cb37-12" data-line-number="12">chart_data &lt;-</a>
+<a class="sourceLine" id="cb37-13" data-line-number="13"><span class="st">  </span>BY_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb37-14" data-line-number="14"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb37-15" data-line-number="15">    <span class="st">&quot;Recip Eng, Liquid (point)&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">304</span>, <span class="st">&quot;P304&quot;</span>),</a>
+<a class="sourceLine" id="cb37-16" data-line-number="16">    <span class="st">&quot;Recip Eng, Liquid (area)&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1578</span>, <span class="st">&quot;A304&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb37-17" data-line-number="17"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb37-18" data-line-number="18">    <span class="st">&quot;NOx&quot;</span>,</a>
+<a class="sourceLine" id="cb37-19" data-line-number="19">    <span class="st">&quot;CO&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="co"># Chart by inventory and by point/area, so we can compare the subtotals.</span></a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">chart_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb38-5" data-line-number="5"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6">    <span class="dt">linetype =</span> inventory,</a>
+<a class="sourceLine" id="cb38-7" data-line-number="7">    <span class="dt">color =</span> category,</a>
+<a class="sourceLine" id="cb38-8" data-line-number="8">    <span class="dt">title =</span> <span class="st">&quot;Reciprocating Engines (Liquid Fuel): BY2011 Updates&quot;</span>,</a>
+<a class="sourceLine" id="cb38-9" data-line-number="9">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb38-10" data-line-number="10">      <span class="st">&quot;BY2008 = Categories P304 (point) and A304 (area).&quot;</span>,</a>
+<a class="sourceLine" id="cb38-11" data-line-number="11">      <span class="st">&quot;BY2011 = Categories #304 (point) and #1578 (area).&quot;</span>,</a>
+<a class="sourceLine" id="cb38-12" data-line-number="12">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) </a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY_data-recip_eng-liquid_fuel-chart-2-1.svg" width="900" height="450" /></p>
+<p>From this, we can see that there was a slight revision to the point-source portion, from BY2008 to BY2011. However, the bulk of the difference is due to a revised estimate for the area-source portion. In BY2008, estimates of emissions due to this activity were classified as <code>A304</code>; in BY2011, the same scope of activity is represented by <code>#1578</code>.</p>
+<p>This combination of <code>filter_categories()</code> and <code>chart_annual_emissions()</code> is powerful. With it, you can review updates to any related groups of categories from different BY inventories, regardless of how their <code>cat_id</code> identifiers might have changed.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="08-control_factors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/BAAQMD/charting-annual-data/edit/master/09-comparing_inventories.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/BAAQMD/charting-annual-data/blob/master/09-comparing_inventories.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

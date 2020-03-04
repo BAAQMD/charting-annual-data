@@ -1,4 +1,4 @@
-# Control factors
+# Control Factors
 
 This chapter is very similar to the one on [Emission factors]. Here we employ a function, `annualize_DB_control_factors()`, that's analogous to `annualize_DB_emission_factors()`. It does have to do a bit more work than its cousin; see the [Appendix](#appendix-control_factors-documentation) for details.
 
