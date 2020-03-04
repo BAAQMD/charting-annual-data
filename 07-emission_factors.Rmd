@@ -1,0 +1,29 @@
+# Emission factors
+
+For some categories, emission factors vary over time. A good category to demonstrate this with is `#749` "Agricultural Land Preparation". 
+
+Here, `annualize_DB_emission_factors()` does the work of carrying emission factors forward in time. This means that for each value of `year`, the "most recent" emission factor, as of that year, is stored in `ef_qty`. 
+
+```{r BY2011_ag_land_prep_ef_data}
+BY2011_ag_land_prep_ef_data <-
+  BY(2011) %>%
+  DB_area_source_emission_factors(
+    verbose = TRUE) %>%
+  filter_categories(
+    "#749 Agricultural Land Prep" = 749) %>%
+  annualize_DB_emission_factors(
+    years = CY(1990:2040),
+    verbose = TRUE)
+```
+
+In practice, `chart_annual_emission_factors_by()` is almost exactly identical to `chart_annual_emissions_by()`. The only real difference is in the default formatting of the values displayed directly in the chart by `flag_years`.
+
+```{r BY2011_ag_land_prep_ef_data-chart_annual_emission_factors}
+BY2011_ag_land_prep_ef_data %>%
+  chart_annual_emission_factors(
+    flag_years = CY(2011),
+    title = "Agricultural Land Preparation",
+    subtitle = "Emission factors pulled from DataBank (t1326).") 
+```
+
+In DataBank, emission factors are stored in units of "pounds per unit of throughput". If you change the value of `ef_unit` (and alter the values in `ef_qty` accordingly), that will be reflected in the output of `chart_annual_emission_factors()`.

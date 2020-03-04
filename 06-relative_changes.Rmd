@@ -1,0 +1,88 @@
+# Relative Changes
+
+This chapter shows how to chart *relative changes* in emissions and/or throughputs. By "relative change" we simply mean the percent change relative to a given year (i.e., the "base year" or "reference year").
+
+We don't actually need to obtain any growth profile data yet; the function `chart_annual_growth_by()` will simply normalize whatever we supply it with. In the next chapter, we'll look at [growth profiles][Growth Profiles] more specifically.
+
+## Relative changes in emissions
+
+We can easily examine relative growth using `chart_annual_growth_by()`. It expects the same input as `chart_annual_emissions()`; the only additional requirement is that you supply a `base_year`. 
+
+Here is an example. It's exactly the same as we saw in the [Emissions] chapter, except that we're swapping `chart_annual_growth_by()` in for `chart_annual_emissions_by()`.
+
+```{r BY2011_annual_emission_data-283-284-NOx-chart_annual_growth_by, cache=TRUE}
+#
+# The `base_year` can be prefixed with `CY`, `BY`, `RY` or `PY`;
+# `chart_annual_growth_by()` will ignore the differences.
+# 
+BY2011_annual_emission_data %>%
+  filter_categories(
+    "#283 Space Heating" = 283, 
+    "#284 Water Heating" = 284) %>%
+  filter_pollutants(
+    "NOx") %>%
+  chart_annual_growth_by(
+    color = category,
+    base_year = CY(2011)) # required; can be BY or CY
+```
+
+We can enhance it in exactly the same ways that we learned in the [Emissions] chapter, too. Using `flag_years` can be especially helpful, because then we can read off the exact growth for a given future (or historical) year.
+
+```{r BY2011_annual_emission_data-283-284-NOx-chart_annual_growth_by-enhanced, cache=TRUE}
+BY2011_annual_emission_data %>%
+  filter_categories(
+    "#283 Space Heating" = 283, 
+    "#284 Water Heating" = 284) %>%
+  filter_pollutants(
+    "NOx") %>%
+  chart_annual_growth_by(
+    color = category,
+    base_year = BY(2011),
+    flag_years = CY(1993, 2002, 2030),
+    title = "Residential NG Combustion: Space and Water Heating",
+    subtitle = str_c(
+      "NOx emissions from water and space heating are projected to grow by +24% from CY2011 to CY2030.",
+      "Labeled values are percent changes relative to the base year (CY2011).",
+      sep = "\n")) # combine lines with a newline
+```
+
+## Relative changes in throughputs
+
+You can reuse the chunk above to work with throughput data, provided you drop the `filter_pollutants(...)` clause (two lines).
+
+```{r BY2011_area_source_throughput_data-283-284-chart_annual_growth_by-cat_id, cache=TRUE}
+BY2011_area_source_throughput_data %>%
+  filter_categories(
+    "#283 Space Heating" = 283, 
+    "#284 Water Heating" = 284) %>%
+  chart_annual_growth_by(
+    color = category,
+    base_year = BY(2011),
+    flag_years = CY(1993, 2002, 2030),
+    title = "Residential NG Combustion: Space and Water Heating",
+    subtitle = str_c(
+      "Natural gas consumed by water and space heating is projected to grow by +24% from CY2011 to CY2030.",
+      "Labeled values are percent changes relative to the base year (CY2011).",
+      sep = "\n")) # combine lines with a newline
+```
+
+We can also look at the trend in total throughput for these two caegories, instead of splitting them apart. Just omit the `color = cat_id`, and swap in `chart_annual_growth()` (without the suffix `_by()`).
+
+```{r BY2011_area_source_throughput_data-283-284-chart_annual_growth, cache=TRUE}
+BY2011_area_source_throughput_data %>%
+  filter_categories(
+    "#283 Space Heating" = 283, 
+    "#284 Water Heating" = 284) %>%
+  chart_annual_growth(
+    base_year = BY(2011),
+    flag_years = CY(1993, 2002, 2030),
+    title = "Residential NG Combustion: Space and Water Heating",
+    subtitle = str_c(
+      "Natural gas consumed by water and space heating is projected to grow by +24% from CY2011 to CY2030.",
+      "Labeled values are percent changes relative to the base year (CY2011).",
+      sep = "\n")) # combine lines with a newline
+```
+
+
+**NOTE:** If you are trying this, you might notice that the throughput forecast doesn't follow the same trajectory as the NOx forecast. See the [Appendix](#appendix-BY2011-cat_283-forecast) for an explanation and an advanced exercise.
+

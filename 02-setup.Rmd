@@ -1,0 +1,21 @@
+# Setup
+
+## Loading required libraries
+
+Our first step is to load the `inventory` and `BY2011` packages.
+
+```{r libraries, message = FALSE}
+library(inventory)
+library(BY2011)
+```
+
+Wait for it --- `inventory` imports a lot of stuff! You will see a lot of <span style="color:red; font-family=monospace">red message text</span> scroll by.
+
+## Peeking at data
+
+`BY2011_annual_emission_data` is *tabular data* supplied by the `BY2011`
+package. Since we invoked `library(BY2011)`, we have access to it. **Here is what it looks like.**
+
+```{r BY2011_annual_emission_data-head}
+head(BY2011_annual_emission_data)
+```

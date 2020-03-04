@@ -1,0 +1,94 @@
+# Control factors
+
+This chapter is very similar to the one on [Emission factors]. Here we employ a function, `annualize_DB_control_factors()`, that's analogous to `annualize_DB_emission_factors()`. It does have to do a bit more work than its cousin; see the [Appendix](#appendix-control_factors-documentation) for details.
+
+There is one notable difference. For a given category, emission factors can vary by quite a bit from pollutant to pollutant. The default behavior for `chart_annual_emission_factors_by()`, as we saw in the [previous chapter][Emission factors], is therefore to generate a different sub-plot for each pollutant, so that the y-scales can vary by pollutant. Control factors, in contrast, always range from 0% to 100%, so we can safely plot them all on the same y-scale. This works well when we set `color = pol_abbr`, as we do in the examples below.
+
+## Example: domestic woodstoves
+
+```{r BY2011_woodstove_cf_data}
+#
+# Using `filter_categories()` before `annualize_DB_control_factors()` saves time.
+#
+BY2011_woodstove_cf_data <-
+  BY(2011) %>%
+  DB_control_factors(
+    verbose = TRUE) %>%
+  filter_categories(
+    "#288 Domestic Wood Stoves" = 288) %>%
+  annualize_DB_control_factors(
+    years = CY(1990:2040),
+    verbose = TRUE) 
+```
+
+```{r BY2011_woodstove_cf_data-chart_annual_quantities_by-pol_abbr}
+#
+# We can see that in CY1990, these emissions were already controlled by a small
+# amount. By CY2011, controls had increased by quite a bit.
+# 
+BY2011_woodstove_cf_data %>%
+  chart_annual_control_factors_by(
+    color = pol_abbr,
+    flag_years = CY(1990, 2011),
+    title = "Domestic Wood Stoves",
+    subtitle = "Control factors pulled from DataBank, then annualized.")
+```
+
+## Example: gasoline filling stations
+
+```{r BY2011_gasoline_spillage_cf_data}
+#
+# Using `filter_categories()` before `annualize_DB_control_factors()` saves time.
+#
+BY2011_gasoline_spillage_cf_data <-
+  BY(2011) %>%
+  DB_control_factors(
+    verbose = TRUE) %>%
+  filter_categories(
+    "#66 Gasoline Spillage" = 66) %>%
+  annualize_DB_control_factors(
+    years = CY(1990:2040),
+    verbose = TRUE) 
+```
+
+```{r BY2011_gasoline_spillage_cf_data-chart_annual_quantities_by-pol_abbr}
+#
+# Again we can see that in CY1990, these emissions were already controlled by a
+# small amount. And, by CY2011, controls had increased by quite a bit.
+# 
+BY2011_gasoline_spillage_cf_data %>%
+  chart_annual_control_factors_by(
+    color = pol_abbr,
+    flag_years = CY(1990, 2011),
+    title = "Spillage at Gasoline Filling Stations",
+    subtitle = "Control factors pulled from DataBank, then annualized.")
+```
+
+## Control effectiveness vs. annualized control factors
+
+"Control factors" can mean several different things. Above, we looked at control factors in terms of annualized uncontrolled fractions. 
+
+Historically, BAAQMD emission inventory staff have estimated both (a) the "maximum effectiveness of" a given regulation, and (b) the real-world "compliance with" said regulation. Sometimes these are tied to mid-year dates, rathen than January 1. Staff have then relied on an algorithm, implemented in DataBank, to transform these into cumulative and annualized control factors. 
+
+Those underlying "maximum effectiveness" and "compliance" estimates can be inspected by just avoiding the invocation of `annualize_DB_control_factors()`. 
+
+Let's dig a little further into the "gasoline spillage" example above:
+
+```{r BY2011_gasoline_spillage_cf_data-legacy_format}
+#
+# Here we are simply omitting the lines:
+#
+#   annualize_DB_control_factors(
+#     years = CY(1990:2040),
+#     verbose = TRUE) 
+#
+# ... in other words, we're omitting the last step in the pipeline above.
+#
+BY(2011) %>%
+  DB_control_factors(
+    verbose = TRUE) %>%
+  filter_categories(
+    "#66 Gasoline Spillage" = 66)
+```
+
+See the [Appendix](#appendix-control_factors-documentation) for further discussion, documentation, and references.

@@ -1,0 +1,46 @@
+--- 
+title: "Charting Annual Emissions"
+author: "David Holstius"
+date: "`r Sys.Date()`"
+output: 
+  bookdown::gitbook:
+    df_print: paged
+documentclass: book
+description: "This is an introduction to charting annual emissions inventory data."
+site: "bookdown::bookdown_site"
+biblio-style: apalike
+link-citations: yes
+---
+
+```{r options, include = FALSE, message = FALSE, cache = FALSE}
+#   html_vignette:
+#   df_print: kable
+#   toc: true
+#   toc_depth: 3
+
+library(knitr)
+library(printr)
+
+knitr::opts_chunk$set(
+  dev = "svg",
+  cache = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 8,
+  fig.height = 4,
+  out.width = 900,
+  out.height = 900 / (8 / 4),
+  dpi = 300)
+```
+
+# Introduction
+
+After working through the material in this cookbook, you will understand how to chart:
+
+- annual emission estimates, like those in `BY` or `RY` data;
+- annual growth factors, normalized to any year;
+- annual throughputs;
+- annual emission factors; and
+- annualized control factors.
+
+To demonstrate, we'll use some data from the `BY2011` package. Everything will work in **exactly the same way with RY, PY, or BY2015 data**.

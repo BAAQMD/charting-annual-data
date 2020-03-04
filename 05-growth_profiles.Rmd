@@ -1,0 +1,158 @@
+# Growth profiles
+
+**This chapter shows how to chart growth profiles.**
+
+In the previous chapter, we saw how to use `chart_annual_growth_by()` to examine relative changes in estimates of emissions and throughputs. We can also use `chart_annual_growth_by()` that have already been "normalized", like growth profiles. 
+
+This chapter also introduces several new functions:
+
+- `DB_growth_profiles()`
+- `DB_growth_profile_crosswalk()`
+- `DB_raw_growth_profiles()`
+- `chart_annual_quantities_by()`
+
+We'll use the ones beginning with `DB_` to fetch some growth profile data stored in DataBank. And, we'll use `chart_annual_quantities_by()` to plot the raw (non-normalized) numbers behind a specific growth profile.
+
+## Normalized growth factors
+
+Let's start by pulling normalized `BY2011` growth factors from DataBank.
+
+```{r BY2011_growth_profile_data, cache=TRUE}
+#
+# `DB_growth_profiles()` automatically normalizes BY2011 profiles to CY2011. If
+# you would like them normalized to a different year, just alter the value of
+# `ref_year`, below.
+#
+# `DB_growth_profiles()` also does the work of linking profiles to categories,
+# consistent with the configuration stored in DataBank for the given base year.
+# 
+BY2011_growth_profile_data <-
+  BY(2011) %>%
+  DB_growth_profiles(
+    ref_year = CY(2011),
+    years = CY(1990:2040),
+    verbose = TRUE) 
+```
+
+With these in hand, we can chart the profile for BY2011 category #283 "Residential Combustion". We use the same function, `chart_annual_growth_by()`, that we learned about in the previous chapter.
+
+```{r BY2011_growth_profile_data-cat_283-chart_annual_growth}
+#
+# Chart the relative growth in these growth factors. 
+#
+BY2011_growth_profile_data %>%
+  filter_categories(
+    "#283 Space Heating" = 283) %>%
+  chart_annual_growth_by(
+    cnty_abbr,
+    base_year = CY(2011),
+    flag_years = CY(1993, 2011, 2030),
+    title = "Residential NG Combustion: Space and Water Heating",
+    subtitle = str_c(
+      "This is the growth profile associated with category #283 in BY2011.",
+      "There is a +9% change from CY2011 to CY2030.",
+      sep = "\n"))
+```
+
+## County-specific growth profiles
+
+The above profile for natural gas usage doesn't vary by county, but we can look at one that does. In DataBank, the growth profile associated with BY2011 category #761 "Sanitary Sewers" is a good example.
+
+```{r BY2011_raw_growth_profile_data-cat_716-chart_annual_quantities_by-cnty_abbr, message = FALSE}
+#
+# Chart the *raw* growth profile data for profile #657 "Household Population".
+# Profile #657 was used to project BY2011 category #761 "Sanitary Sewers".
+# 
+BY2011_growth_profile_data %>%
+  filter_categories(
+    "#761 Sanitary Sewers" = 761) %>%
+  chart_annual_growth_by(
+    color = cnty_abbr,
+    base_year = CY(2011),
+    title = "Household Population (Growth Profile #657)",
+    subtitle = 'Used to project BY2011 category #761 "Sanitary Sewers".')
+```
+
+## Raw growth profile data
+
+What if we wanted to chart the un-normalized ("raw") growth profile data?
+
+- First, we can pull the raw numbers, using `DB_raw_growth_profiles()` instead of `DB_growth_profiles()`.
+- Then, we find the profile associated with a given BY2011 category ID, using `DB_growth_profile_crosswalk()`.
+- Finally, we can use `chart_annual_quantities()`, rather than `chart_annual_growth()`, to plot the numbers. This ensures that the numbers *aren't* normalized in the process of creating the chart.
+
+### Pulling raw growth profile data
+
+```{r BY2011_raw_growth_profile_data, cache=TRUE}
+#
+# Unlike `DB_growth_profiles()`, `DB_raw_growth_profiles()` does *not* normalize
+# anything. It just assembles and returns  whatever is contained in `t0335`,
+# `t0336`, and `t0337`. Those numbers might be:
+#
+# - already normalized to CY2011; or
+# - already normalized to a previous "base year" (like CY2008); or 
+# - in some natural unit, like "persons" or "acres".
+#
+# (It varies from profile to profile.)
+# 
+BY2011_raw_growth_profile_data <-
+  BY(2011) %>%
+  DB_raw_growth_profiles(
+    nested = FALSE,
+    years = CY(1990:2040),
+    verbose = TRUE)
+```
+
+### Finding the profile associated with a BY2011 category ID
+
+Let's look up the growth profile associated with BY2011 category #761 "Sanitary Sewers". This turns out to be growth profile #657.
+# 
+
+```{r DB_growth_profile_crosswalk-cat_761}
+#
+# Look up the ID of the growth profile that's been associated with BY2011
+# category #761 "Sanitary Sewers".
+# 
+BY(2011) %>%
+  DB_growth_profile_crosswalk(
+    verbose = TRUE) %>%
+  filter_categories(
+    "#761 Sanitary Sewers" = 761)
+
+#
+# Using that growth profile ID (#657), look up the metadata associated with it
+# (name, date, staff, etc.).
+# 
+BY(2011) %>%
+  DB_raw_growth_profiles() %>%
+  filter(
+    gpf_id == 657) 
+```
+
+### Charting the un-normalized ("raw") growth profile data
+
+```{r BY2011_raw_growth_profile_data-gpf_657-chart_annual_quantities_by-cnty_abbr, message = FALSE}
+#
+# Still charting `BY2011_raw_growth_profile_data`, but using
+# `chart_annual_quantities_by()` instead of `chart_annual_growth_by()`.
+#
+# Now we can see the offsets, as well as the slopes, that are in the raw data.
+#
+# If we knew their units, we could label the y-axis ... but we don't.
+# 
+BY2011_raw_growth_profile_data %>%
+  filter(
+    gpf_id == 657) %>%
+  chart_annual_quantities_by(
+    color = cnty_abbr,
+    flag_years = CY(2011),
+    flag_labels = "{format(gf_qty, big.mark = ',', digits = 4, trim = TRUE)}",
+    title = "Household Population (Growth Profile #657)",
+    subtitle = 'Used to project BY2011 category #761 "Sanitary Sewers".')
+```
+
+### A note on county fractions
+
+Why are the above lines offset from each other, even at `CY2011`? Because we're plotting the *raw* growth profile data! (Since this profile is labeled "Household Population", we might presume that the units are in persons. Without going into further detail, these numbers do seem consistent with Bay Area county populations.)
+
+**The offsets are interesting** --- they're not junk. See the [Appendix](#appendix-deriving_county_fractions) to learn how to compute county fractions from raw growth profile data. (This is also a good way to double-check county fractions.)

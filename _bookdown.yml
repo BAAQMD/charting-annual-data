@@ -1,0 +1,20 @@
+book_filename: "Charting Annual Data"
+rmd_files: [
+  "index.Rmd",
+  "02-setup.Rmd",
+  "03-emissions.Rmd",
+  "04-throughputs.Rmd",
+  "05-growth_profiles.Rmd",
+  "06-relative_changes.Rmd",
+  "07-emission_factors.Rmd",
+  "08-control_factors.Rmd",
+  "appendix.Rmd"]
+before_chapter_script: "chapter-setup.R"
+after_chapter_script: "chapter-teardown.R"
+view: https://github.com/BAAQMD/charting-annual-data/blob/master/%s
+edit: https://github.com/BAAQMD/charting-annual-data/edit/master/%s
+output_dir: "docs"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "
