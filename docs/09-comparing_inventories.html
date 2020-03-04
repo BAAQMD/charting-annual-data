@@ -235,6 +235,7 @@ In <code>BY2008_annual_emission_data</code>, category IDs are prefixed by either
 <a class="sourceLine" id="cb33-11" data-line-number="11"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
 <a class="sourceLine" id="cb33-12" data-line-number="12">    <span class="st">&quot;NOx&quot;</span>, </a>
 <a class="sourceLine" id="cb33-13" data-line-number="13">    <span class="st">&quot;CO&quot;</span>) </a></code></pre></div>
+<p>The <code>c(288, &quot;A288&quot;)</code> tells <code>filter_categories()</code> to treat either/both of these categories as “Domestic Wood Stoves”.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co"># Chart by inventory, so we can compare.</span></a>
 <a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#</span></a>
@@ -249,7 +250,6 @@ In <code>BY2008_annual_emission_data</code>, category IDs are prefixed by either
 <a class="sourceLine" id="cb34-12" data-line-number="12">      <span class="st">&quot;- Forecast is flat, rather than increasing.&quot;</span>,</a>
 <a class="sourceLine" id="cb34-13" data-line-number="13">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY_data-domestic-woodstoves-chart-1.svg" width="800" height="650" /></p>
-<p>The <code>c()</code> tells <code>filter_categories()</code> to recode both of these categories as just “Domestic Wood Stoves”, which is what you see in the chart.</p>
 </div>
 <div id="multiple-categories" class="section level2">
 <h2><span class="header-section-number">9.3</span> Groups of categories</h2>

@@ -51,6 +51,8 @@ chart_data <-
     "CO") 
 ```
 
+The `c(288, "A288")` tells `filter_categories()` to treat either/both of these categories as  "Domestic Wood Stoves".
+
 ```{r BY_data-domestic-woodstoves-chart, fig.height=6.5, out.height=650}
 #
 # Chart by inventory, so we can compare.
@@ -66,8 +68,6 @@ chart_data %>%
       "- Forecast is flat, rather than increasing.",
       sep = "\n"))
 ```
-
-The `c()` tells `filter_categories()` to recode both of these categories as just "Domestic Wood Stoves", which is what you see in the chart. 
 
 ## Groups of categories {#multiple-categories}
 
