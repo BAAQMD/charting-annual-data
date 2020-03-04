@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Growth profiles | Charting Annual Emissions</title>
+  <meta name="description" content="This is an introduction to charting annual emissions inventory data." />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Growth profiles | Charting Annual Emissions" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an introduction to charting annual emissions inventory data." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Growth profiles | Charting Annual Emissions" />
+  
+  <meta name="twitter:description" content="This is an introduction to charting annual emissions inventory data." />
+  
+
+<meta name="author" content="David Holstius" />
+
+
+<meta name="date" content="2020-03-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="throughputs.html"/>
+<link rel="next" href="relative-changes.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Charting Annual Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
+<li class="chapter" data-level="2.1" data-path="setup.html"><a href="setup.html#loading-required-libraries"><i class="fa fa-check"></i><b>2.1</b> Loading required libraries</a></li>
+<li class="chapter" data-level="2.2" data-path="setup.html"><a href="setup.html#peeking-at-data"><i class="fa fa-check"></i><b>2.2</b> Peeking at data</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="emissions.html"><a href="emissions.html"><i class="fa fa-check"></i><b>3</b> Emissions</a><ul>
+<li class="chapter" data-level="3.1" data-path="emissions.html"><a href="emissions.html#charting-annual-emissions"><i class="fa fa-check"></i><b>3.1</b> Charting annual emissions</a></li>
+<li class="chapter" data-level="3.2" data-path="emissions.html"><a href="emissions.html#coloring-by-category"><i class="fa fa-check"></i><b>3.2</b> Coloring by category</a></li>
+<li class="chapter" data-level="3.3" data-path="emissions.html"><a href="emissions.html#flagging-specific-values"><i class="fa fa-check"></i><b>3.3</b> Flagging specific values</a></li>
+<li class="chapter" data-level="3.4" data-path="emissions.html"><a href="emissions.html#humanizing-category-names"><i class="fa fa-check"></i><b>3.4</b> Humanizing category names</a></li>
+<li class="chapter" data-level="3.5" data-path="emissions.html"><a href="emissions.html#titling-and-captioning"><i class="fa fa-check"></i><b>3.5</b> Titling and captioning</a></li>
+<li class="chapter" data-level="3.6" data-path="emissions.html"><a href="emissions.html#making-an-area-chart"><i class="fa fa-check"></i><b>3.6</b> Making an area chart</a></li>
+<li class="chapter" data-level="3.7" data-path="emissions.html"><a href="emissions.html#more-than-one-pollutant"><i class="fa fa-check"></i><b>3.7</b> More than one pollutant</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="throughputs.html"><a href="throughputs.html"><i class="fa fa-check"></i><b>4</b> Throughputs</a><ul>
+<li class="chapter" data-level="4.1" data-path="throughputs.html"><a href="throughputs.html#obtaining-throughput-data"><i class="fa fa-check"></i><b>4.1</b> Obtaining throughput data</a></li>
+<li class="chapter" data-level="4.2" data-path="throughputs.html"><a href="throughputs.html#charting-annual-throughputs"><i class="fa fa-check"></i><b>4.2</b> Charting annual throughputs</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="growth-profiles.html"><a href="growth-profiles.html"><i class="fa fa-check"></i><b>5</b> Growth profiles</a><ul>
+<li class="chapter" data-level="5.1" data-path="growth-profiles.html"><a href="growth-profiles.html#normalized-growth-factors"><i class="fa fa-check"></i><b>5.1</b> Normalized growth factors</a></li>
+<li class="chapter" data-level="5.2" data-path="growth-profiles.html"><a href="growth-profiles.html#county-specific-growth-profiles"><i class="fa fa-check"></i><b>5.2</b> County-specific growth profiles</a></li>
+<li class="chapter" data-level="5.3" data-path="growth-profiles.html"><a href="growth-profiles.html#raw-growth-profile-data"><i class="fa fa-check"></i><b>5.3</b> Raw growth profile data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="relative-changes.html"><a href="relative-changes.html"><i class="fa fa-check"></i><b>6</b> Relative Changes</a><ul>
+<li class="chapter" data-level="6.1" data-path="relative-changes.html"><a href="relative-changes.html#relative-changes-in-emissions"><i class="fa fa-check"></i><b>6.1</b> Relative changes in emissions</a></li>
+<li class="chapter" data-level="6.2" data-path="relative-changes.html"><a href="relative-changes.html#relative-changes-in-throughputs"><i class="fa fa-check"></i><b>6.2</b> Relative changes in throughputs</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="emission-factors.html"><a href="emission-factors.html"><i class="fa fa-check"></i><b>7</b> Emission factors</a></li>
+<li class="chapter" data-level="8" data-path="control-factors.html"><a href="control-factors.html"><i class="fa fa-check"></i><b>8</b> Control factors</a><ul>
+<li class="chapter" data-level="8.1" data-path="control-factors.html"><a href="control-factors.html#example-domestic-woodstoves"><i class="fa fa-check"></i><b>8.1</b> Example: domestic woodstoves</a></li>
+<li class="chapter" data-level="8.2" data-path="control-factors.html"><a href="control-factors.html#example-gasoline-filling-stations"><i class="fa fa-check"></i><b>8.2</b> Example: gasoline filling stations</a></li>
+<li class="chapter" data-level="8.3" data-path="control-factors.html"><a href="control-factors.html#control-effectiveness-vs.annualized-control-factors"><i class="fa fa-check"></i><b>8.3</b> Control effectiveness vs. annualized control factors</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>9</b> Appendix</a><ul>
+<li class="chapter" data-level="9.1" data-path="appendix.html"><a href="appendix.html#appendix-BY2011-cat_283-forecast"><i class="fa fa-check"></i><b>9.1</b> Changes in forecasts for category #283</a></li>
+<li class="chapter" data-level="9.2" data-path="appendix.html"><a href="appendix.html#appendix-deriving_county_fractions"><i class="fa fa-check"></i><b>9.2</b> Calculating county fractions from raw growth profile data</a></li>
+<li class="chapter" data-level="9.3" data-path="appendix.html"><a href="appendix.html#appendix-control_factors-documentation"><i class="fa fa-check"></i><b>9.3</b> Control factors: documentation</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Charting Annual Emissions</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="growth-profiles" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Growth profiles</h1>
+<p><strong>This chapter shows how to chart growth profiles.</strong></p>
+<p>In the previous chapter, we saw how to use <code>chart_annual_growth_by()</code> to examine relative changes in estimates of emissions and throughputs. We can also use <code>chart_annual_growth_by()</code> that have already been “normalized”, like growth profiles.</p>
+<p>This chapter also introduces several new functions:</p>
+<ul>
+<li><code>DB_growth_profiles()</code></li>
+<li><code>DB_growth_profile_crosswalk()</code></li>
+<li><code>DB_raw_growth_profiles()</code></li>
+<li><code>chart_annual_quantities_by()</code></li>
+</ul>
+<p>We’ll use the ones beginning with <code>DB_</code> to fetch some growth profile data stored in DataBank. And, we’ll use <code>chart_annual_quantities_by()</code> to plot the raw (non-normalized) numbers behind a specific growth profile.</p>
+<div id="normalized-growth-factors" class="section level2">
+<h2><span class="header-section-number">5.1</span> Normalized growth factors</h2>
+<p>Let’s start by pulling normalized <code>BY2011</code> growth factors from DataBank.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co"># `DB_growth_profiles()` automatically normalizes BY2011 profiles to CY2011. If</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co"># you would like them normalized to a different year, just alter the value of</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co"># `ref_year`, below.</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co"># `DB_growth_profiles()` also does the work of linking profiles to categories,</span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co"># consistent with the configuration stored in DataBank for the given base year.</span></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co"># </span></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9">BY2011_growth_profile_data &lt;-</a>
+<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="st">  </span><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="st">  </span><span class="kw">DB_growth_profiles</span>(</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">    <span class="dt">ref_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb13-13" data-line-number="13">    <span class="dt">years =</span> <span class="kw">CY</span>(<span class="dv">1990</span><span class="op">:</span><span class="dv">2040</span>),</a>
+<a class="sourceLine" id="cb13-14" data-line-number="14">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) </a></code></pre></div>
+<p>With these in hand, we can chart the profile for BY2011 category #283 “Residential Combustion”. We use the same function, <code>chart_annual_growth_by()</code>, that we learned about in the previous chapter.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># Chart the relative growth in these growth factors. </span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">BY2011_growth_profile_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb14-8" data-line-number="8">    cnty_abbr,</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">      <span class="st">&quot;This is the growth profile associated with category #283 in BY2011.&quot;</span>,</a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">      <span class="st">&quot;There is a +9% change from CY2011 to CY2030.&quot;</span>,</a>
+<a class="sourceLine" id="cb14-15" data-line-number="15">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_growth_profile_data-cat_283-chart_annual_growth-1.svg" width="900" height="450" /></p>
+</div>
+<div id="county-specific-growth-profiles" class="section level2">
+<h2><span class="header-section-number">5.2</span> County-specific growth profiles</h2>
+<p>The above profile for natural gas usage doesn’t vary by county, but we can look at one that does. In DataBank, the growth profile associated with BY2011 category #761 “Sanitary Sewers” is a good example.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co"># Chart the *raw* growth profile data for profile #657 &quot;Household Population&quot;.</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co"># Profile #657 was used to project BY2011 category #761 &quot;Sanitary Sewers&quot;.</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">BY2011_growth_profile_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">    <span class="st">&quot;#761 Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb15-9" data-line-number="9">    <span class="dt">color =</span> cnty_abbr,</a>
+<a class="sourceLine" id="cb15-10" data-line-number="10">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb15-11" data-line-number="11">    <span class="dt">title =</span> <span class="st">&quot;Household Population (Growth Profile #657)&quot;</span>,</a>
+<a class="sourceLine" id="cb15-12" data-line-number="12">    <span class="dt">subtitle =</span> <span class="st">&#39;Used to project BY2011 category #761 &quot;Sanitary Sewers&quot;.&#39;</span>)</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_raw_growth_profile_data-cat_716-chart_annual_quantities_by-cnty_abbr-1.svg" width="900" height="450" /></p>
+</div>
+<div id="raw-growth-profile-data" class="section level2">
+<h2><span class="header-section-number">5.3</span> Raw growth profile data</h2>
+<p>What if we wanted to chart the un-normalized (“raw”) growth profile data?</p>
+<ul>
+<li>First, we can pull the raw numbers, using <code>DB_raw_growth_profiles()</code> instead of <code>DB_growth_profiles()</code>.</li>
+<li>Then, we find the profile associated with a given BY2011 category ID, using <code>DB_growth_profile_crosswalk()</code>.</li>
+<li>Finally, we can use <code>chart_annual_quantities()</code>, rather than <code>chart_annual_growth()</code>, to plot the numbers. This ensures that the numbers <em>aren’t</em> normalized in the process of creating the chart.</li>
+</ul>
+<div id="pulling-raw-growth-profile-data" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Pulling raw growth profile data</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># Unlike `DB_growth_profiles()`, `DB_raw_growth_profiles()` does *not* normalize</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co"># anything. It just assembles and returns  whatever is contained in `t0335`,</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co"># `t0336`, and `t0337`. Those numbers might be:</span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co">#</span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co"># - already normalized to CY2011; or</span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co"># - already normalized to a previous &quot;base year&quot; (like CY2008); or </span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="co"># - in some natural unit, like &quot;persons&quot; or &quot;acres&quot;.</span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co">#</span></a>
+<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="co"># (It varies from profile to profile.)</span></a>
+<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="co"># </span></a>
+<a class="sourceLine" id="cb16-12" data-line-number="12">BY2011_raw_growth_profile_data &lt;-</a>
+<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="st">  </span><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-14" data-line-number="14"><span class="st">  </span><span class="kw">DB_raw_growth_profiles</span>(</a>
+<a class="sourceLine" id="cb16-15" data-line-number="15">    <span class="dt">nested =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb16-16" data-line-number="16">    <span class="dt">years =</span> <span class="kw">CY</span>(<span class="dv">1990</span><span class="op">:</span><span class="dv">2040</span>),</a>
+<a class="sourceLine" id="cb16-17" data-line-number="17">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+</div>
+<div id="finding-the-profile-associated-with-a-by2011-category-id" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> Finding the profile associated with a BY2011 category ID</h3>
+<p>Let’s look up the growth profile associated with BY2011 category #761 “Sanitary Sewers”. This turns out to be growth profile #657.
+#</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="co"># Look up the ID of the growth profile that&#39;s been associated with BY2011</span></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co"># category #761 &quot;Sanitary Sewers&quot;.</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="st">  </span><span class="kw">DB_growth_profile_crosswalk</span>(</a>
+<a class="sourceLine" id="cb17-7" data-line-number="7">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb17-9" data-line-number="9">    <span class="st">&quot;#761 Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">cat_id</th>
+<th align="left">cat_h0</th>
+<th align="right">gpf_id</th>
+<th align="left">backcast</th>
+<th align="left">forecast</th>
+<th align="left">category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">761</td>
+<td align="left">Area Source</td>
+<td align="right">657</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">#761 Sanitary Sewers</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co"># Using that growth profile ID (#657), look up the metadata associated with it</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="co"># (name, date, staff, etc.).</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="st">  </span><span class="kw">DB_raw_growth_profiles</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(</a>
+<a class="sourceLine" id="cb18-8" data-line-number="8">    gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>) </a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">gpf_id</th>
+<th align="left">gpf_raw_data</th>
+<th align="left">gpf_name</th>
+<th align="left">gpf_staff</th>
+<th align="left">gpf_date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">657</td>
+<td align="left">list(gpf_from = c(“t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“t0335”,</td>
+<td align="left">“t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0335”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“t0336”,</td>
+<td align="left">“t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“t0336”,</td>
+<td align="left">“t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“t0336”,</td>
+<td align="left">“t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“t0336”,</td>
+<td align="left">“t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“t0336”,</td>
+<td align="left">“t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0336”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“t0337”,</td>
+<td align="left">“t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“t0337”,</td>
+<td align="left">“t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“t0337”,</td>
+<td align="left">“t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”, “t0337”), year = c(“CY1990”, “CY1990”, “CY1990”, “CY1990”, “CY1990”, “CY1990”, “CY1990”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“CY1990”,</td>
+<td align="left">“CY1990”, “CY1991”, “CY1991”, “CY1991”, “CY1991”, “CY1991”, “CY1991”, “CY1991”, “CY1991”, “CY1991”, “CY1992”, “CY1992”, “CY1992”, “CY1992”, “CY1992”, “CY1992”, “CY1992”, “CY1992”, “CY1992”, “CY1993”, “CY1993”, “CY1993”, “CY1993”, “CY1993”, “CY1993”, “CY1993”, “CY1993”, “CY1993”, “CY1994”, “CY1994”, “CY1994”, “CY1994”, “CY1994”, “CY1994”, “CY1994”, “CY1994”, “CY1994”, “CY1995”, “CY1995”, “CY1995”, “CY1995”, “CY1995”, “CY1995”, “CY1995”, “CY1995”, “CY1995”, “CY1996”, “CY1996”, “CY1996”, “CY1996”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“CY1996”,</td>
+<td align="left">“CY1996”, “CY1996”, “CY1996”, “CY1996”, “CY1997”, “CY1997”, “CY1997”, “CY1997”, “CY1997”, “CY1997”, “CY1997”, “CY1997”, “CY1997”, “CY1998”, “CY1998”, “CY1998”, “CY1998”, “CY1998”, “CY1998”, “CY1998”, “CY1998”, “CY1998”, “CY1999”, “CY1999”, “CY1999”, “CY1999”, “CY1999”, “CY1999”, “CY1999”, “CY1999”, “CY1999”, “CY2000”, “CY2000”, “CY2000”, “CY2000”, “CY2000”, “CY2000”, “CY2000”, “CY2000”, “CY2000”, “CY2001”, “CY2001”, “CY2001”, “CY2001”, “CY2001”, “CY2001”, “CY2001”, “CY2001”, “CY2001”, “CY2002”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“CY2002”,</td>
+<td align="left">“CY2002”, “CY2002”, “CY2002”, “CY2002”, “CY2002”, “CY2002”, “CY2002”, “CY2003”, “CY2003”, “CY2003”, “CY2003”, “CY2003”, “CY2003”, “CY2003”, “CY2003”, “CY2003”, “CY2004”, “CY2004”, “CY2004”, “CY2004”, “CY2004”, “CY2004”, “CY2004”, “CY2004”, “CY2004”, “CY2005”, “CY2005”, “CY2005”, “CY2005”, “CY2005”, “CY2005”, “CY2005”, “CY2005”, “CY2005”, “CY2006”, “CY2006”, “CY2006”, “CY2006”, “CY2006”, “CY2006”, “CY2006”, “CY2006”, “CY2006”, “CY2007”, “CY2007”, “CY2007”, “CY2007”, “CY2007”, “CY2007”, “CY2007”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“CY2007”,</td>
+<td align="left">“CY2007”, “CY2008”, “CY2008”, “CY2008”, “CY2008”, “CY2008”, “CY2008”, “CY2008”, “CY2008”, “CY2008”, “CY2009”, “CY2009”, “CY2009”, “CY2009”, “CY2009”, “CY2009”, “CY2009”, “CY2009”, “CY2009”, “CY2010”, “CY2010”, “CY2010”, “CY2010”, “CY2010”, “CY2010”, “CY2010”, “CY2010”, “CY2010”, “CY2011”, “CY2011”, “CY2011”, “CY2011”, “CY2011”, “CY2011”, “CY2011”, “CY2011”, “CY2011”, “CY2012”, “CY2012”, “CY2012”, “CY2012”, “CY2012”, “CY2012”, “CY2012”, “CY2012”, “CY2012”, “CY2013”, “CY2013”, “CY2013”, “CY2013”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“CY2013”,</td>
+<td align="left">“CY2013”, “CY2013”, “CY2013”, “CY2013”, “CY2014”, “CY2014”, “CY2014”, “CY2014”, “CY2014”, “CY2014”, “CY2014”, “CY2014”, “CY2014”, “CY2015”, “CY2015”, “CY2015”, “CY2015”, “CY2015”, “CY2015”, “CY2015”, “CY2015”, “CY2015”, “CY2016”, “CY2016”, “CY2016”, “CY2016”, “CY2016”, “CY2016”, “CY2016”, “CY2016”, “CY2016”, “CY2017”, “CY2017”, “CY2017”, “CY2017”, “CY2017”, “CY2017”, “CY2017”, “CY2017”, “CY2017”, “CY2018”, “CY2018”, “CY2018”, “CY2018”, “CY2018”, “CY2018”, “CY2018”, “CY2018”, “CY2018”, “CY2019”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“CY2019”,</td>
+<td align="left">“CY2019”, “CY2019”, “CY2019”, “CY2019”, “CY2019”, “CY2019”, “CY2019”, “CY2020”, “CY2020”, “CY2020”, “CY2020”, “CY2020”, “CY2020”, “CY2020”, “CY2020”, “CY2020”, “CY2021”, “CY2021”, “CY2021”, “CY2021”, “CY2021”, “CY2021”, “CY2021”, “CY2021”, “CY2021”, “CY2022”, “CY2022”, “CY2022”, “CY2022”, “CY2022”, “CY2022”, “CY2022”, “CY2022”, “CY2022”, “CY2023”, “CY2023”, “CY2023”, “CY2023”, “CY2023”, “CY2023”, “CY2023”, “CY2023”, “CY2023”, “CY2024”, “CY2024”, “CY2024”, “CY2024”, “CY2024”, “CY2024”, “CY2024”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“CY2024”,</td>
+<td align="left">“CY2024”, “CY2025”, “CY2025”, “CY2025”, “CY2025”, “CY2025”, “CY2025”, “CY2025”, “CY2025”, “CY2025”, “CY2026”, “CY2026”, “CY2026”, “CY2026”, “CY2026”, “CY2026”, “CY2026”, “CY2026”, “CY2026”, “CY2027”, “CY2027”, “CY2027”, “CY2027”, “CY2027”, “CY2027”, “CY2027”, “CY2027”, “CY2027”, “CY2028”, “CY2028”, “CY2028”, “CY2028”, “CY2028”, “CY2028”, “CY2028”, “CY2028”, “CY2028”, “CY2029”, “CY2029”, “CY2029”, “CY2029”, “CY2029”, “CY2029”, “CY2029”, “CY2029”, “CY2029”, “CY2030”, “CY2030”, “CY2030”, “CY2030”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“CY2030”,</td>
+<td align="left">“CY2030”, “CY2030”, “CY2030”, “CY2030”, “CY2031”, “CY2031”, “CY2031”, “CY2031”, “CY2031”, “CY2031”, “CY2031”, “CY2031”, “CY2031”, “CY2032”, “CY2032”, “CY2032”, “CY2032”, “CY2032”, “CY2032”, “CY2032”, “CY2032”, “CY2032”, “CY2033”, “CY2033”, “CY2033”, “CY2033”, “CY2033”, “CY2033”, “CY2033”, “CY2033”, “CY2033”, “CY2034”, “CY2034”, “CY2034”, “CY2034”, “CY2034”, “CY2034”, “CY2034”, “CY2034”, “CY2034”, “CY2035”, “CY2035”, “CY2035”, “CY2035”, “CY2035”, “CY2035”, “CY2035”, “CY2035”, “CY2035”, “CY2036”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“CY2036”,</td>
+<td align="left">“CY2036”, “CY2036”, “CY2036”, “CY2036”, “CY2036”, “CY2036”, “CY2036”, “CY2037”, “CY2037”, “CY2037”, “CY2037”, “CY2037”, “CY2037”, “CY2037”, “CY2037”, “CY2037”, “CY2038”, “CY2038”, “CY2038”, “CY2038”, “CY2038”, “CY2038”, “CY2038”, “CY2038”, “CY2038”, “CY2039”, “CY2039”, “CY2039”, “CY2039”, “CY2039”, “CY2039”, “CY2039”, “CY2039”, “CY2039”, “CY2040”, “CY2040”, “CY2040”, “CY2040”, “CY2040”, “CY2040”, “CY2040”, “CY2040”, “CY2040”, “CY2041”, “CY2041”, “CY2041”, “CY2041”, “CY2041”, “CY2041”, “CY2041”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“CY2041”,</td>
+<td align="left">“CY2041”, “CY2042”, “CY2042”, “CY2042”, “CY2042”, “CY2042”, “CY2042”, “CY2042”, “CY2042”, “CY2042”, “CY2043”, “CY2043”, “CY2043”, “CY2043”, “CY2043”, “CY2043”, “CY2043”, “CY2043”, “CY2043”, “CY2044”, “CY2044”, “CY2044”, “CY2044”, “CY2044”, “CY2044”, “CY2044”, “CY2044”, “CY2044”, “CY2045”, “CY2045”, “CY2045”, “CY2045”, “CY2045”, “CY2045”, “CY2045”, “CY2045”, “CY2045”, “CY2046”, “CY2046”, “CY2046”, “CY2046”, “CY2046”, “CY2046”, “CY2046”, “CY2046”, “CY2046”, “CY2047”, “CY2047”, “CY2047”, “CY2047”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“CY2047”,</td>
+<td align="left">“CY2047”, “CY2047”, “CY2047”, “CY2047”, “CY2048”, “CY2048”, “CY2048”, “CY2048”, “CY2048”, “CY2048”, “CY2048”, “CY2048”, “CY2048”, “CY2049”, “CY2049”, “CY2049”, “CY2049”, “CY2049”, “CY2049”, “CY2049”, “CY2049”, “CY2049”, “CY2050”, “CY2050”, “CY2050”, “CY2050”, “CY2050”, “CY2050”, “CY2050”, “CY2050”, “CY2050”), cnty_abbr = c(“ALA”, “CC”, “MAR”, “NAP”, “SF”, “SM”, “SNC”, “SOL”, “SON”, “ALA”, “CC”, “MAR”, “NAP”, “SF”, “SM”, “SNC”, “SOL”, “SON”, “ALA”, “CC”, “MAR”, “NAP”, “SF”, “SM”, “SNC”,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“SOL”, &quot;S</td>
+<td align="left">ON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA&quot;,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“CC”, &quot;MA</td>
+<td align="left">R“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF&quot;,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“SM”, &quot;SN</td>
+<td align="left">C“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON&quot;,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“ALA”, &quot;C</td>
+<td align="left">C“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP&quot;,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“SF”, &quot;SM</td>
+<td align="left">“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL&quot;,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">“SON”, &quot;A</td>
+<td align="left">LA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR&quot;,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">“NAP”, &quot;S</td>
+<td align="left">F“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON“,”ALA“,”CC“,”MAR“,”NAP“,”SF“,”SM“,”SNC“,”SOL“,”SON&quot;), gf_qty = c(1242068, 793585, 221548, 105085,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">699330, 6</td>
+<td align="left">37628, 1463219, 247662, 334531, 1259462, 807974, 222974, 106481, 705095, 643536, 1482184, 250659, 341078, 1276855, 822364, 224399, 107877, 710859, 649445, 1501150, 253656, 347627, 1294249, 836753, 225825, 109273, 716624, 655353, 1520115, 256653, 354174, 1311643, 851142, 227250, 110669, 722388, 661261, 1539080, 259649, 360722, 1329037, 865532, 228676, 112066, 728153, 667170, 1558045, 262646, 367269, 1346431, 879921, 230101, 113462, 733918, 673078, 1577010, 265643, 373816, 1363825, 894311,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">231527, 1</td>
+<td align="left">14858, 739682, 678986, 1595975, 268640, 380364, 1381218, 908700, 232952, 116254, 745447, 684894, 1614941, 271636, 386911, 1403807, 922555, 234704, 117175, 753271, 693756, 1636865, 274676, 389811, 1416006, 937479, 235803, 119046, 756976, 696713, 1652871, 277630, 393376, 1428205, 952403, 236902, 120917, 760681, 699670, 1668877, 280584, 396941, 1440404, 967327, 238002, 122788, 764386, 702628, 1684883, 283538, 400506, 1452602, 982252, 239101, 124658, 768090, 705585, 1700888, 286492, 404070,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">1464801,</td>
+<td align="left">997176, 240201, 126529, 771795, 708543, 1716894, 289446, 407635, 1477000, 1012100, 241300, 128400, 775500, 711500, 1732900, 292400, 411200, 1485760, 1025440, 242040, 129400, 778220, 713500, 1744540, 295360, 414540, 1494520, 1038780, 242780, 130400, 780940, 715500, 1756180, 298320, 417880, 1503280, 1052120, 243520, 131400, 783660, 717500, 1767820, 301280, 421220, 1512040, 1065460, 244260, 132400, 786380, 719500, 1779460, 304240, 424560, 1520800, 1078800, 245000, 133400, 789100, 721500, 1791100,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">307200, 4</td>
+<td align="left">27900, 1535560, 1086820, 245700, 134080, 794560, 728160, 1815700, 309080, 429960, 1550320, 1094840, 246400, 134760, 800020, 734820, 1840300, 310960, 432020, 1565080, 1102860, 247100, 135440, 805480, 741480, 1864900, 312840, 434080, 1579840, 1110880, 247800, 136120, 810940, 748140, 1889500, 314720, 436140, 1594600, 1118900, 248500, 136800, 816400, 754800, 1914100, 316600, 438200, 1610440, 1128180, 249220, 137240, 822280, 761600, 1937600, 318280, 440360, 1626280, 1137460, 249940, 137680, 828160,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">768400, 1</td>
+<td align="left">961100, 319960, 442520, 1642120, 1146740, 250660, 138120, 834040, 775200, 1984600, 321640, 444680, 1657960, 1156020, 251380, 138560, 839920, 782000, 2008100, 323320, 446840, 1673800, 1165300, 252100, 139000, 845800, 788800, 2031600, 325000, 449000, 1689920, 1174900, 252740, 139320, 852480, 795020, 2056140, 326520, 451200, 1706040, 1184500, 253380, 139640, 859160, 801240, 2080680, 328040, 453400, 1722160, 1194100, 254020, 139960, 865840, 807460, 2105220, 329560, 455600, 1738280, 1203700,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">254660, 1</td>
+<td align="left">40280, 872520, 813680, 2129760, 331080, 457800, 1754400, 1213300, 255300, 140600, 879200, 819900, 2154300, 332600, 460000, 1771600, 1222940, 256020, 140840, 885960, 825980, 2179300, 333960, 462280, 1788800, 1232580, 256740, 141080, 892720, 832060, 2204300, 335320, 464560, 1806000, 1242220, 257460, 141320, 899480, 838140, 2229300, 336680, 466840, 1823200, 1251860, 258180, 141560, 906240, 844220, 2254300, 338040, 469120, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">1840400,</td>
+<td align="left">1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">339400, 4</td>
+<td align="left">71400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000,</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">850300, 2</td>
+<td align="left">279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400, 1840400, 1261500, 258900, 141800, 913000, 850300, 2279300, 339400, 471400)) Household Population Minh H Nguyen 2010-02-25</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="charting-the-un-normalized-raw-growth-profile-data" class="section level3">
+<h3><span class="header-section-number">5.3.3</span> Charting the un-normalized (“raw”) growth profile data</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="co"># Still charting `BY2011_raw_growth_profile_data`, but using</span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="co"># `chart_annual_quantities_by()` instead of `chart_annual_growth_by()`.</span></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="co">#</span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="co"># Now we can see the offsets, as well as the slopes, that are in the raw data.</span></a>
+<a class="sourceLine" id="cb19-6" data-line-number="6"><span class="co">#</span></a>
+<a class="sourceLine" id="cb19-7" data-line-number="7"><span class="co"># If we knew their units, we could label the y-axis ... but we don&#39;t.</span></a>
+<a class="sourceLine" id="cb19-8" data-line-number="8"><span class="co"># </span></a>
+<a class="sourceLine" id="cb19-9" data-line-number="9">BY2011_raw_growth_profile_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-10" data-line-number="10"><span class="st">  </span><span class="kw">filter</span>(</a>
+<a class="sourceLine" id="cb19-11" data-line-number="11">    gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-12" data-line-number="12"><span class="st">  </span><span class="kw">chart_annual_quantities_by</span>(</a>
+<a class="sourceLine" id="cb19-13" data-line-number="13">    <span class="dt">color =</span> cnty_abbr,</a>
+<a class="sourceLine" id="cb19-14" data-line-number="14">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb19-15" data-line-number="15">    <span class="dt">flag_labels =</span> <span class="st">&quot;{format(gf_qty, big.mark = &#39;,&#39;, digits = 4, trim = TRUE)}&quot;</span>,</a>
+<a class="sourceLine" id="cb19-16" data-line-number="16">    <span class="dt">title =</span> <span class="st">&quot;Household Population (Growth Profile #657)&quot;</span>,</a>
+<a class="sourceLine" id="cb19-17" data-line-number="17">    <span class="dt">subtitle =</span> <span class="st">&#39;Used to project BY2011 category #761 &quot;Sanitary Sewers&quot;.&#39;</span>)</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_raw_growth_profile_data-gpf_657-chart_annual_quantities_by-cnty_abbr-1.svg" width="900" height="450" /></p>
+</div>
+<div id="a-note-on-county-fractions" class="section level3">
+<h3><span class="header-section-number">5.3.4</span> A note on county fractions</h3>
+<p>Why are the above lines offset from each other, even at <code>CY2011</code>? Because we’re plotting the <em>raw</em> growth profile data! (Since this profile is labeled “Household Population”, we might presume that the units are in persons. Without going into further detail, these numbers do seem consistent with Bay Area county populations.)</p>
+<p><strong>The offsets are interesting</strong> — they’re not junk. See the <a href="appendix.html#appendix-deriving_county_fractions">Appendix</a> to learn how to compute county fractions from raw growth profile data. (This is also a good way to double-check county fractions.)</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="throughputs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="relative-changes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/BAAQMD/charting-annual-data/edit/master/05-growth_profiles.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/BAAQMD/charting-annual-data/blob/master/05-growth_profiles.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
