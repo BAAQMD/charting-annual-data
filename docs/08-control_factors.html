@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Control Factors | Charting Annual Emissions</title>
+  <title>8 Control Factors | Charting Annual Emissions</title>
   <meta name="description" content="This is an introduction to charting annual emissions inventory data." />
   <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Control Factors | Charting Annual Emissions" />
+  <meta property="og:title" content="8 Control Factors | Charting Annual Emissions" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Control Factors | Charting Annual Emissions" />
+  <meta name="twitter:title" content="8 Control Factors | Charting Annual Emissions" />
   
   <meta name="twitter:description" content="This is an introduction to charting annual emissions inventory data." />
   
@@ -195,7 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="control-factors" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> Control Factors</h1>
+<h1><span class="header-section-number">8</span> Control Factors</h1>
 <p>This chapter is very similar to the one on <a href="07-emission_factors.html#emission-factors">Emission factors</a>. Here we employ a function, <code>annualize_DB_control_factors()</code>, that’s analogous to <code>annualize_DB_emission_factors()</code>. It does have to do a bit more work than its cousin; see the <a href="appendix.html#appendix-control_factors-documentation">Appendix</a> for details.</p>
 <p>There is one notable difference. For a given category, emission factors can vary by quite a bit from pollutant to pollutant. The default behavior for <code>chart_annual_emission_factors_by()</code>, as we saw in the <a href="07-emission_factors.html#emission-factors">previous chapter</a>, is therefore to generate a different sub-plot for each pollutant, so that the y-scales can vary by pollutant. Control factors, in contrast, always range from 0% to 100%, so we can safely plot them all on the same y-scale. This works well when we set <code>color = pol_abbr</code>, as we do in the examples below.</p>
 <div id="example-domestic-woodstoves" class="section level2">
