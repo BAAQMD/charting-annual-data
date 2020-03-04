@@ -35,6 +35,7 @@
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -49,8 +50,6 @@
 
 
 
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -218,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb39-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
 <a class="sourceLine" id="cb39-11" data-line-number="11">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
 <a class="sourceLine" id="cb39-12" data-line-number="12">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_annual_emission_data-283-NOx-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_annual_emission_data-283-NOx-1.svg" width="800" height="400" /></p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb40-2" data-line-number="2"><span class="co"># This is the growth profile assigned to category #283 via file `t1325`. </span></a>
 <a class="sourceLine" id="cb40-3" data-line-number="3"><span class="co"># It&#39;s not consistent with the published emission forecast (above).</span></a>
@@ -229,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb40-8" data-line-number="8"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
 <a class="sourceLine" id="cb40-9" data-line-number="9">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
 <a class="sourceLine" id="cb40-10" data-line-number="10">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/appendix-growth_profile-283-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/appendix-growth_profile-283-1.svg" width="800" height="400" /></p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb41-2" data-line-number="2"><span class="co"># This is the growth in emissions, via the reproduced inventory. It&#39;s consistent</span></a>
 <a class="sourceLine" id="cb41-3" data-line-number="3"><span class="co"># with the assigned growth profile, but not with the published forecast.</span></a>
@@ -243,7 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb41-11" data-line-number="11">    <span class="dt">qty_var =</span> <span class="st">&quot;ems_qty&quot;</span>,</a>
 <a class="sourceLine" id="cb41-12" data-line-number="12">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
 <a class="sourceLine" id="cb41-13" data-line-number="13">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_area_source_projection_data-283-NOx-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_area_source_projection_data-283-NOx-1.svg" width="800" height="400" /></p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb42-2" data-line-number="2"><span class="co"># This is the growth in throughputs, via the reproduced inventory. It&#39;s also</span></a>
 <a class="sourceLine" id="cb42-3" data-line-number="3"><span class="co"># consistent with the assigned growth profile, and with the reproduced</span></a>
@@ -256,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb42-10" data-line-number="10">    <span class="dt">qty_var =</span> <span class="st">&quot;tput_qty&quot;</span>,  <span class="co"># changed from &quot;ems_qty&quot; to &quot;tput_qty&quot;</span></a>
 <a class="sourceLine" id="cb42-11" data-line-number="11">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
 <a class="sourceLine" id="cb42-12" data-line-number="12">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_area_source_throughput_data-283-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_area_source_throughput_data-283-1.svg" width="800" height="400" /></p>
 <p>If it still doesn’t make sense, please feel free to raise a question at one of our meetings!</p>
 <hr />
 </div>

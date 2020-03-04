@@ -35,6 +35,7 @@
 <link rel="next" href="appendix.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -49,8 +50,6 @@
 
 
 
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -242,15 +241,14 @@ In <code>BY2008_annual_emission_data</code>, category IDs are prefixed by either
 <a class="sourceLine" id="cb34-4" data-line-number="4">chart_data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb34-5" data-line-number="5"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
 <a class="sourceLine" id="cb34-6" data-line-number="6">    <span class="dt">linetype =</span> inventory,</a>
-<a class="sourceLine" id="cb34-7" data-line-number="7">    <span class="dt">color =</span> category,</a>
-<a class="sourceLine" id="cb34-8" data-line-number="8">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2010</span>, <span class="dv">2030</span>),</a>
-<a class="sourceLine" id="cb34-9" data-line-number="9">    <span class="dt">title =</span> <span class="st">&quot;Domestic Woodstoves: BY2011 Updates&quot;</span>,</a>
-<a class="sourceLine" id="cb34-10" data-line-number="10">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
-<a class="sourceLine" id="cb34-11" data-line-number="11">      <span class="st">&quot;- CY1990-2005 estimates are about 10% lower.&quot;</span>,</a>
-<a class="sourceLine" id="cb34-12" data-line-number="12">      <span class="st">&quot;- Estimates circa CY2010 are about 40% lower.&quot;</span>,</a>
-<a class="sourceLine" id="cb34-13" data-line-number="13">      <span class="st">&quot;- Forecast is flat, rather than increasing.&quot;</span>,</a>
-<a class="sourceLine" id="cb34-14" data-line-number="14">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY_data-domestic-woodstoves-chart-1.svg" width="900" height="450" /></p>
+<a class="sourceLine" id="cb34-7" data-line-number="7">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2010</span>, <span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb34-8" data-line-number="8">    <span class="dt">title =</span> <span class="st">&quot;Domestic Woodstoves: BY2011 Updates&quot;</span>,</a>
+<a class="sourceLine" id="cb34-9" data-line-number="9">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb34-10" data-line-number="10">      <span class="st">&quot;- CY1990-2005 estimates are about 10% lower.&quot;</span>,</a>
+<a class="sourceLine" id="cb34-11" data-line-number="11">      <span class="st">&quot;- Estimates circa CY2010 are about 40% lower.&quot;</span>,</a>
+<a class="sourceLine" id="cb34-12" data-line-number="12">      <span class="st">&quot;- Forecast is flat, rather than increasing.&quot;</span>,</a>
+<a class="sourceLine" id="cb34-13" data-line-number="13">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY_data-domestic-woodstoves-chart-1.svg" width="800" height="650" /></p>
 <p>The <code>c()</code> tells <code>filter_categories()</code> to recode both of these categories as just “Domestic Wood Stoves”, which is what you see in the chart.</p>
 </div>
 <div id="multiple-categories" class="section level2">
@@ -298,10 +296,10 @@ This can create some confusion. It means that when someone is speaking about “
 <a class="sourceLine" id="cb36-6" data-line-number="6">    <span class="dt">linetype =</span> inventory,</a>
 <a class="sourceLine" id="cb36-7" data-line-number="7">    <span class="dt">title =</span> <span class="st">&quot;Reciprocating Engines (Liquid Fuel): BY2011 Updates&quot;</span>,</a>
 <a class="sourceLine" id="cb36-8" data-line-number="8">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
-<a class="sourceLine" id="cb36-9" data-line-number="9">      <span class="st">&quot;BY2008 = Categories P304 (point) and A304 (area).&quot;</span>,</a>
-<a class="sourceLine" id="cb36-10" data-line-number="10">      <span class="st">&quot;BY2011 = Categories #304 (point) and #1578 (area).&quot;</span>,</a>
+<a class="sourceLine" id="cb36-9" data-line-number="9">      <span class="st">&quot;BY2008 = Categories #P304 (point) and/or #A304 (area).&quot;</span>,</a>
+<a class="sourceLine" id="cb36-10" data-line-number="10">      <span class="st">&quot;BY2011 = Categories #304 (point) and/or #1578 (area).&quot;</span>,</a>
 <a class="sourceLine" id="cb36-11" data-line-number="11">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY_data-recip_eng-liquid_fuel-chart-1-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY_data-recip_eng-liquid_fuel-chart-1-1.svg" width="800" height="550" /></p>
 </div>
 <div id="comparing-subtotals" class="section level3 unnumbered">
 <h3>Comparing subtotals</h3>
@@ -335,10 +333,10 @@ This can create some confusion. It means that when someone is speaking about “
 <a class="sourceLine" id="cb38-7" data-line-number="7">    <span class="dt">color =</span> category,</a>
 <a class="sourceLine" id="cb38-8" data-line-number="8">    <span class="dt">title =</span> <span class="st">&quot;Reciprocating Engines (Liquid Fuel): BY2011 Updates&quot;</span>,</a>
 <a class="sourceLine" id="cb38-9" data-line-number="9">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
-<a class="sourceLine" id="cb38-10" data-line-number="10">      <span class="st">&quot;BY2008 = Categories P304 (point) and A304 (area).&quot;</span>,</a>
-<a class="sourceLine" id="cb38-11" data-line-number="11">      <span class="st">&quot;BY2011 = Categories #304 (point) and #1578 (area).&quot;</span>,</a>
+<a class="sourceLine" id="cb38-10" data-line-number="10">      <span class="st">&quot;BY2008 = Categories #P304 (point) and/or #A304 (area).&quot;</span>,</a>
+<a class="sourceLine" id="cb38-11" data-line-number="11">      <span class="st">&quot;BY2011 = Categories #304 (point) and/or #1578 (area).&quot;</span>,</a>
 <a class="sourceLine" id="cb38-12" data-line-number="12">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) </a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY_data-recip_eng-liquid_fuel-chart-2-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY_data-recip_eng-liquid_fuel-chart-2-1.svg" width="800" height="600" /></p>
 <p>From this, we can see that there was a slight revision to the point-source portion, from BY2008 to BY2011. However, the bulk of the difference is due to a revised estimate for the area-source portion. In BY2008, estimates of emissions due to this activity were classified as <code>A304</code>; in BY2011, the same scope of activity is represented by <code>#1578</code>.</p>
 <p>This combination of <code>filter_categories()</code> and <code>chart_annual_emissions()</code> is powerful. With it, you can review updates to any related groups of categories from different BY inventories, regardless of how their <code>cat_id</code> identifiers might have changed.</p>
 

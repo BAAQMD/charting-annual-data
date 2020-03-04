@@ -4,7 +4,7 @@ author: "David Holstius"
 date: "`r Sys.Date()`"
 output: 
   bookdown::gitbook:
-    df_print: paged
+    df_print: kable
 documentclass: book
 description: "This is an introduction to charting annual emissions inventory data."
 site: "bookdown::bookdown_site"
@@ -28,8 +28,8 @@ knitr::opts_chunk$set(
   warning = FALSE,
   fig.width = 8,
   fig.height = 4,
-  out.width = 900,
-  out.height = 900 / (8 / 4),
+  out.width = 800,
+  out.height = 400,
   dpi = 300)
 ```
 

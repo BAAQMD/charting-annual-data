@@ -35,6 +35,7 @@
 <link rel="next" href="07-emission_factors.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -49,8 +50,6 @@
 
 
 
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -215,7 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb20-11" data-line-number="11"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
 <a class="sourceLine" id="cb20-12" data-line-number="12">    <span class="dt">color =</span> category,</a>
 <a class="sourceLine" id="cb20-13" data-line-number="13">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>)) <span class="co"># required; can be BY or CY</span></a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-chart_annual_growth_by-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-chart_annual_growth_by-1.svg" width="800" height="400" /></p>
 <p>We can enhance it in exactly the same ways that we learned in the <a href="03-emissions.html#emissions">Emissions</a> chapter, too. Using <code>flag_years</code> can be especially helpful, because then we can read off the exact growth for a given future (or historical) year.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb21-2" data-line-number="2"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
@@ -232,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb21-13" data-line-number="13">      <span class="st">&quot;NOx emissions from water and space heating are projected to grow by +24% from CY2011 to CY2030.&quot;</span>,</a>
 <a class="sourceLine" id="cb21-14" data-line-number="14">      <span class="st">&quot;Labeled values are percent changes relative to the base year (CY2011).&quot;</span>,</a>
 <a class="sourceLine" id="cb21-15" data-line-number="15">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) <span class="co"># combine lines with a newline</span></a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-chart_annual_growth_by-enhanced-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-chart_annual_growth_by-enhanced-1.svg" width="800" height="400" /></p>
 </div>
 <div id="relative-changes-in-throughputs" class="section level2">
 <h2><span class="header-section-number">6.2</span> Relative changes in throughputs</h2>
@@ -250,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb22-11" data-line-number="11">      <span class="st">&quot;Natural gas consumed by water and space heating is projected to grow by +24% from CY2011 to CY2030.&quot;</span>,</a>
 <a class="sourceLine" id="cb22-12" data-line-number="12">      <span class="st">&quot;Labeled values are percent changes relative to the base year (CY2011).&quot;</span>,</a>
 <a class="sourceLine" id="cb22-13" data-line-number="13">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) <span class="co"># combine lines with a newline</span></a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_area_source_throughput_data-283-284-chart_annual_growth_by-cat_id-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_area_source_throughput_data-283-284-chart_annual_growth_by-cat_id-1.svg" width="800" height="400" /></p>
 <p>We can also look at the trend in total throughput for these two caegories, instead of splitting them apart. Just omit the <code>color = cat_id</code>, and swap in <code>chart_annual_growth()</code> (without the suffix <code>_by()</code>).</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">BY2011_area_source_throughput_data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb23-2" data-line-number="2"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
@@ -264,7 +263,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb23-10" data-line-number="10">      <span class="st">&quot;Natural gas consumed by water and space heating is projected to grow by +24% from CY2011 to CY2030.&quot;</span>,</a>
 <a class="sourceLine" id="cb23-11" data-line-number="11">      <span class="st">&quot;Labeled values are percent changes relative to the base year (CY2011).&quot;</span>,</a>
 <a class="sourceLine" id="cb23-12" data-line-number="12">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) <span class="co"># combine lines with a newline</span></a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_area_source_throughput_data-283-284-chart_annual_growth-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_area_source_throughput_data-283-284-chart_annual_growth-1.svg" width="800" height="400" /></p>
 <div class="note">
 <p>
 If you are trying this, you might notice that the throughput forecast doesn’t follow the same trajectory as the NOx forecast. See the <a href="appendix.html#appendix-BY2011-cat_283-forecast">Appendix</a> for an explanation and an advanced exercise.

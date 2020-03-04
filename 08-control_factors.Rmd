@@ -27,11 +27,13 @@ BY2011_woodstove_cf_data <-
 # amount. By CY2011, controls had increased by quite a bit.
 # 
 BY2011_woodstove_cf_data %>%
+  filter_pollutants(
+    "CO",
+    "PM",
+    "TOG") %>%
   chart_annual_control_factors_by(
-    color = pol_abbr,
-    flag_years = CY(1990, 2011),
-    title = "Domestic Wood Stoves",
-    subtitle = "Control factors pulled from DataBank, then annualized.")
+    color = pollutant,
+    flag_years = CY(1990, 2011))
 ```
 
 ## Example: gasoline filling stations
@@ -57,11 +59,11 @@ BY2011_gasoline_spillage_cf_data <-
 # small amount. And, by CY2011, controls had increased by quite a bit.
 # 
 BY2011_gasoline_spillage_cf_data %>%
+  filter_pollutants(
+    "TOG") %>%
   chart_annual_control_factors_by(
-    color = pol_abbr,
-    flag_years = CY(1990, 2011),
-    title = "Spillage at Gasoline Filling Stations",
-    subtitle = "Control factors pulled from DataBank, then annualized.")
+    color = pollutant,
+    flag_years = CY(1990, 2011))
 ```
 
 ## Control effectiveness vs. annualized control factors

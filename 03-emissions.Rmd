@@ -18,7 +18,7 @@ The `chart_annual_emissions_by()` function --- and its shorter form, `chart_annu
 
 Let's try it out on a relatively simple case: charting NOx emissions from BY2011 category `#283`, natural gas consumed for residential water heating.
 
-```{r BY2011_annual_emission_data-283-NOx, cache = TRUE}
+```{r BY2011_annual_emission_data-283-NOx, fig.height=3, out.height=300}
 #
 # This is an absolutely minimal example for `chart_annual_emissions()`.
 # We're going to build on it, adding improvements as we go.
@@ -37,9 +37,14 @@ That's a great first step!
 
 If you want to chart more than one category, you'll probably want a way to distinguish them. Enter the `color` parameter. 
 
-```{r BY2011_annual_emission_data-283-284-NOx, cache = TRUE}
+```{r BY2011_annual_emission_data-283-284-NOx, fig.height=3, out.height=300}
 #
-# Here we'll color by `cat_id`. You could also color by `cnty_abbr`. (Try it!)
+# Here we'll color by `category`. You could also color by `cnty_abbr`. (Try it!)
+#
+# By default, `filter_categories()` adds a new column `category`. If you don't
+# name the categories --- which we will do, further along --- then they are 
+# simply prefixed with "#". So, for example, when `cat_id` is 283, the default 
+# for `category` will be "#283".
 #
 # The suffix `_by()` --- on `chart_annual_emissions_by()` --- is mostly just
 # there for readability. Things should still work if you forget and use
@@ -52,7 +57,7 @@ BY2011_annual_emission_data %>%
   filter_pollutants(
     "NOx") %>%
   chart_annual_emissions_by(
-    color = cat_id)
+    color = category)
 ```
 
 The default color scheme is provided by `scale_color_tableau()`. This supplies up to ten distinct colors. You can try using a different color scheme if you like. Go to the "Help" pane in RStudio, and type "scale_color_" --- then wait. You should see a list of choices pop up.
@@ -61,7 +66,7 @@ The default color scheme is provided by `scale_color_tableau()`. This supplies u
 
 Sometimes it's useful to refer to exaxct values, without having to consult a separate table. You can choose to "flag" values for specific years directly in the chart.
 
-```{r BY2011_annual_emission_data-283-284-NOx-flag_years, cache = TRUE}
+```{r BY2011_annual_emission_data-283-284-NOx-flag_years, fig.height=3, out.height=300}
 #
 # Use `flag_years` to display values directly in the chart.
 #
@@ -72,7 +77,7 @@ BY2011_annual_emission_data %>%
   filter_pollutants(
     "NOx") %>%
   chart_annual_emissions_by(
-    color = cat_id,
+    color = category,
     flag_years = CY(1993, 2011, 2030))
 ```
 
@@ -80,7 +85,7 @@ BY2011_annual_emission_data %>%
 
 You can also, in the process of filtering, supply more human-readable names for the categories.
 
-```{r BY2011_annual_emission_data-283-284-NOx-humanize_category_names, cache = TRUE}
+```{r BY2011_annual_emission_data-283-284-NOx-humanize_category_names, fig.height=3, out.height=300}
 #
 # Names supplied to `filter_categories()` appear in the data as a new column,
 # `category`. Following that, we can ask `chart_annual_emissions_by()` to use
@@ -101,7 +106,7 @@ BY2011_annual_emission_data %>%
 
 Last but not least, you can provide a `title`, `subtitle`, and/or `caption`.
 
-```{r BY2011_annual_emission_data-chart_annual_emissions_by-category-with_title, cache = TRUE}
+```{r BY2011_annual_emission_data-chart_annual_emissions_by-category-with_title}
 #
 # An explicit `title`, `subtitle`, and/or `caption` can be supplied to
 # `chart_annual_emissions_by()`. This is strongly encouraged!!
@@ -127,7 +132,7 @@ Stacking can be a good way to show how the total and the proportions vary over t
 
 To create a stacked ("area") chart, simply pass `fill = ...` instead of `color = ...`.
 
-```{r BY2011_annual_emission_data-283-284-NOx-fill_by_category, cache = TRUE}
+```{r BY2011_annual_emission_data-283-284-NOx-fill_by_category}
 #
 # `fill` can be supplied in place of `color`.
 #
@@ -147,7 +152,7 @@ BY2011_annual_emission_data %>%
 
 Above, we've kept things simple by just focusing on `NOx`. But you'll often want to show more than one pollutant at the same time. You can definitely do that!
 
-```{r BY2011_annual_emission_data-283-284-multiple_pollutants, cache = TRUE}
+```{r BY2011_annual_emission_data-283-284-multiple_pollutants, fig.height=6, out.height=600}
 #
 # If multiple pollutants are represented in the data that is passed to
 # `chart_annual_emissions_by()`, it will try to be helpful by creating a

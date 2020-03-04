@@ -83,18 +83,21 @@ What if we wanted to chart the un-normalized ("raw") growth profile data?
 
 ### Pulling raw growth profile data
 
+Unlike `DB_growth_profiles()`, `DB_raw_growth_profiles()` does *not* normalize anything. It just assembles and returns  whatever is contained in `t0335`, `t0336`, and `t0337`. Those numbers might be:
+
+ - already normalized to CY2011; or
+ - already normalized to a previous "base year" (like CY2008); or 
+ - in some natural unit, like "persons" or "acres".
+
+(It varies from profile to profile.)
+
 ```{r BY2011_raw_growth_profile_data, cache=TRUE}
 #
-# Unlike `DB_growth_profiles()`, `DB_raw_growth_profiles()` does *not* normalize
-# anything. It just assembles and returns  whatever is contained in `t0335`,
-# `t0336`, and `t0337`. Those numbers might be:
-#
-# - already normalized to CY2011; or
-# - already normalized to a previous "base year" (like CY2008); or 
-# - in some natural unit, like "persons" or "acres".
-#
-# (It varies from profile to profile.)
+# By default, `BY2011_raw_growth_profile_data()` returns nested results.
+# Those are one row per profile, not one row per (profile, year, county). 
 # 
+# Here, we override that with `nested = FALSE`.
+#
 BY2011_raw_growth_profile_data <-
   BY(2011) %>%
   DB_raw_growth_profiles(
@@ -105,12 +108,11 @@ BY2011_raw_growth_profile_data <-
 
 ### Finding the profile associated with a BY2011 category ID
 
-Let's look up the growth profile associated with BY2011 category #761 "Sanitary Sewers". This turns out to be growth profile #657.
-# 
+Let's look up the growth profile associated with BY2011 category #761 "Sanitary Sewers". 
 
 ```{r DB_growth_profile_crosswalk-cat_761}
 #
-# Look up the ID of the growth profile that's been associated with BY2011
+# Figure out the ID of the growth profile that's been associated with BY2011
 # category #761 "Sanitary Sewers".
 # 
 BY(2011) %>%
@@ -118,16 +120,22 @@ BY(2011) %>%
     verbose = TRUE) %>%
   filter_categories(
     "#761 Sanitary Sewers" = 761)
-
-#
-# Using that growth profile ID (#657), look up the metadata associated with it
-# (name, date, staff, etc.).
-# 
-BY(2011) %>%
-  DB_raw_growth_profiles() %>%
-  filter(
-    gpf_id == 657) 
 ```
+
+Above, we can see that the relevant growth profile ID is #657. Now we can look up the metadata associated with it: `gpf_name` (name), `gpf_staff` (staff), etc.
+
+```{r DB_raw_growth_profiles-cat_761}
+BY2011_raw_growth_profile_data %>%
+  filter(
+    gpf_id == 657) %>%
+  distinct(
+    gpf_id,
+    gpf_name,
+    gpf_staff,
+    gpf_date)
+```
+
+The name associated with this profile turns out to be "Household Population". It was last updated, according to DataBank, on 2010-02-25.
 
 ### Charting the un-normalized ("raw") growth profile data
 

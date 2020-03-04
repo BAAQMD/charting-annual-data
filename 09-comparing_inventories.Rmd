@@ -51,14 +51,13 @@ chart_data <-
     "CO") 
 ```
 
-```{r BY_data-domestic-woodstoves-chart}
+```{r BY_data-domestic-woodstoves-chart, fig.height=6.5, out.height=650}
 #
 # Chart by inventory, so we can compare.
 #
 chart_data %>%
   chart_annual_emissions_by(
     linetype = inventory,
-    color = category,
     flag_years = CY(1990, 2010, 2030),
     title = "Domestic Woodstoves: BY2011 Updates",
     subtitle = str_c(
@@ -112,7 +111,7 @@ chart_data <-
     "CO") 
 ```
 
-```{r BY_data-recip_eng-liquid_fuel-chart-1}
+```{r BY_data-recip_eng-liquid_fuel-chart-1, fig.height=5.5, out.height=550}
 #
 # Chart by inventory, so we can compare the totals.
 #
@@ -121,8 +120,8 @@ chart_data %>%
     linetype = inventory,
     title = "Reciprocating Engines (Liquid Fuel): BY2011 Updates",
     subtitle = str_c(
-      "BY2008 = Categories P304 (point) and A304 (area).",
-      "BY2011 = Categories #304 (point) and #1578 (area).",
+      "BY2008 = Categories #P304 (point) and/or #A304 (area).",
+      "BY2011 = Categories #304 (point) and/or #1578 (area).",
       sep = "\n"))
 ```
 
@@ -154,7 +153,7 @@ chart_data <-
     "CO") 
 ```
 
-```{r BY_data-recip_eng-liquid_fuel-chart-2}
+```{r BY_data-recip_eng-liquid_fuel-chart-2, fig.height=6, out.height=600}
 #
 # Chart by inventory and by point/area, so we can compare the subtotals.
 #
@@ -164,8 +163,8 @@ chart_data %>%
     color = category,
     title = "Reciprocating Engines (Liquid Fuel): BY2011 Updates",
     subtitle = str_c(
-      "BY2008 = Categories P304 (point) and A304 (area).",
-      "BY2011 = Categories #304 (point) and #1578 (area).",
+      "BY2008 = Categories #P304 (point) and/or #A304 (area).",
+      "BY2011 = Categories #304 (point) and/or #1578 (area).",
       sep = "\n")) 
 ```
 

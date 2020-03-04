@@ -35,6 +35,7 @@
 <link rel="next" href="04-throughputs.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -49,8 +50,6 @@
 
 
 
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -219,28 +218,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb3-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
 <a class="sourceLine" id="cb3-9" data-line-number="9">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_emissions</span>()</a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-NOx-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-NOx-1.svg" width="800" height="300" /></p>
 <p>That’s a great first step!</p>
 </div>
 <div id="coloring-by-category" class="section level2">
 <h2><span class="header-section-number">3.2</span> Coloring by category</h2>
 <p>If you want to chart more than one category, you’ll probably want a way to distinguish them. Enter the <code>color</code> parameter.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># Here we&#39;ll color by `cat_id`. You could also color by `cnty_abbr`. (Try it!)</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># Here we&#39;ll color by `category`. You could also color by `cnty_abbr`. (Try it!)</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co"># The suffix `_by()` --- on `chart_annual_emissions_by()` --- is mostly just</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co"># there for readability. Things should still work if you forget and use</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co"># `chart_annual_emissions()` instead.</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co"># </span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">    <span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">    <span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb4-13" data-line-number="13">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb4-15" data-line-number="15">    <span class="dt">color =</span> cat_id)</a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-1.svg" width="900" height="450" /></p>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co"># By default, `filter_categories()` adds a new column `category`. If you don&#39;t</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co"># name the categories --- which we will do, further along --- then they are </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co"># simply prefixed with &quot;#&quot;. So, for example, when `cat_id` is 283, the default </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co"># for `category` will be &quot;#283&quot;.</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co"># The suffix `_by()` --- on `chart_annual_emissions_by()` --- is mostly just</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co"># there for readability. Things should still work if you forget and use</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co"># `chart_annual_emissions()` instead.</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co"># </span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">    <span class="dv">283</span>, </a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">    <span class="dv">284</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">    <span class="dt">color =</span> category)</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-1.svg" width="800" height="300" /></p>
 <p>The default color scheme is provided by <code>scale_color_tableau()</code>. This supplies up to ten distinct colors. You can try using a different color scheme if you like. Go to the “Help” pane in RStudio, and type “scale_color_” — then wait. You should see a list of choices pop up.</p>
 </div>
 <div id="flagging-specific-values" class="section level2">
@@ -256,9 +260,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
 <a class="sourceLine" id="cb5-9" data-line-number="9">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11">    <span class="dt">color =</span> cat_id,</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">    <span class="dt">color =</span> category,</a>
 <a class="sourceLine" id="cb5-12" data-line-number="12">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>))</a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-flag_years-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-flag_years-1.svg" width="800" height="300" /></p>
 </div>
 <div id="humanizing-category-names" class="section level2">
 <h2><span class="header-section-number">3.4</span> Humanizing category names</h2>
@@ -277,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb6-12" data-line-number="12"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
 <a class="sourceLine" id="cb6-13" data-line-number="13">    <span class="dt">color =</span> category,</a>
 <a class="sourceLine" id="cb6-14" data-line-number="14">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>))</a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-humanize_category_names-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-humanize_category_names-1.svg" width="800" height="300" /></p>
 </div>
 <div id="titling-and-captioning" class="section level2">
 <h2><span class="header-section-number">3.5</span> Titling and captioning</h2>
@@ -299,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb7-15" data-line-number="15">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>),</a>
 <a class="sourceLine" id="cb7-16" data-line-number="16">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
 <a class="sourceLine" id="cb7-17" data-line-number="17">    <span class="dt">subtitle =</span> <span class="st">&quot;Between CY1993-2002, controls on NOx from water heating were strengthened.&quot;</span>)</a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-chart_annual_emissions_by-category-with_title-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-chart_annual_emissions_by-category-with_title-1.svg" width="800" height="400" /></p>
 </div>
 <div id="making-an-area-chart" class="section level2">
 <h2><span class="header-section-number">3.6</span> Making an area chart</h2>
@@ -318,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb8-11" data-line-number="11">    <span class="dt">fill =</span> category,</a>
 <a class="sourceLine" id="cb8-12" data-line-number="12">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
 <a class="sourceLine" id="cb8-13" data-line-number="13">    <span class="dt">subtitle =</span> <span class="st">&quot;Combined emissions from water and space heating have declined, but are projected to rise reach 1990 levels by 2030.&quot;</span>)</a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-fill_by_category-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-fill_by_category-1.svg" width="800" height="400" /></p>
 </div>
 <div id="more-than-one-pollutant" class="section level2">
 <h2><span class="header-section-number">3.7</span> More than one pollutant</h2>
@@ -339,7 +343,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb9-14" data-line-number="14">    <span class="dt">color =</span> category,</a>
 <a class="sourceLine" id="cb9-15" data-line-number="15">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
 <a class="sourceLine" id="cb9-16" data-line-number="16">    <span class="dt">subtitle =</span> <span class="st">&quot;Between CY1993-2002, controls on NOx from water heating were strengthened.&quot;</span>)</a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-multiple_pollutants-1.svg" width="900" height="450" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-multiple_pollutants-1.svg" width="800" height="600" /></p>
 
 </div>
 </div>

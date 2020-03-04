@@ -16,6 +16,12 @@ Wait for it --- `inventory` imports a lot of stuff! You will see a lot of <span 
 `BY2011_annual_emission_data` is *tabular data* supplied by the `BY2011`
 package. Since we invoked `library(BY2011)`, we have access to it. **Here is what it looks like.**
 
-```{r BY2011_annual_emission_data-head}
+```{r BY2011_annual_emission_data-head, eval=FALSE}
 head(BY2011_annual_emission_data)
+```
+
+```{r BY2011-annual-emission-data-head-kable, echo=FALSE}
+kable(
+  head(BY2011_annual_emission_data),
+  caption = "First six rows of `BY2011_annual_emission_data`.")
 ```
