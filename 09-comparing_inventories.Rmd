@@ -4,9 +4,9 @@ This chapter is about comparing one inventory to another. You might wish, for ex
 
 Let's use #288 Domestic Woodstoves as a simple example of how to do this with a single category.
 
-## Combining data
+## Binding inventories together
 
-First, we need to gain access to the BY2008 data, via `library(BY2008)`. This is just like we did in [Chapter 2](#Setup), with `library(BY2011)`.
+First, we need to gain access to the BY2008 data, via `library(BY2008)`. This is just like we did in [Chapter 2](#setup), with `library(BY2011)`.
 
 ```{r library-BY2008, message=FALSE}
 library(BY2011)
@@ -25,12 +25,12 @@ BY_data <-
     BY2008 = BY2008_annual_emission_data)
 ```
 
-## Comparing inventories
+## Comparing two versions of a single category
 
-With our `BY_data`, we can use the same old `chart_annual_emissions_by()`. We do just two things differently:
+With our new `BY_data`, we can reuse the same old `chart_annual_emissions_by()`. We do just two things differently, compared to previous chapters:
 
-- We add `linetype = inventory`. This causes each to be drawn separately, so that we can compare them.
-- We supply `c(288, "A288")` instead of just `288`. See the note below.
+- We add `linetype = inventory`. This causes the BY2011 data and the BY2008 data to be drawn with distinct line types (solid and dashed, respectively).
+- We supply `c(288, "A288")` instead of just `288`. (See the note below.)
 
 ```{block type="note"}
 In `BY2008_annual_emission_data`, category IDs are prefixed by either "P" or "A", and the numeric part of the ID doesn't have to be unique! This is a convention that is no longer followed, from BY2011 onwards. 

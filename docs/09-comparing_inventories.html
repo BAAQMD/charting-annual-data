@@ -165,8 +165,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="08-control_factors.html"><a href="08-control_factors.html#control-effectiveness-vs.annualized-control-factors"><i class="fa fa-check"></i><b>8.3</b> Control effectiveness vs. annualized control factors</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html"><i class="fa fa-check"></i><b>9</b> Comparing Inventories</a><ul>
-<li class="chapter" data-level="9.1" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#combining-data"><i class="fa fa-check"></i><b>9.1</b> Combining data</a></li>
-<li class="chapter" data-level="9.2" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#comparing-inventories-1"><i class="fa fa-check"></i><b>9.2</b> Comparing inventories</a></li>
+<li class="chapter" data-level="9.1" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#binding-inventories-together"><i class="fa fa-check"></i><b>9.1</b> Binding inventories together</a></li>
+<li class="chapter" data-level="9.2" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#comparing-two-versions-of-a-single-category"><i class="fa fa-check"></i><b>9.2</b> Comparing two versions of a single category</a></li>
 <li class="chapter" data-level="9.3" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#multiple-categories"><i class="fa fa-check"></i><b>9.3</b> Groups of categories</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>10</b> Appendix</a><ul>
@@ -197,9 +197,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">9</span> Comparing Inventories</h1>
 <p>This chapter is about comparing one inventory to another. You might wish, for example, to see the differences between the BY2011 and BY2008 versions of one of the categories that we charted in previous chapters.</p>
 <p>Let’s use #288 Domestic Woodstoves as a simple example of how to do this with a single category.</p>
-<div id="combining-data" class="section level2">
-<h2><span class="header-section-number">9.1</span> Combining data</h2>
-<p>First, we need to gain access to the BY2008 data, via <code>library(BY2008)</code>. This is just like we did in <a href="#Setup">Chapter 2</a>, with <code>library(BY2011)</code>.</p>
+<div id="binding-inventories-together" class="section level2">
+<h2><span class="header-section-number">9.1</span> Binding inventories together</h2>
+<p>First, we need to gain access to the BY2008 data, via <code>library(BY2008)</code>. This is just like we did in <a href="02-setup.html#setup">Chapter 2</a>, with <code>library(BY2011)</code>.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">library</span>(BY2011)</a>
 <a class="sourceLine" id="cb31-2" data-line-number="2"><span class="kw">library</span>(BY2008)</a></code></pre></div>
 <p>Now we combine <code>BY2011_annual_emission_data</code> and <code>BY2008_annual_emission_data</code> into a single dataset named <code>BY_data</code>. We do this with <code>bind_inventories()</code>.</p>
@@ -211,12 +211,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb32-6" data-line-number="6">    <span class="dt">BY2011 =</span> BY2011_annual_emission_data,</a>
 <a class="sourceLine" id="cb32-7" data-line-number="7">    <span class="dt">BY2008 =</span> BY2008_annual_emission_data)</a></code></pre></div>
 </div>
-<div id="comparing-inventories-1" class="section level2">
-<h2><span class="header-section-number">9.2</span> Comparing inventories</h2>
-<p>With our <code>BY_data</code>, we can use the same old <code>chart_annual_emissions_by()</code>. We do just two things differently:</p>
+<div id="comparing-two-versions-of-a-single-category" class="section level2">
+<h2><span class="header-section-number">9.2</span> Comparing two versions of a single category</h2>
+<p>With our new <code>BY_data</code>, we can reuse the same old <code>chart_annual_emissions_by()</code>. We do just two things differently, compared to previous chapters:</p>
 <ul>
-<li>We add <code>linetype = inventory</code>. This causes each to be drawn separately, so that we can compare them.</li>
-<li>We supply <code>c(288, &quot;A288&quot;)</code> instead of just <code>288</code>. See the note below.</li>
+<li>We add <code>linetype = inventory</code>. This causes the BY2011 data and the BY2008 data to be drawn with distinct line types (solid and dashed, respectively).</li>
+<li>We supply <code>c(288, &quot;A288&quot;)</code> instead of just <code>288</code>. (See the note below.)</li>
 </ul>
 <div class="note">
 <p>
