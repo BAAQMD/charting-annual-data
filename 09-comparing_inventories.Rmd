@@ -9,6 +9,7 @@ Let's use #288 Domestic Woodstoves as a simple example of how to do this with a 
 First, we need to gain access to the BY2008 data, via `library(BY2008)`. This is just like we did in [Chapter 2](#Setup), with `library(BY2011)`.
 
 ```{r library-BY2008, message=FALSE}
+library(BY2011)
 library(BY2008)
 ```
 
@@ -91,7 +92,7 @@ This can create some confusion. It means that when someone is speaking about "ca
 
 ### Comparing totals {-}
 
-First, let's consider all of these categories as one big group.
+First, let's treat all of these "Reciprocating Engines, Liquid Fuel" categories as one big group. And, let's focus on just one pollutant, to keep things simple.
 
 ```{r BY_data-recip_eng-liquid_fuel-data-1}
 #
@@ -107,11 +108,10 @@ chart_data <-
   filter_categories(
     "Recip Eng, Liquid" = c(304, "P304", 1578, "A304")) %>%
   filter_pollutants(
-    "NOx",
-    "CO") 
+    "NOx") 
 ```
 
-```{r BY_data-recip_eng-liquid_fuel-chart-1, fig.height=5.5, out.height=550}
+```{r BY_data-recip_eng-liquid_fuel-chart-1, fig.height=4, out.height=400}
 #
 # Chart by inventory, so we can compare the totals.
 #
@@ -127,9 +127,9 @@ chart_data %>%
 
 ### Comparing subtotals {-}
 
-We can see above that, for these categories, there are some considerable differences between BY2011 and BY2008 estimates of NO~x~ and CO emissions. What's responsible? 
+We can see above that, for these categories, there are some considerable differences between BY2011 and BY2008 estimates of NO~x~ emissions. What's going on? 
 
-Let's try grouping the "point" and "area" subsets *separately* in our call to `filter_categories()`, and see what happens.
+Let's try grouping the "point" and "area" subsets *separately* in our call to `filter_categories()`, and see what happens. We'll create one group named "Recip Eng, Liquid (point)", and one group named "Recip Eng, Liquid (area)". To the former, we'll assign BY2011 #304 and BY2008 #P304; to the latter, BY2011 #1578 and BY2008 #A304.
 
 ```{r BY_data-recip_eng-liquid_fuel-data-2}
 #
@@ -149,11 +149,10 @@ chart_data <-
     "Recip Eng, Liquid (point)" = c(304, "P304"),
     "Recip Eng, Liquid (area)" = c(1578, "A304")) %>%
   filter_pollutants(
-    "NOx",
-    "CO") 
+    "NOx") 
 ```
 
-```{r BY_data-recip_eng-liquid_fuel-chart-2, fig.height=6, out.height=600}
+```{r BY_data-recip_eng-liquid_fuel-chart-2, fig.height=4, out.height=400}
 #
 # Chart by inventory and by point/area, so we can compare the subtotals.
 #
@@ -168,6 +167,6 @@ chart_data %>%
       sep = "\n")) 
 ```
 
-From this, we can see that there was a slight revision to the point-source portion, from BY2008 to BY2011. However, the bulk of the difference is due to a revised estimate for the area-source portion. In BY2008, estimates of emissions due to this activity were classified as `A304`; in BY2011, the same scope of activity is represented by `#1578`.
+From this, we can see that the bulk of the difference is due to a much lower estimate for the area-source component. 
 
-This combination of `filter_categories()` and `chart_annual_emissions()` is powerful. With it, you can review updates to any related groups of categories from different BY inventories, regardless of how their `cat_id` identifiers might have changed.
+**Using `filter_categories()` and `chart_annual_emissions()` together is powerful.** With it, you can review updates to any related groups of categories from different BY inventories, regardless of how their `cat_id` identifiers might have changed.

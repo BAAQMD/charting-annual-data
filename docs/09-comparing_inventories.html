@@ -200,7 +200,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="combining-data" class="section level2">
 <h2><span class="header-section-number">9.1</span> Combining data</h2>
 <p>First, we need to gain access to the BY2008 data, via <code>library(BY2008)</code>. This is just like we did in <a href="#Setup">Chapter 2</a>, with <code>library(BY2011)</code>.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">library</span>(BY2008)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">library</span>(BY2011)</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="kw">library</span>(BY2008)</a></code></pre></div>
 <p>Now we combine <code>BY2011_annual_emission_data</code> and <code>BY2008_annual_emission_data</code> into a single dataset named <code>BY_data</code>. We do this with <code>bind_inventories()</code>.</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb32-2" data-line-number="2"><span class="co"># Using `bind_inventories()` creates a new column named `inventory`.</span></a>
@@ -272,7 +273,7 @@ This can create some confusion. It means that when someone is speaking about “
 </div>
 <div id="comparing-totals" class="section level3 unnumbered">
 <h3>Comparing totals</h3>
-<p>First, let’s consider all of these categories as one big group.</p>
+<p>First, let’s treat all of these “Reciprocating Engines, Liquid Fuel” categories as one big group. And, let’s focus on just one pollutant, to keep things simple.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb35-2" data-line-number="2"><span class="co"># Treat all of the following as &quot;Recip Eng, Liquid Fuel&quot;:</span></a>
 <a class="sourceLine" id="cb35-3" data-line-number="3"><span class="co">#</span></a>
@@ -286,8 +287,7 @@ This can create some confusion. It means that when someone is speaking about “
 <a class="sourceLine" id="cb35-11" data-line-number="11"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
 <a class="sourceLine" id="cb35-12" data-line-number="12">    <span class="st">&quot;Recip Eng, Liquid&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">304</span>, <span class="st">&quot;P304&quot;</span>, <span class="dv">1578</span>, <span class="st">&quot;A304&quot;</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb35-13" data-line-number="13"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb35-14" data-line-number="14">    <span class="st">&quot;NOx&quot;</span>,</a>
-<a class="sourceLine" id="cb35-15" data-line-number="15">    <span class="st">&quot;CO&quot;</span>) </a></code></pre></div>
+<a class="sourceLine" id="cb35-14" data-line-number="14">    <span class="st">&quot;NOx&quot;</span>) </a></code></pre></div>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co"># Chart by inventory, so we can compare the totals.</span></a>
 <a class="sourceLine" id="cb36-3" data-line-number="3"><span class="co">#</span></a>
@@ -299,12 +299,12 @@ This can create some confusion. It means that when someone is speaking about “
 <a class="sourceLine" id="cb36-9" data-line-number="9">      <span class="st">&quot;BY2008 = Categories #P304 (point) and/or #A304 (area).&quot;</span>,</a>
 <a class="sourceLine" id="cb36-10" data-line-number="10">      <span class="st">&quot;BY2011 = Categories #304 (point) and/or #1578 (area).&quot;</span>,</a>
 <a class="sourceLine" id="cb36-11" data-line-number="11">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY_data-recip_eng-liquid_fuel-chart-1-1.svg" width="800" height="550" /></p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY_data-recip_eng-liquid_fuel-chart-1-1.svg" width="800" height="400" /></p>
 </div>
 <div id="comparing-subtotals" class="section level3 unnumbered">
 <h3>Comparing subtotals</h3>
-<p>We can see above that, for these categories, there are some considerable differences between BY2011 and BY2008 estimates of NO<sub>x</sub> and CO emissions. What’s responsible?</p>
-<p>Let’s try grouping the “point” and “area” subsets <em>separately</em> in our call to <code>filter_categories()</code>, and see what happens.</p>
+<p>We can see above that, for these categories, there are some considerable differences between BY2011 and BY2008 estimates of NO<sub>x</sub> emissions. What’s going on?</p>
+<p>Let’s try grouping the “point” and “area” subsets <em>separately</em> in our call to <code>filter_categories()</code>, and see what happens. We’ll create one group named “Recip Eng, Liquid (point)”, and one group named “Recip Eng, Liquid (area)”. To the former, we’ll assign BY2011 #304 and BY2008 #P304; to the latter, BY2011 #1578 and BY2008 #A304.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb37-2" data-line-number="2"><span class="co"># Treat these as &quot;Recip Eng, Liquid Fuel (Point)&quot;:</span></a>
 <a class="sourceLine" id="cb37-3" data-line-number="3"><span class="co">#</span></a>
@@ -322,8 +322,7 @@ This can create some confusion. It means that when someone is speaking about “
 <a class="sourceLine" id="cb37-15" data-line-number="15">    <span class="st">&quot;Recip Eng, Liquid (point)&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">304</span>, <span class="st">&quot;P304&quot;</span>),</a>
 <a class="sourceLine" id="cb37-16" data-line-number="16">    <span class="st">&quot;Recip Eng, Liquid (area)&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1578</span>, <span class="st">&quot;A304&quot;</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb37-17" data-line-number="17"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb37-18" data-line-number="18">    <span class="st">&quot;NOx&quot;</span>,</a>
-<a class="sourceLine" id="cb37-19" data-line-number="19">    <span class="st">&quot;CO&quot;</span>) </a></code></pre></div>
+<a class="sourceLine" id="cb37-18" data-line-number="18">    <span class="st">&quot;NOx&quot;</span>) </a></code></pre></div>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb38-2" data-line-number="2"><span class="co"># Chart by inventory and by point/area, so we can compare the subtotals.</span></a>
 <a class="sourceLine" id="cb38-3" data-line-number="3"><span class="co">#</span></a>
@@ -336,9 +335,9 @@ This can create some confusion. It means that when someone is speaking about “
 <a class="sourceLine" id="cb38-10" data-line-number="10">      <span class="st">&quot;BY2008 = Categories #P304 (point) and/or #A304 (area).&quot;</span>,</a>
 <a class="sourceLine" id="cb38-11" data-line-number="11">      <span class="st">&quot;BY2011 = Categories #304 (point) and/or #1578 (area).&quot;</span>,</a>
 <a class="sourceLine" id="cb38-12" data-line-number="12">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) </a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY_data-recip_eng-liquid_fuel-chart-2-1.svg" width="800" height="600" /></p>
-<p>From this, we can see that there was a slight revision to the point-source portion, from BY2008 to BY2011. However, the bulk of the difference is due to a revised estimate for the area-source portion. In BY2008, estimates of emissions due to this activity were classified as <code>A304</code>; in BY2011, the same scope of activity is represented by <code>#1578</code>.</p>
-<p>This combination of <code>filter_categories()</code> and <code>chart_annual_emissions()</code> is powerful. With it, you can review updates to any related groups of categories from different BY inventories, regardless of how their <code>cat_id</code> identifiers might have changed.</p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY_data-recip_eng-liquid_fuel-chart-2-1.svg" width="800" height="400" /></p>
+<p>From this, we can see that the bulk of the difference is due to a much lower estimate for the area-source component.</p>
+<p><strong>Using <code>filter_categories()</code> and <code>chart_annual_emissions()</code> together is powerful.</strong> With it, you can review updates to any related groups of categories from different BY inventories, regardless of how their <code>cat_id</code> identifiers might have changed.</p>
 
 </div>
 </div>
