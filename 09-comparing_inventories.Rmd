@@ -25,11 +25,13 @@ BY_data <-
     BY2008 = BY2008_annual_emission_data)
 ```
 
+With our new `BY_data`, we can reuse the same old `chart_annual_emissions_by()`.
+
 ## Comparing two versions of a single category
 
-With our new `BY_data`, we can reuse the same old `chart_annual_emissions_by()`. We do just two things differently, compared to previous chapters:
+Here we do just two things differently, compared to previous chapters:
 
-- We add `linetype = inventory`. This causes the BY2011 data and the BY2008 data to be drawn with distinct line types (solid and dashed, respectively).
+- We specify `linetype = inventory`. This causes the BY2011 data and the BY2008 data to be drawn with distinct line types (solid and dashed, respectively).
 - We supply `c(288, "A288")` instead of just `288`. (See the note below.)
 
 ```{block type="note"}
@@ -78,9 +80,9 @@ When groups of related category identifiers change from one year to the next, we
 
 Here is a concrete example.
 
-- In `BY2008_annual_emission_data`, we can see that both `"P304"` and `"A304"` occur in `cat_id`.
+- In `BY2008_annual_emission_data`, we can see both `"P304"` and `"A304"` in `cat_id`.
 
-    - These are estimates of emissions from stationary-source liquid-fueled reciprocating engines. 
+    - Taken together, these comprise estimates of emissions from stationary-source liquid-fueled reciprocating engines. 
     - The scope of `P304` is limited to permitted sources, and is calculated using a point-source methodology. 
     - The scope of `A304` comprises any remaining emissions from the same kind of source, and is calculated using an area-source methodology.
     

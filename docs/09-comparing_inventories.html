@@ -210,12 +210,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb32-5" data-line-number="5"><span class="st">  </span><span class="kw">bind_inventories</span>(</a>
 <a class="sourceLine" id="cb32-6" data-line-number="6">    <span class="dt">BY2011 =</span> BY2011_annual_emission_data,</a>
 <a class="sourceLine" id="cb32-7" data-line-number="7">    <span class="dt">BY2008 =</span> BY2008_annual_emission_data)</a></code></pre></div>
+<p>With our new <code>BY_data</code>, we can reuse the same old <code>chart_annual_emissions_by()</code>.</p>
 </div>
 <div id="comparing-two-versions-of-a-single-category" class="section level2">
 <h2><span class="header-section-number">9.2</span> Comparing two versions of a single category</h2>
-<p>With our new <code>BY_data</code>, we can reuse the same old <code>chart_annual_emissions_by()</code>. We do just two things differently, compared to previous chapters:</p>
+<p>Here we do just two things differently, compared to previous chapters:</p>
 <ul>
-<li>We add <code>linetype = inventory</code>. This causes the BY2011 data and the BY2008 data to be drawn with distinct line types (solid and dashed, respectively).</li>
+<li>We specify <code>linetype = inventory</code>. This causes the BY2011 data and the BY2008 data to be drawn with distinct line types (solid and dashed, respectively).</li>
 <li>We supply <code>c(288, &quot;A288&quot;)</code> instead of just <code>288</code>. (See the note below.)</li>
 </ul>
 <div class="note">
@@ -258,9 +259,9 @@ In <code>BY2008_annual_emission_data</code>, category IDs are prefixed by either
 <p>When groups of related category identifiers change from one year to the next, we can still visualize the data effectively using <code>filter_categories()</code> and <code>chart_annual_emissions()</code>.</p>
 <p>Here is a concrete example.</p>
 <ul>
-<li><p>In <code>BY2008_annual_emission_data</code>, we can see that both <code>&quot;P304&quot;</code> and <code>&quot;A304&quot;</code> occur in <code>cat_id</code>.</p>
+<li><p>In <code>BY2008_annual_emission_data</code>, we can see both <code>&quot;P304&quot;</code> and <code>&quot;A304&quot;</code> in <code>cat_id</code>.</p>
 <ul>
-<li>These are estimates of emissions from stationary-source liquid-fueled reciprocating engines.</li>
+<li>Taken together, these comprise estimates of emissions from stationary-source liquid-fueled reciprocating engines.</li>
 <li>The scope of <code>P304</code> is limited to permitted sources, and is calculated using a point-source methodology.</li>
 <li>The scope of <code>A304</code> comprises any remaining emissions from the same kind of source, and is calculated using an area-source methodology.</li>
 </ul></li>
