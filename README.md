@@ -1,7 +1,5 @@
 # Cookbook: Charting Annual Data
 
-This repository hosts the source for the hit book "Charting Annual Data".
+This repository hosts the Rmarkdown source, and the rendered HTMl, etc., for the book "Charting Annual Data".
 
-The rendered book is here:
-
-  https://baaqmd.github.io/charting-annual-data
+Check out the [published book](https://baaqmd.github.io/charting-annual-data)! It has edit buttons that link back to here. 
