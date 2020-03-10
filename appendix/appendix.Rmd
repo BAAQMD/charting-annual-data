@@ -1,0 +1,19 @@
+# (APPENDIX) Appendix {-}
+
+# Advanced Usage
+
+```{r eval=FALSE, include=FALSE, child="appendix/appendix-howto-flag_labels.Rmd"}
+```
+
+```{r child="appendix/appendix-howto-county_fractions.Rmd"}
+```
+
+# Special Cases
+
+```{r child="appendix/appendix-case-cat_283.Rmd"}
+```
+
+# Technical Documentation
+
+```{r child="appendix/appendix-doc-control_factors.Rmd"}
+```

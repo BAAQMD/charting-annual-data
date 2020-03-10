@@ -1,0 +1,72 @@
+## Changes in forecasts for category #283 {#appendix-case-cat_283}
+
+You might have noticed that the throughput forecast, for category #283, doesn't follow the same trajectory as the NOx forecast.
+
+This is not because NOx emission factors were projected to increase after CY2011. Here's what happened:
+
+1. The BY2011 criteria-pollutant calculations were completed. 
+2. The growth profile for this category, in DataBank, was updated.
+3. The BY2011 GHG calculations were completed. 
+
+Here are some basic exercises (and charts) that may shed some light.
+
+```{r appendix-BY2011_annual_emission_data-283-NOx, message = FALSE}
+#
+# This is the growth in NOx emissions from BY2011 category #283, via the
+# published inventory (`BY2011_annual_emission_data`).
+# 
+BY2011_annual_emission_data %>%
+  filter_categories(
+    283) %>%
+  filter_pollutants(
+    "NOx") %>%
+  chart_annual_growth(
+    base_year = CY(2011),
+    flag_years = CY(2020)) 
+```
+
+```{r appendix-growth_profile-283, message = FALSE}
+#
+# This is the growth profile assigned to category #283 via file `t1325`. 
+# It's not consistent with the published emission forecast (above).
+# 
+BY2011_growth_profile_data %>%
+  filter_categories(
+    283) %>%
+  chart_annual_growth(
+    base_year = CY(2011),
+    flag_years = CY(2020)) 
+```
+
+```{r appendix-BY2011_area_source_projection_data-283-NOx, message = FALSE}
+#
+# This is the growth in emissions, via the reproduced inventory. It's consistent
+# with the assigned growth profile, but not with the published forecast.
+# 
+BY2011_area_source_projection_data %>%
+  filter_categories(
+    283) %>%
+  filter_pollutants(
+    "NOx") %>%
+  chart_annual_growth(
+    qty_var = "ems_qty",
+    base_year = CY(2011),
+    flag_years = CY(2020)) 
+```
+
+```{r appendix-BY2011_area_source_throughput_data-283, message = FALSE}
+#
+# This is the growth in throughputs, via the reproduced inventory. It's also
+# consistent with the assigned growth profile, and with the reproduced
+# emissions, but not with the published forecast.
+# 
+BY2011_area_source_throughput_data %>%
+  filter_categories(
+    283) %>%
+  chart_annual_growth(
+    qty_var = "tput_qty",  # changed from "ems_qty" to "tput_qty"
+    base_year = CY(2011),
+    flag_years = CY(2020)) 
+```
+
+If it still doesn't make sense, please feel free to raise a question at one of our meetings!

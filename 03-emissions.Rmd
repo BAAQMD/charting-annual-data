@@ -12,9 +12,19 @@ Finally, it will show you how to create *area charts*, consistent with all of th
 
 All of what you learn will be extensible to the chapters on [Throughputs], [Growth Profiles], [Emission Factors], and [Control Factors].
 
-## Charting annual emissions
+## Key functions
+
+This section relies on three key functions:
+
+- `chart_annual_emissions_by()`
+- `filter_categories()`
+- `filter_pollutants()`
 
 The `chart_annual_emissions_by()` function --- and its shorter form, `chart_annual_emissions()` --- will be the foundation of this section. To learn more about `chart_annual_emissions_by()`, you can always type `help("chart_annual_emissions_by")`.
+
+If you have read the vignette *Introduction to BY Data*^[This is being migrated from an R vignette to a GitBook like this one. Stay tuned!] then you are already familiar with `filter_categories()` and `filter_pollutants()`.
+
+## Charting annual emissions
 
 Let's try it out on a relatively simple case: charting NOx emissions from BY2011 category `#283`, natural gas consumed for residential water heating.
 
@@ -35,7 +45,7 @@ That's a great first step!
 
 ## Coloring by category
 
-If you want to chart more than one category, you'll probably want a way to distinguish them. Enter the `color` parameter. 
+If you want to chart more than one category, you'll probably want a way to distinguish them visually. Let's use `color`. 
 
 ```{r BY2011_annual_emission_data-283-284-NOx, fig.height=3, out.height=300}
 #
@@ -60,11 +70,17 @@ BY2011_annual_emission_data %>%
     color = category)
 ```
 
-The default color scheme is provided by `scale_color_tableau()`. This supplies up to ten distinct colors. You can try using a different color scheme if you like. Go to the "Help" pane in RStudio, and type "scale_color_" --- then wait. You should see a list of choices pop up.
+The default colors are provided by `scale_color_tableau()`. You can try using a different color scheme if you like. Go to the "Help" pane in RStudio, and type "scale_color_", then wait. You should see a list of choices pop up.
+
+```{block type="note"}
+If you wind up with more than ten colors, you may need to rethink the chart. Maybe grouping categories would be helpful? In later sections, we will learn how to easily do this.
+```
 
 ## Flagging specific values
 
-Sometimes it's useful to refer to exaxct values, without having to consult a separate table. You can choose to "flag" values for specific years directly in the chart.
+Displaying exact values on a chart can be helpful to the reader. Then, they don't have to consult a separate table. 
+
+To do this, simply supply `flag_years`. If you want to change the template for what exactly is displayed --- digits, text, etc. --- you can supply `flag_labels` too. See the [Appendix](#appendix-howto-flag_labels).
 
 ```{r BY2011_annual_emission_data-283-284-NOx-flag_years, fig.height=3, out.height=300}
 #

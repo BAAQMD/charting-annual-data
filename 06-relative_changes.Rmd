@@ -85,5 +85,5 @@ BY2011_area_source_throughput_data %>%
 
 
 ```{block type="note"}
-If you are trying this, you might notice that the throughput forecast doesn't follow the same trajectory as the NOx forecast. See the [Appendix](#appendix-BY2011-cat_283-forecast) for an explanation and an advanced exercise.
+If you are trying this, you might notice that the throughput forecast doesn't follow the same trajectory as the NOx forecast. See the [Appendix](#appendix-case-cat_283) for an explanation and an advanced exercise.
 ```

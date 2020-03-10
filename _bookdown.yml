@@ -9,7 +9,8 @@ rmd_files: [
   "07-emission_factors.Rmd",
   "08-control_factors.Rmd",
   "09-comparing_inventories.Rmd",
-  "appendix.Rmd"]
+  "10-third_party.Rmd",
+  "appendix/appendix.Rmd"]
 before_chapter_script: "chapter-setup.R"
 after_chapter_script: "chapter-teardown.R"
 view: https://github.com/BAAQMD/charting-annual-data/blob/master/%s

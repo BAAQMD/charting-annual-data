@@ -1,0 +1,19 @@
+## Control factors {#appendix-doc-control_factors}
+
+Documentation for three key functions is printed out below.
+
+- **`DB_control_factors()`** is a legacy-format API for DataBank (`t0326`). In its output, **`Cd`, `Ed`, and `Ep`** are key. See `help(t0326)` as well.
+
+- **`annualize_DB_control_factors()`**, which itself depends on **`calculate_Fd_and_Fc()`**, implements the annualization algorithm mentioned in the chapter on [Control factors]. The References section of `help(calculate_Fd_and_Fc)` contains a reference to a PDF that describes the algorithm in several pages.
+
+```{r DB_control_factors-help, cache=FALSE}
+help(DB_control_factors)
+```
+
+```{r annualize_DB_control_factors-help, cache=FALSE}
+help(annualize_DB_control_factors)
+```
+
+```{r calculate_Fd_and_Fc-help, cache=FALSE}
+help(calculate_Fd_and_Fc)
+```

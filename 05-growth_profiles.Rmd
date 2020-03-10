@@ -163,4 +163,4 @@ BY2011_raw_growth_profile_data %>%
 
 Why are the above lines offset from each other, even at `CY2011`? Because we're plotting the *raw* growth profile data! (Since this profile is labeled "Household Population", we might presume that the units are in persons. Without going into further detail, these numbers do seem consistent with Bay Area county populations.)
 
-**The offsets are interesting** --- they're not junk. See the [Appendix](#appendix-deriving_county_fractions) to learn how to compute county fractions from raw growth profile data. (This is also a good way to double-check county fractions.)
+**The offsets are interesting** --- they're not junk. See the [Appendix](#appendix-howto-county_fractions) to learn how to compute county fractions from raw growth profile data. (This is also a good way to double-check county fractions.)

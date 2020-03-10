@@ -1,6 +1,6 @@
 # Control Factors
 
-This chapter is very similar to the one on [Emission factors]. Here we employ a function, `annualize_DB_control_factors()`, that's analogous to `annualize_DB_emission_factors()`. It does have to do a bit more work than its cousin; see the [Appendix](#appendix-control_factors-documentation) for details.
+This chapter is very similar to the one on [Emission factors]. Here we employ a function, `annualize_DB_control_factors()`, that's analogous to `annualize_DB_emission_factors()`. 
 
 There is one notable difference. For a given category, emission factors can vary by quite a bit from pollutant to pollutant. The default behavior for `chart_annual_emission_factors_by()`, as we saw in the [previous chapter][Emission factors], is therefore to generate a different sub-plot for each pollutant, so that the y-scales can vary by pollutant. Control factors, in contrast, always range from 0% to 100%, so we can safely plot them all on the same y-scale. This works well when we set `color = pol_abbr`, as we do in the examples below.
 
@@ -93,4 +93,89 @@ BY(2011) %>%
     "#66 Gasoline Spillage" = 66)
 ```
 
-See the [Appendix](#appendix-control_factors-documentation) for further discussion, documentation, and references.
+See the [Appendix](#appendix-doc-control_factors) for further discussion of `DB_control_factors()` (and control factors more generally).
+
+```{r eval=FALSE, echo=FALSE, include=FALSE}
+THIS_CATEGORY <- 
+  288 # tried: 304, 1591, 36 ... 288 seems to work (i.e., all the uncontrolled have same relative growth)
+
+chart_data <- local({
+  
+  ems_data <-
+    BY2011_annual_emission_data %>%
+    filter_categories(
+      THIS_CATEGORY) %>%
+    mutate_at(
+      vars(pol_abbr),
+      ~ if_else(. == "TSP", "PM", .))
+  
+  cf_data <-
+    BY(2011) %>%
+    DB_control_factors() %>% 
+    filter_categories(
+      THIS_CATEGORY) %>% 
+    annualize_DB_control_factors()
+  
+  ems_data %>%
+    left_join(
+      cf_data) %>%
+    replace_na(
+      list(cf_qty = 1)) %>%
+    rename(
+      controlled = ems_qty) %>%
+    mutate(
+      uncontrolled = controlled / cf_qty) %>%
+    gather(
+      scenario,
+      ems_qty,
+      controlled,
+      uncontrolled)
+  
+})
+```
+
+```{r eval=FALSE, echo=FALSE, include=FALSE}
+THESE_POLLUTANTS <- c(
+  "NOx",
+  "CO",
+  "PM")
+
+BY(2011) %>%
+  DB_control_factors() %>%
+  filter_categories(
+    THIS_CATEGORY) %>%
+  distinct(
+    pol_abbr)
+
+chart_data %>%
+  filter_pollutants(
+    THESE_POLLUTANTS) %>%
+  chart_annual_emissions_by(
+    linetype = scenario,
+    color = pollutant,
+    base_year = CY(2011))
+```
+
+```{r eval=FALSE, echo=FALSE, include=FALSE}
+chart_data %>%
+  filter_pollutants(
+    THESE_POLLUTANTS) %>%
+  chart_annual_growth_by(
+    linetype = scenario,
+    color = pollutant,
+    facet_rows = "pollutant",
+    qty_var = "ems_qty",
+    base_year = CY(2011))
+```
+
+```{r eval=FALSE, echo=FALSE, include=FALSE}
+chart_data %>%
+  filter_pollutants(
+    THESE_POLLUTANTS) %>%
+  chart_annual_growth_by(
+    linetype = scenario,
+    color = pollutant,
+    facet_rows = "scenario",
+    qty_var = "ems_qty",
+    base_year = CY(2011))
+```

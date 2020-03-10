@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Third-Party Data | Charting Annual Emissions</title>
+  <meta name="description" content="This is an introduction to charting annual emissions inventory data." />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Third-Party Data | Charting Annual Emissions" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an introduction to charting annual emissions inventory data." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Third-Party Data | Charting Annual Emissions" />
+  
+  <meta name="twitter:description" content="This is an introduction to charting annual emissions inventory data." />
+  
+
+<meta name="author" content="David Holstius" />
+
+
+<meta name="date" content="2020-03-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="09-comparing_inventories.html"/>
+<link rel="next" href="appendix.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Charting Annual Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="02-setup.html"><a href="02-setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
+<li class="chapter" data-level="2.1" data-path="02-setup.html"><a href="02-setup.html#loading-required-libraries"><i class="fa fa-check"></i><b>2.1</b> Loading required libraries</a></li>
+<li class="chapter" data-level="2.2" data-path="02-setup.html"><a href="02-setup.html#peeking-at-data"><i class="fa fa-check"></i><b>2.2</b> Peeking at data</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03-emissions.html"><a href="03-emissions.html"><i class="fa fa-check"></i><b>3</b> Emissions</a><ul>
+<li class="chapter" data-level="3.1" data-path="03-emissions.html"><a href="03-emissions.html#key-functions"><i class="fa fa-check"></i><b>3.1</b> Key functions</a></li>
+<li class="chapter" data-level="3.2" data-path="03-emissions.html"><a href="03-emissions.html#charting-annual-emissions"><i class="fa fa-check"></i><b>3.2</b> Charting annual emissions</a></li>
+<li class="chapter" data-level="3.3" data-path="03-emissions.html"><a href="03-emissions.html#coloring-by-category"><i class="fa fa-check"></i><b>3.3</b> Coloring by category</a></li>
+<li class="chapter" data-level="3.4" data-path="03-emissions.html"><a href="03-emissions.html#flagging-specific-values"><i class="fa fa-check"></i><b>3.4</b> Flagging specific values</a></li>
+<li class="chapter" data-level="3.5" data-path="03-emissions.html"><a href="03-emissions.html#humanizing-category-names"><i class="fa fa-check"></i><b>3.5</b> Humanizing category names</a></li>
+<li class="chapter" data-level="3.6" data-path="03-emissions.html"><a href="03-emissions.html#titling-and-captioning"><i class="fa fa-check"></i><b>3.6</b> Titling and captioning</a></li>
+<li class="chapter" data-level="3.7" data-path="03-emissions.html"><a href="03-emissions.html#making-an-area-chart"><i class="fa fa-check"></i><b>3.7</b> Making an area chart</a></li>
+<li class="chapter" data-level="3.8" data-path="03-emissions.html"><a href="03-emissions.html#more-than-one-pollutant"><i class="fa fa-check"></i><b>3.8</b> More than one pollutant</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="04-throughputs.html"><a href="04-throughputs.html"><i class="fa fa-check"></i><b>4</b> Throughputs</a><ul>
+<li class="chapter" data-level="4.1" data-path="04-throughputs.html"><a href="04-throughputs.html#obtaining-throughput-data"><i class="fa fa-check"></i><b>4.1</b> Obtaining throughput data</a></li>
+<li class="chapter" data-level="4.2" data-path="04-throughputs.html"><a href="04-throughputs.html#charting-annual-throughputs"><i class="fa fa-check"></i><b>4.2</b> Charting annual throughputs</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html"><i class="fa fa-check"></i><b>5</b> Growth Profiles</a><ul>
+<li class="chapter" data-level="5.1" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#normalized-growth-factors"><i class="fa fa-check"></i><b>5.1</b> Normalized growth factors</a></li>
+<li class="chapter" data-level="5.2" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#county-specific-growth-profiles"><i class="fa fa-check"></i><b>5.2</b> County-specific growth profiles</a></li>
+<li class="chapter" data-level="5.3" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#raw-growth-profile-data"><i class="fa fa-check"></i><b>5.3</b> Raw growth profile data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="06-relative_changes.html"><a href="06-relative_changes.html"><i class="fa fa-check"></i><b>6</b> Relative Changes</a><ul>
+<li class="chapter" data-level="6.1" data-path="06-relative_changes.html"><a href="06-relative_changes.html#relative-changes-in-emissions"><i class="fa fa-check"></i><b>6.1</b> Relative changes in emissions</a></li>
+<li class="chapter" data-level="6.2" data-path="06-relative_changes.html"><a href="06-relative_changes.html#relative-changes-in-throughputs"><i class="fa fa-check"></i><b>6.2</b> Relative changes in throughputs</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="07-emission_factors.html"><a href="07-emission_factors.html"><i class="fa fa-check"></i><b>7</b> Emission Factors</a></li>
+<li class="chapter" data-level="8" data-path="08-control_factors.html"><a href="08-control_factors.html"><i class="fa fa-check"></i><b>8</b> Control Factors</a><ul>
+<li class="chapter" data-level="8.1" data-path="08-control_factors.html"><a href="08-control_factors.html#example-domestic-woodstoves"><i class="fa fa-check"></i><b>8.1</b> Example: domestic woodstoves</a></li>
+<li class="chapter" data-level="8.2" data-path="08-control_factors.html"><a href="08-control_factors.html#example-gasoline-filling-stations"><i class="fa fa-check"></i><b>8.2</b> Example: gasoline filling stations</a></li>
+<li class="chapter" data-level="8.3" data-path="08-control_factors.html"><a href="08-control_factors.html#control-effectiveness-vs.annualized-control-factors"><i class="fa fa-check"></i><b>8.3</b> Control effectiveness vs. annualized control factors</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html"><i class="fa fa-check"></i><b>9</b> Comparing Inventories</a><ul>
+<li class="chapter" data-level="9.1" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#binding-inventories-together"><i class="fa fa-check"></i><b>9.1</b> Binding inventories together</a></li>
+<li class="chapter" data-level="9.2" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#comparing-two-versions-of-a-single-category"><i class="fa fa-check"></i><b>9.2</b> Comparing two versions of a single category</a></li>
+<li class="chapter" data-level="9.3" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#multiple-categories"><i class="fa fa-check"></i><b>9.3</b> Groups of categories</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="10-third_party.html"><a href="10-third_party.html"><i class="fa fa-check"></i><b>10</b> Third-Party Data</a><ul>
+<li class="chapter" data-level="10.1" data-path="10-third_party.html"><a href="10-third_party.html#natural-gas-consumption"><i class="fa fa-check"></i><b>10.1</b> Natural Gas Consumption</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>A</b> Advanced Usage</a><ul>
+<li class="chapter" data-level="A.1" data-path="appendix.html"><a href="appendix.html#appendix-howto-county_fractions"><i class="fa fa-check"></i><b>A.1</b> Calculating county fractions from raw growth profile data</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="appendix.html"><a href="appendix.html#special-cases"><i class="fa fa-check"></i><b>B</b> Special Cases</a><ul>
+<li class="chapter" data-level="B.1" data-path="appendix.html"><a href="appendix.html#appendix-case-cat_283"><i class="fa fa-check"></i><b>B.1</b> Changes in forecasts for category #283</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="appendix.html"><a href="appendix.html#technical-documentation"><i class="fa fa-check"></i><b>C</b> Technical Documentation</a><ul>
+<li class="chapter" data-level="C.1" data-path="appendix.html"><a href="appendix.html#appendix-doc-control_factors"><i class="fa fa-check"></i><b>C.1</b> Control factors</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Charting Annual Emissions</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="third-party-data" class="section level1">
+<h1><span class="header-section-number">10</span> Third-Party Data</h1>
+<p>You can use the <code>chart_*_by()</code> family of functions with third-party data too.</p>
+<p>This set of examples pulls from an R library, <code>ECDMS</code>, that contains tidied data harvested from the <a href="http://www.ecdms.energy.ca.gov">California Energy Consumption Database (ECDMS)</a>. These data, published by the California Energy Commission (CEC), provide estimates of annual natural gas and electricity consumption in California.</p>
+<p>To gain access, we just type <code>library(ECDMS)</code>.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">library</span>(inventory)</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="kw">library</span>(ECDMS)</a></code></pre></div>
+<div id="natural-gas-consumption" class="section level2">
+<h2><span class="header-section-number">10.1</span> Natural Gas Consumption</h2>
+<p>In the <code>ECDMS_gas_by_county_data</code> dataset, natural gas consumption data are split by county, sector, and year. This dataset covers all of California, from CY1990 through CY2018. Here’s a preview:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">head</span>(ECDMS_gas_by_county_data)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">year</th>
+<th align="left">sector</th>
+<th align="left">county</th>
+<th align="right">tput_qty</th>
+<th align="left">tput_unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CY1990</td>
+<td align="left">Non-Residential</td>
+<td align="left">Alameda</td>
+<td align="right">229.905609</td>
+<td align="left">MMthm</td>
+</tr>
+<tr class="even">
+<td align="left">CY1990</td>
+<td align="left">Non-Residential</td>
+<td align="left">Amador</td>
+<td align="right">11.658194</td>
+<td align="left">MMthm</td>
+</tr>
+<tr class="odd">
+<td align="left">CY1990</td>
+<td align="left">Non-Residential</td>
+<td align="left">Butte</td>
+<td align="right">17.028776</td>
+<td align="left">MMthm</td>
+</tr>
+<tr class="even">
+<td align="left">CY1990</td>
+<td align="left">Non-Residential</td>
+<td align="left">Calaveras</td>
+<td align="right">0.331382</td>
+<td align="left">MMthm</td>
+</tr>
+<tr class="odd">
+<td align="left">CY1990</td>
+<td align="left">Non-Residential</td>
+<td align="left">Colusa</td>
+<td align="right">11.785811</td>
+<td align="left">MMthm</td>
+</tr>
+<tr class="even">
+<td align="left">CY1990</td>
+<td align="left">Non-Residential</td>
+<td align="left">Contra Costa</td>
+<td align="right">701.736398</td>
+<td align="left">MMthm</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>
+What we’re interested in is <code>tput_qty</code> — so <code>chart_annual_throughputs_by()</code> will “just work”.
+</p>
+</div>
+<div id="san-francisco-bay-area-9-counties" class="section level3">
+<h3><span class="header-section-number">10.1.1</span> San Francisco Bay Area (9 Counties)</h3>
+<p>Let’s take <code>SFBA_gas_by_county_data</code> to be the subset belonging to Alameda, Contra Costa, Marin, Napa, San Francisco, San Mateo, Santa Clara, Solano, and Sonoma counties.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="co"># Note: `DST_COUNTY_NAMES` is supplied by the `inventory` package.</span></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4">SFBA_gas_by_county_data &lt;-</a>
+<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="st">  </span>ECDMS_gas_by_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(</a>
+<a class="sourceLine" id="cb41-7" data-line-number="7">    county <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(DST_COUNTY_NAMES)) </a></code></pre></div>
+<p>Now let’s create a set of plots:</p>
+<ul>
+<li>Throughput, total</li>
+<li>Relative growth, total</li>
+<li>Stacked throughputs, by sector</li>
+<li>Relative growth, by sector</li>
+<li>Stacked throughputs, by county</li>
+<li>Relative growth, by county</li>
+</ul>
+<p>For the relative-growth charts, we’ll specify <code>base_year = CY(2011)</code>.</p>
+<div id="sfba-total-consumption" class="section level4 unnumbered">
+<h4>SFBA: Total Consumption</h4>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">SFBA_gas_by_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs</span>(</a>
+<a class="sourceLine" id="cb42-3" data-line-number="3">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_by_county_data-MMthm-chart-1.svg" width="800" height="400" /></p>
+</div>
+<div id="sfba-total-growth" class="section level4 unnumbered">
+<h4>SFBA: Total Growth</h4>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">SFBA_gas_by_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb43-4" data-line-number="4">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_by_county_data-growth-chart-1.svg" width="800" height="400" /></p>
+</div>
+<div id="sfba-consumption-by-sector" class="section level4 unnumbered">
+<h4>SFBA: Consumption by Sector</h4>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">SFBA_gas_by_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs_by</span>(</a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">    <span class="dt">fill =</span> sector)</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_by_county_data-MMthm-by_sector-chart-1.svg" width="800" height="400" /></p>
+</div>
+<div id="sfba-growth-by-sector" class="section level4 unnumbered">
+<h4>SFBA: Growth by Sector</h4>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">SFBA_gas_by_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">    <span class="dt">color =</span> sector,</a>
+<a class="sourceLine" id="cb45-4" data-line-number="4">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb45-5" data-line-number="5">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_by_county_data-growth-by_sector-chart-1.svg" width="800" height="400" /></p>
+<p>Here we see that, in the nine-county Bay Area, Non-Residential gas consumption has been trending slightly upward over time, at about 0.3% growth per year. Residential consumption, on the other hand, has been trending slightly downward, at about -0.3% per year.</p>
+</div>
+<div id="sfba-consumption-by-county" class="section level4 unnumbered">
+<h4>SFBA: Consumption by County</h4>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">SFBA_gas_by_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs_by</span>(</a>
+<a class="sourceLine" id="cb46-3" data-line-number="3">    <span class="dt">fill =</span> county)</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_by_county_data-chart-MMthm-by_county-chart-1.svg" width="800" height="400" /></p>
+</div>
+<div id="sfba-growth-by-county" class="section level4 unnumbered">
+<h4>SFBA: Growth by County</h4>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">SFBA_gas_by_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb47-3" data-line-number="3">    <span class="dt">color =</span> county,</a>
+<a class="sourceLine" id="cb47-4" data-line-number="4">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_by_county_data-growth-by_county-chart-1.svg" width="800" height="400" /></p>
+<hr />
+</div>
+</div>
+<div id="pge-planning-area" class="section level3">
+<h3><span class="header-section-number">10.1.2</span> PG&amp;E Planning Area</h3>
+<p>Above, we saw that <code>ECDMS_gas_by_county_data</code> is split by <code>county</code>. There is a different tabular dataset, <code>ECDMS_gas_by_plan_data</code>, that is split instead by <code>plan</code> (“planning area”).</p>
+<p>Let’s take <code>PGE_gas_by_plan_data</code> to be the subset where <code>plan</code> is “Pacific Gas and Electric”.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">PGE_gas_by_plan_data &lt;-</a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="st">  </span>ECDMS_gas_by_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(</a>
+<a class="sourceLine" id="cb48-4" data-line-number="4">    plan <span class="op">==</span><span class="st"> &quot;Pacific Gas and Electric&quot;</span>) </a></code></pre></div>
+<p>Now let’s recreate a similar set of plots:</p>
+<ul>
+<li>Throughput, total</li>
+<li>Relative growth, total</li>
+<li>Stacked throughputs, by sector</li>
+<li>Relative growth, by sector</li>
+</ul>
+<div class="note">
+<p>
+The total annual consumption is higher in <code>PGE_gas_by_plan_data</code> — more like 5 billion therms, versus the 3 billion therms we saw in <code>SFBA_gas_by_county_data</code>.
+</p>
+</div>
+<div id="pge-total-consumption" class="section level4 unnumbered">
+<h4>PG&amp;E: Total Consumption</h4>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">PGE_gas_by_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs</span>(</a>
+<a class="sourceLine" id="cb49-3" data-line-number="3">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/PGE_gas_by_plan_data-MMthm-chart-1.svg" width="800" height="400" /></p>
+</div>
+<div id="pge-total-growth" class="section level4 unnumbered">
+<h4>PG&amp;E: Total Growth</h4>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">PGE_gas_by_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb50-4" data-line-number="4">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/PGE_gas_by_plan_data-growth-chart-1.svg" width="800" height="400" /></p>
+</div>
+<div id="pge-consumption-by-sector" class="section level4 unnumbered">
+<h4>PG&amp;E: Consumption by Sector</h4>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">PGE_gas_by_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs_by</span>(</a>
+<a class="sourceLine" id="cb51-3" data-line-number="3">    <span class="dt">fill =</span> sector)</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/PGE_gas_by_plan_data-MMthm-by_sector-chart-1.svg" width="800" height="400" /></p>
+</div>
+<div id="pge-growth-by-sector" class="section level4 unnumbered">
+<h4>PG&amp;E: Growth by Sector</h4>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">PGE_gas_by_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb52-3" data-line-number="3">    <span class="dt">color =</span> sector,</a>
+<a class="sourceLine" id="cb52-4" data-line-number="4">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb52-5" data-line-number="5">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/PGE_gas_by_plan_data-growth-by_sector-chart-1.svg" width="800" height="400" /></p>
+<p>If we like, we can collapse these sectors into “Residential”, “Industrial/Commercial”, and “Other”.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">PGE_gas_by_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate_at</span>(</a>
+<a class="sourceLine" id="cb53-3" data-line-number="3">    <span class="kw">vars</span>(sector),</a>
+<a class="sourceLine" id="cb53-4" data-line-number="4">    <span class="op">~</span><span class="st"> </span><span class="kw">fct_collapse</span>(</a>
+<a class="sourceLine" id="cb53-5" data-line-number="5">      .,</a>
+<a class="sourceLine" id="cb53-6" data-line-number="6">      <span class="st">&quot;Residential&quot;</span> =<span class="st"> &quot;Residential&quot;</span>,</a>
+<a class="sourceLine" id="cb53-7" data-line-number="7">      <span class="st">&quot;Commercial/Industrial&quot;</span> =<span class="st"> </span><span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb53-8" data-line-number="8">        <span class="st">&quot;Industry&quot;</span>, </a>
+<a class="sourceLine" id="cb53-9" data-line-number="9">        <span class="st">&quot;Commercial Building&quot;</span>,</a>
+<a class="sourceLine" id="cb53-10" data-line-number="10">        <span class="st">&quot;Commercial Other&quot;</span>),</a>
+<a class="sourceLine" id="cb53-11" data-line-number="11">      <span class="dt">group_other =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-12" data-line-number="12"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb53-13" data-line-number="13">    <span class="dt">color =</span> sector,</a>
+<a class="sourceLine" id="cb53-14" data-line-number="14">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb53-15" data-line-number="15">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/PGE_gas_by_plan_data-growth-by_sector-regroup-chart-1.svg" width="800" height="400" /></p>
+<p>This shows something different than the analysis by county.</p>
+<ul>
+<li><p><strong>Residential.</strong> In <code>PGE_gas_by_plan_data</code>, we can see a strong decline in Residential consumption — CY1990 was 65% higher than CY2011, so about -3% per year. That’s a full order of magnitude larger than the 0.3%/yr we saw in <code>SFBA_gas_by_county_data</code>. We also can see sizeable peaks in the CY1995-2005 era; this era looks different in <code>SFBA_gas_by_county_data</code>.</p></li>
+<li><p><strong>Commercial/Industrial.</strong> Compared to the “Non-Residential”</p></li>
+</ul>
+<div class="note">
+<p>
+Recall that <code>PGE_gas_by_plan_data</code> comprises almost 5 billion therms, whereas <code>SFBA_gas_by_county_data</code> comprised only 3 billion. So, these differences might be reconcilable. There could be large populations of residential consumers captured in one that aren’t in the other. And, the same could be true of commercial/industrial consumers.
+</p>
+</div>
+<p><strong>This section was intended</strong> to give you a sense of what you can do with third-party activity data. You can do very similar things, of course, with third-party emission data. The key is to have the expected variables in your dataset (<code>tput_qty</code> and <code>tput_unit</code>, and/or <code>ems_qty</code> and <code>ems_unit</code>). And, you can always fall back to the more generic <code>chart_annual_quantities()</code> and/or <code>chart_annual_growth()</code>, so long as your dataset has at least one variable ending in <code>_qty</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="09-comparing_inventories.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/BAAQMD/charting-annual-data/edit/master/10-third_party.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/BAAQMD/charting-annual-data/blob/master/10-third_party.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
