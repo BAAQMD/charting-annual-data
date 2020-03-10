@@ -185,12 +185,16 @@ PGE_gas_by_plan_data %>%
 
 This shows something different than the analysis by county. 
 
-- **Residential.** In `PGE_gas_by_plan_data`, we can see a strong decline in Residential consumption --- CY1990 was 65% higher than CY2011, so about -3% per year. That's a full order of magnitude larger than the 0.3%/yr we saw in `SFBA_gas_by_county_data`. We also can see sizeable peaks in the CY1995-2005 era; this era looks different in `SFBA_gas_by_county_data`. 
+- **Residential consumption (MMthm).** In both datasets, we see about 2 billion thm/yr. That doesn't necessarily imply that the two datasets cover identical populations (i.e., consumers), but it doesn't rule it out, either.
 
-- **Commercial/Industrial.** Compared to the "Non-Residential" 
+- **Residential growth.** In this `PGE_gas_by_plan_data`, we can see a strong long-term decline in Residential consumption --- CY1990 was 65% higher than CY2011, so about -3% per year. That's a full order of magnitude larger than the 0.3%/yr we saw in `SFBA_gas_by_county_data`.
+
+- **Commercial/Industrial consumption (MMthm).** The amount of natural gas consumed by the Commercial and Industrial sectors, as reported in `PGE_gas_by_plan_data`, is almost twice as high as that labeled "Non-Residential" in `SFBA_gas_by_county_data` (3 billion vs 1.5 billion therms, respectively). 
+
+- **Commercial/Industrial growth.** Even though the two datasets don't cover the same non-residential population, compared to the "Non-Residential" consumption in `SFBA_gas_by_county_data`, the long-term growth in the Commercial and Industrial sectors here looks similarly flat --- a fraction of a percent per year.
 
 ```{block type="note"}
-Recall that `PGE_gas_by_plan_data` comprises almost 5 billion therms, whereas `SFBA_gas_by_county_data` comprised only 3 billion. So, these differences might be reconcilable. There could be large populations of residential consumers captured in one that aren't in the other. And, the same could be true of commercial/industrial consumers.
+Recall that `PGE_gas_by_plan_data` comprises almost 5 billion therms, whereas `SFBA_gas_by_county_data` comprised only 3 billion. So, these differences might be reconcilable. There could be large populations of consumers covered by one that aren't covered by the other.
 ```
 
 **This section was intended** to give you a sense of what you can do with third-party activity data. You can do very similar things, of course, with third-party emission data. The key is to have the expected variables in your dataset (`tput_qty` and `tput_unit`, and/or `ems_qty` and `ems_unit`). And, you can always fall back to the more generic `chart_annual_quantities()` and/or `chart_annual_growth()`, so long as your dataset has at least one variable ending in `_qty`. 

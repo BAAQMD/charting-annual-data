@@ -411,12 +411,14 @@ The total annual consumption is higher in <code>PGE_gas_by_plan_data</code> — 
 <p><img src="Charting-Annual-Data_files/figure-html/PGE_gas_by_plan_data-growth-by_sector-regroup-chart-1.svg" width="800" height="400" /></p>
 <p>This shows something different than the analysis by county.</p>
 <ul>
-<li><p><strong>Residential.</strong> In <code>PGE_gas_by_plan_data</code>, we can see a strong decline in Residential consumption — CY1990 was 65% higher than CY2011, so about -3% per year. That’s a full order of magnitude larger than the 0.3%/yr we saw in <code>SFBA_gas_by_county_data</code>. We also can see sizeable peaks in the CY1995-2005 era; this era looks different in <code>SFBA_gas_by_county_data</code>.</p></li>
-<li><p><strong>Commercial/Industrial.</strong> Compared to the “Non-Residential”</p></li>
+<li><p><strong>Residential consumption (MMthm).</strong> In both datasets, we see about 2 billion thm/yr. That doesn’t necessarily imply that the two datasets cover identical populations (i.e., consumers), but it doesn’t rule it out, either.</p></li>
+<li><p><strong>Residential growth.</strong> In this <code>PGE_gas_by_plan_data</code>, we can see a strong long-term decline in Residential consumption — CY1990 was 65% higher than CY2011, so about -3% per year. That’s a full order of magnitude larger than the 0.3%/yr we saw in <code>SFBA_gas_by_county_data</code>.</p></li>
+<li><p><strong>Commercial/Industrial consumption (MMthm).</strong> The amount of natural gas consumed by the Commercial and Industrial sectors, as reported in <code>PGE_gas_by_plan_data</code>, is almost twice as high as that labeled “Non-Residential” in <code>SFBA_gas_by_county_data</code> (3 billion vs 1.5 billion therms, respectively).</p></li>
+<li><p><strong>Commercial/Industrial growth.</strong> Even though the two datasets don’t cover the same non-residential population, compared to the “Non-Residential” consumption in <code>SFBA_gas_by_county_data</code>, the long-term growth in the Commercial and Industrial sectors here looks similarly flat — a fraction of a percent per year.</p></li>
 </ul>
 <div class="note">
 <p>
-Recall that <code>PGE_gas_by_plan_data</code> comprises almost 5 billion therms, whereas <code>SFBA_gas_by_county_data</code> comprised only 3 billion. So, these differences might be reconcilable. There could be large populations of residential consumers captured in one that aren’t in the other. And, the same could be true of commercial/industrial consumers.
+Recall that <code>PGE_gas_by_plan_data</code> comprises almost 5 billion therms, whereas <code>SFBA_gas_by_county_data</code> comprised only 3 billion. So, these differences might be reconcilable. There could be large populations of consumers covered by one that aren’t covered by the other.
 </p>
 </div>
 <p><strong>This section was intended</strong> to give you a sense of what you can do with third-party activity data. You can do very similar things, of course, with third-party emission data. The key is to have the expected variables in your dataset (<code>tput_qty</code> and <code>tput_unit</code>, and/or <code>ems_qty</code> and <code>ems_unit</code>). And, you can always fall back to the more generic <code>chart_annual_quantities()</code> and/or <code>chart_annual_growth()</code>, so long as your dataset has at least one variable ending in <code>_qty</code>.</p>
