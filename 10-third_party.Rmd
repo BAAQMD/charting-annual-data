@@ -185,7 +185,7 @@ PGE_gas_plan_data %>%
 
 This shows something different than the analysis by county. 
 
-- **Residential consumption (MMthm).** In both datasets, we see about 2 billion thm/yr. That doesn't necessarily imply that the two datasets cover identical populations (i.e., consumers), but it doesn't rule it out, either.
+- **Residential consumption (MMthm).** In this `PGE_gas_plan_data`, we see about 2 billion thm/yr. In the `SFBA_gas_county_data`, we only saw about 1 billion thm/yr. Either something is wrong, or these are estimates for different populations, and hence not perfectly comparable.
 
 - **Residential growth.** In this `PGE_gas_plan_data`, we can see a strong long-term decline in Residential consumption --- CY1990 was 65% higher than CY2011, so about -3% per year. That's a full order of magnitude larger than the 0.3%/yr we saw in `SFBA_gas_county_data`.
 
