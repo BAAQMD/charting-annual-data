@@ -92,6 +92,8 @@ BY2011_area_source_projection_data %>%
 
 As you can see, the syntax for `chart_annual_throughputs_by()` is identical to that for `chart_annual_emissions_by()`. If you used `chart_annual_emissions()` and didn't supply `color = cnty_abbr`, you would see the regional totals instead.
 
-Above, we've also colored by `cnty_abbr`, rather than `cat_id`. This often makes sense when working with throughput data, since different categories often are estimated in terms of different throughput units. So, displaying throughputs for different categories on the same scale may not always make sense (although when the units are the same, it does).
+```{block type="note"}
+Above, we've colored by `cnty_abbr`, rather than `cat_id`. This often makes sense when working with throughput data, since different categories often are estimated in terms of different throughput units. So, displaying throughputs for different categories on the same scale may not always make sense (although when the units are the same, it does).
+```
 
 What if we wanted to understand these throughputs in terms of percent change (%), rather than absolute units ("1000 Pounds")? Let's move on to the next two chapters, [Relative Changes] and [Growth Profiles].

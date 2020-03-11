@@ -24,7 +24,7 @@
 <meta name="author" content="David Holstius" />
 
 
-<meta name="date" content="2020-03-10" />
+<meta name="date" content="2020-03-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -239,14 +239,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb14-5" data-line-number="5"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
 <a class="sourceLine" id="cb14-6" data-line-number="6">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb14-7" data-line-number="7"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">    cnty_abbr,</a>
-<a class="sourceLine" id="cb14-9" data-line-number="9">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>),</a>
-<a class="sourceLine" id="cb14-11" data-line-number="11">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
-<a class="sourceLine" id="cb14-12" data-line-number="12">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
-<a class="sourceLine" id="cb14-13" data-line-number="13">      <span class="st">&quot;This is the growth profile associated with category #283 in BY2011.&quot;</span>,</a>
-<a class="sourceLine" id="cb14-14" data-line-number="14">      <span class="st">&quot;There is a +9% change from CY2011 to CY2030.&quot;</span>,</a>
-<a class="sourceLine" id="cb14-15" data-line-number="15">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb14-8" data-line-number="8">    <span class="dt">color =</span> cnty_abbr,</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">      <span class="st">&quot;This is the growth profile associated with category #283 in BY2011.&quot;</span>,</a>
+<a class="sourceLine" id="cb14-15" data-line-number="15">      <span class="st">&quot;There is a +9% change from CY2011 to CY2030.&quot;</span>,</a>
+<a class="sourceLine" id="cb14-16" data-line-number="16">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_growth_profile_data-cat_283-chart_annual_growth-1.svg" width="800" height="400" /></p>
 </div>
 <div id="county-specific-growth-profiles" class="section level2">

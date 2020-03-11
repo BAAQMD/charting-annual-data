@@ -26,4 +26,6 @@ BY2011_ag_land_prep_ef_data %>%
     subtitle = "Emission factors pulled from DataBank (t1326).") 
 ```
 
+```{block type="note"}
 In DataBank, emission factors are stored in units of "pounds per unit of throughput". If you change the value of `ef_unit` (and alter the values in `ef_qty` accordingly), that will be reflected in the output of `chart_annual_emission_factors()`.
+```

@@ -44,7 +44,8 @@ BY2011_growth_profile_data %>%
   filter_categories(
     "#283 Space Heating" = 283) %>%
   chart_annual_growth_by(
-    cnty_abbr,
+    color = cnty_abbr,
+    verbose = TRUE,
     base_year = CY(2011),
     flag_years = CY(1993, 2011, 2030),
     title = "Residential NG Combustion: Space and Water Heating",
