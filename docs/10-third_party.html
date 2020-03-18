@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10 Third-Party Data | Charting Annual Emissions</title>
   <meta name="description" content="This is an introduction to charting annual emissions inventory data." />
-  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10 Third-Party Data | Charting Annual Emissions" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="David Holstius" />
 
 
-<meta name="date" content="2020-03-16" />
+<meta name="date" content="2020-03-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#binding-inventories-together"><i class="fa fa-check"></i><b>9.1</b> Binding inventories together</a></li>
 <li class="chapter" data-level="9.2" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#comparing-two-versions-of-a-single-category"><i class="fa fa-check"></i><b>9.2</b> Comparing two versions of a single category</a></li>
 <li class="chapter" data-level="9.3" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#multiple-categories"><i class="fa fa-check"></i><b>9.3</b> Groups of categories</a></li>
+<li class="chapter" data-level="9.4" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#more-examples"><i class="fa fa-check"></i><b>9.4</b> More Examples</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="10-third_party.html"><a href="10-third_party.html"><i class="fa fa-check"></i><b>10</b> Third-Party Data</a><ul>
 <li class="chapter" data-level="10.1" data-path="10-third_party.html"><a href="10-third_party.html#natural-gas-consumption"><i class="fa fa-check"></i><b>10.1</b> Natural Gas Consumption</a></li>
@@ -207,12 +208,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can use the <code>chart_*_by()</code> family of functions with third-party data too.</p>
 <p>This set of examples pulls from an R library, <code>ECDMS</code>, that contains tidied data harvested from the <a href="http://www.ecdms.energy.ca.gov">California Energy Consumption Database (ECDMS)</a>. These data, published by the California Energy Commission (CEC), provide estimates of annual natural gas and electricity consumption in California.</p>
 <p>To gain access, we just type <code>library(ECDMS)</code>.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">library</span>(inventory)</a>
-<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="kw">library</span>(ECDMS)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">library</span>(inventory)</a>
+<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="kw">library</span>(ECDMS)</a></code></pre></div>
 <div id="natural-gas-consumption" class="section level2">
 <h2><span class="header-section-number">10.1</span> Natural Gas Consumption</h2>
 <p>In the <code>ECDMS_gas_county_data</code> dataset, natural gas consumption data are split by county, sector, and year. This dataset covers all of California, from CY1990 through CY2018. Here’s a preview:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">head</span>(ECDMS_gas_county_data)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">head</span>(ECDMS_gas_county_data)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -276,13 +277,13 @@ What we’re interested in is <code>tput_qty</code> — so <code>chart_annual_th
 <div id="san-francisco-bay-area-9-counties" class="section level3">
 <h3><span class="header-section-number">10.1.1</span> San Francisco Bay Area (9 Counties)</h3>
 <p>Let’s take <code>SFBA_gas_county_data</code> to be the subset belonging to Alameda, Contra Costa, Marin, Napa, San Francisco, San Mateo, Santa Clara, Solano, and Sonoma counties.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="co"># Note: `DST_COUNTY_NAMES` is supplied by the `inventory` package.</span></a>
-<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb41-4" data-line-number="4">SFBA_gas_county_data &lt;-</a>
-<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="st">  </span>ECDMS_gas_county_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb41-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(</a>
-<a class="sourceLine" id="cb41-7" data-line-number="7">    county <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(DST_COUNTY_NAMES)) </a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="co"># Note: `DST_COUNTY_NAMES` is supplied by the `inventory` package.</span></a>
+<a class="sourceLine" id="cb44-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb44-4" data-line-number="4">SFBA_gas_county_data &lt;-</a>
+<a class="sourceLine" id="cb44-5" data-line-number="5"><span class="st">  </span>ECDMS_gas_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(</a>
+<a class="sourceLine" id="cb44-7" data-line-number="7">    county <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(DST_COUNTY_NAMES)) </a></code></pre></div>
 <p>Now let’s create a set of plots:</p>
 <ul>
 <li>Throughput, total</li>
@@ -295,49 +296,49 @@ What we’re interested in is <code>tput_qty</code> — so <code>chart_annual_th
 <p>For the relative-growth charts, we’ll specify <code>base_year = CY(2011)</code>.</p>
 <div id="sfba-total-consumption" class="section level4 unnumbered">
 <h4>SFBA: Total Consumption</h4>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs</span>(</a>
-<a class="sourceLine" id="cb42-3" data-line-number="3">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs</span>(</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_county_data-MMthm-chart-1.svg" width="800" height="400" /></p>
 </div>
 <div id="sfba-total-growth" class="section level4 unnumbered">
 <h4>SFBA: Total Growth</h4>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
-<a class="sourceLine" id="cb43-3" data-line-number="3">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb43-4" data-line-number="4">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
+<a class="sourceLine" id="cb46-3" data-line-number="3">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb46-4" data-line-number="4">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_county_data-growth-chart-1.svg" width="800" height="400" /></p>
 </div>
 <div id="sfba-consumption-by-sector" class="section level4 unnumbered">
 <h4>SFBA: Consumption by Sector</h4>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs_by</span>(</a>
-<a class="sourceLine" id="cb44-3" data-line-number="3">    <span class="dt">fill =</span> sector)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs_by</span>(</a>
+<a class="sourceLine" id="cb47-3" data-line-number="3">    <span class="dt">fill =</span> sector)</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_county_data-MMthm-sector-chart-1.svg" width="800" height="400" /></p>
 </div>
 <div id="sfba-growth-by-sector" class="section level4 unnumbered">
 <h4>SFBA: Growth by Sector</h4>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
-<a class="sourceLine" id="cb45-3" data-line-number="3">    <span class="dt">color =</span> sector,</a>
-<a class="sourceLine" id="cb45-4" data-line-number="4">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb45-5" data-line-number="5">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb48-3" data-line-number="3">    <span class="dt">color =</span> sector,</a>
+<a class="sourceLine" id="cb48-4" data-line-number="4">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb48-5" data-line-number="5">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_county_data-growth-sector-chart-1.svg" width="800" height="400" /></p>
 <p>Here we see that, in the nine-county Bay Area, Non-Residential gas consumption has been trending slightly upward over time, at about 0.3% growth per year. Residential consumption, on the other hand, has been trending slightly downward, at about -0.3% per year.</p>
 </div>
 <div id="sfba-consumption-by-county" class="section level4 unnumbered">
 <h4>SFBA: Consumption by County</h4>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs_by</span>(</a>
-<a class="sourceLine" id="cb46-3" data-line-number="3">    <span class="dt">fill =</span> county)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs_by</span>(</a>
+<a class="sourceLine" id="cb49-3" data-line-number="3">    <span class="dt">fill =</span> county)</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_county_data-chart-MMthm-county-chart-1.svg" width="800" height="400" /></p>
 </div>
 <div id="sfba-growth-by-county" class="section level4 unnumbered">
 <h4>SFBA: Growth by County</h4>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
-<a class="sourceLine" id="cb47-3" data-line-number="3">    <span class="dt">color =</span> county,</a>
-<a class="sourceLine" id="cb47-4" data-line-number="4">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">SFBA_gas_county_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">    <span class="dt">color =</span> county,</a>
+<a class="sourceLine" id="cb50-4" data-line-number="4">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/SFBA_gas_county_data-growth-county-chart-1.svg" width="800" height="400" /></p>
 <hr />
 </div>
@@ -346,10 +347,10 @@ What we’re interested in is <code>tput_qty</code> — so <code>chart_annual_th
 <h3><span class="header-section-number">10.1.2</span> PG&amp;E Planning Area</h3>
 <p>Above, we saw that <code>ECDMS_gas_county_data</code> is split by <code>county</code>. There is a different tabular dataset, <code>ECDMS_gas_plan_data</code>, that is split instead by <code>plan</code> (“planning area”).</p>
 <p>Let’s take <code>PGE_gas_plan_data</code> to be the subset where <code>plan</code> is “Pacific Gas and Electric”.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">PGE_gas_plan_data &lt;-</a>
-<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="st">  </span>ECDMS_gas_plan_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(</a>
-<a class="sourceLine" id="cb48-4" data-line-number="4">    plan <span class="op">==</span><span class="st"> &quot;Pacific Gas and Electric&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">PGE_gas_plan_data &lt;-</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2"><span class="st">  </span>ECDMS_gas_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(</a>
+<a class="sourceLine" id="cb51-4" data-line-number="4">    plan <span class="op">==</span><span class="st"> &quot;Pacific Gas and Electric&quot;</span>) </a></code></pre></div>
 <p>Now let’s recreate a similar set of plots:</p>
 <ul>
 <li>Throughput, total</li>
@@ -364,50 +365,50 @@ The total annual consumption is higher in <code>PGE_gas_plan_data</code> — mor
 </div>
 <div id="pge-total-consumption" class="section level4 unnumbered">
 <h4>PG&amp;E: Total Consumption</h4>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">PGE_gas_plan_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs</span>(</a>
-<a class="sourceLine" id="cb49-3" data-line-number="3">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">PGE_gas_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs</span>(</a>
+<a class="sourceLine" id="cb52-3" data-line-number="3">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/PGE_gas_plan_data-MMthm-chart-1.svg" width="800" height="400" /></p>
 </div>
 <div id="pge-total-growth" class="section level4 unnumbered">
 <h4>PG&amp;E: Total Growth</h4>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">PGE_gas_plan_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
-<a class="sourceLine" id="cb50-3" data-line-number="3">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb50-4" data-line-number="4">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">PGE_gas_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
+<a class="sourceLine" id="cb53-3" data-line-number="3">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb53-4" data-line-number="4">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/PGE_gas_plan_data-growth-chart-1.svg" width="800" height="400" /></p>
 </div>
 <div id="pge-consumption-by-sector" class="section level4 unnumbered">
 <h4>PG&amp;E: Consumption by Sector</h4>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">PGE_gas_plan_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs_by</span>(</a>
-<a class="sourceLine" id="cb51-3" data-line-number="3">    <span class="dt">fill =</span> sector)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">PGE_gas_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_throughputs_by</span>(</a>
+<a class="sourceLine" id="cb54-3" data-line-number="3">    <span class="dt">fill =</span> sector)</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/PGE_gas_plan_data-MMthm-sector-chart-1.svg" width="800" height="400" /></p>
 </div>
 <div id="pge-growth-by-sector" class="section level4 unnumbered">
 <h4>PG&amp;E: Growth by Sector</h4>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">PGE_gas_plan_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
-<a class="sourceLine" id="cb52-3" data-line-number="3">    <span class="dt">color =</span> sector,</a>
-<a class="sourceLine" id="cb52-4" data-line-number="4">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb52-5" data-line-number="5">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">PGE_gas_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb55-3" data-line-number="3">    <span class="dt">color =</span> sector,</a>
+<a class="sourceLine" id="cb55-4" data-line-number="4">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb55-5" data-line-number="5">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/PGE_gas_plan_data-growth-sector-chart-1.svg" width="800" height="400" /></p>
 <p>If we like, we can collapse these sectors into “Residential”, “Industrial/Commercial”, and “Other”.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">PGE_gas_plan_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate_at</span>(</a>
-<a class="sourceLine" id="cb53-3" data-line-number="3">    <span class="kw">vars</span>(sector),</a>
-<a class="sourceLine" id="cb53-4" data-line-number="4">    <span class="op">~</span><span class="st"> </span><span class="kw">fct_collapse</span>(</a>
-<a class="sourceLine" id="cb53-5" data-line-number="5">      .,</a>
-<a class="sourceLine" id="cb53-6" data-line-number="6">      <span class="st">&quot;Residential&quot;</span> =<span class="st"> &quot;Residential&quot;</span>,</a>
-<a class="sourceLine" id="cb53-7" data-line-number="7">      <span class="st">&quot;Commercial/Industrial&quot;</span> =<span class="st"> </span><span class="kw">c</span>(</a>
-<a class="sourceLine" id="cb53-8" data-line-number="8">        <span class="st">&quot;Industry&quot;</span>, </a>
-<a class="sourceLine" id="cb53-9" data-line-number="9">        <span class="st">&quot;Commercial Building&quot;</span>,</a>
-<a class="sourceLine" id="cb53-10" data-line-number="10">        <span class="st">&quot;Commercial Other&quot;</span>),</a>
-<a class="sourceLine" id="cb53-11" data-line-number="11">      <span class="dt">group_other =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb53-12" data-line-number="12"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
-<a class="sourceLine" id="cb53-13" data-line-number="13">    <span class="dt">color =</span> sector,</a>
-<a class="sourceLine" id="cb53-14" data-line-number="14">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb53-15" data-line-number="15">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">PGE_gas_plan_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate_at</span>(</a>
+<a class="sourceLine" id="cb56-3" data-line-number="3">    <span class="kw">vars</span>(sector),</a>
+<a class="sourceLine" id="cb56-4" data-line-number="4">    <span class="op">~</span><span class="st"> </span><span class="kw">fct_collapse</span>(</a>
+<a class="sourceLine" id="cb56-5" data-line-number="5">      .,</a>
+<a class="sourceLine" id="cb56-6" data-line-number="6">      <span class="st">&quot;Residential&quot;</span> =<span class="st"> &quot;Residential&quot;</span>,</a>
+<a class="sourceLine" id="cb56-7" data-line-number="7">      <span class="st">&quot;Commercial/Industrial&quot;</span> =<span class="st"> </span><span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb56-8" data-line-number="8">        <span class="st">&quot;Industry&quot;</span>, </a>
+<a class="sourceLine" id="cb56-9" data-line-number="9">        <span class="st">&quot;Commercial Building&quot;</span>,</a>
+<a class="sourceLine" id="cb56-10" data-line-number="10">        <span class="st">&quot;Commercial Other&quot;</span>),</a>
+<a class="sourceLine" id="cb56-11" data-line-number="11">      <span class="dt">group_other =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-12" data-line-number="12"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb56-13" data-line-number="13">    <span class="dt">color =</span> sector,</a>
+<a class="sourceLine" id="cb56-14" data-line-number="14">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb56-15" data-line-number="15">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/PGE_gas_plan_data-growth-sector-regroup-chart-1.svg" width="800" height="400" /></p>
 <p>This shows something different than the analysis by county.</p>
 <ul>

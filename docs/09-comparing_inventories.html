@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9 Comparing Inventories | Charting Annual Emissions</title>
   <meta name="description" content="This is an introduction to charting annual emissions inventory data." />
-  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9 Comparing Inventories | Charting Annual Emissions" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="David Holstius" />
 
 
-<meta name="date" content="2020-03-16" />
+<meta name="date" content="2020-03-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#binding-inventories-together"><i class="fa fa-check"></i><b>9.1</b> Binding inventories together</a></li>
 <li class="chapter" data-level="9.2" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#comparing-two-versions-of-a-single-category"><i class="fa fa-check"></i><b>9.2</b> Comparing two versions of a single category</a></li>
 <li class="chapter" data-level="9.3" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#multiple-categories"><i class="fa fa-check"></i><b>9.3</b> Groups of categories</a></li>
+<li class="chapter" data-level="9.4" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#more-examples"><i class="fa fa-check"></i><b>9.4</b> More Examples</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="10-third_party.html"><a href="10-third_party.html"><i class="fa fa-check"></i><b>10</b> Third-Party Data</a><ul>
 <li class="chapter" data-level="10.1" data-path="10-third_party.html"><a href="10-third_party.html#natural-gas-consumption"><i class="fa fa-check"></i><b>10.1</b> Natural Gas Consumption</a></li>
@@ -225,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.2</span> Comparing two versions of a single category</h2>
 <p>Here we do just two things differently, compared to previous chapters:</p>
 <ul>
-<li>We specify <code>linetype = inventory</code>. This causes the BY2011 data and the BY2008 data to be drawn with distinct line types (solid and dashed, respectively).</li>
+<li>We specify <code>opacity = inventory</code>. This causes the BY2011 data and the BY2008 data to be drawn with distinct line types (solid and dashed, respectively).</li>
 <li>We supply <code>c(288, &quot;A288&quot;)</code> instead of just <code>288</code>. (See the note below.)</li>
 </ul>
 <div class="note">
@@ -252,7 +253,7 @@ In <code>BY2008_annual_emission_data</code>, category IDs are prefixed by either
 <a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#</span></a>
 <a class="sourceLine" id="cb34-4" data-line-number="4">chart_data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb34-5" data-line-number="5"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb34-6" data-line-number="6">    <span class="dt">linetype =</span> inventory,</a>
+<a class="sourceLine" id="cb34-6" data-line-number="6">    <span class="dt">opacity =</span> inventory,</a>
 <a class="sourceLine" id="cb34-7" data-line-number="7">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2010</span>, <span class="dv">2030</span>),</a>
 <a class="sourceLine" id="cb34-8" data-line-number="8">    <span class="dt">title =</span> <span class="st">&quot;Domestic Woodstoves: BY2011 Updates&quot;</span>,</a>
 <a class="sourceLine" id="cb34-9" data-line-number="9">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
@@ -303,7 +304,7 @@ This can create some confusion. It means that when someone is speaking about “
 <a class="sourceLine" id="cb36-3" data-line-number="3"><span class="co">#</span></a>
 <a class="sourceLine" id="cb36-4" data-line-number="4">chart_data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb36-5" data-line-number="5"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb36-6" data-line-number="6">    <span class="dt">linetype =</span> inventory,</a>
+<a class="sourceLine" id="cb36-6" data-line-number="6">    <span class="dt">opacity =</span> inventory,</a>
 <a class="sourceLine" id="cb36-7" data-line-number="7">    <span class="dt">title =</span> <span class="st">&quot;Reciprocating Engines (Liquid Fuel): BY2011 Updates&quot;</span>,</a>
 <a class="sourceLine" id="cb36-8" data-line-number="8">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
 <a class="sourceLine" id="cb36-9" data-line-number="9">      <span class="st">&quot;BY2008 = Categories #P304 (point) and/or #A304 (area).&quot;</span>,</a>
@@ -338,7 +339,7 @@ This can create some confusion. It means that when someone is speaking about “
 <a class="sourceLine" id="cb38-3" data-line-number="3"><span class="co">#</span></a>
 <a class="sourceLine" id="cb38-4" data-line-number="4">chart_data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb38-5" data-line-number="5"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb38-6" data-line-number="6">    <span class="dt">linetype =</span> inventory,</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6">    <span class="dt">opacity =</span> inventory,</a>
 <a class="sourceLine" id="cb38-7" data-line-number="7">    <span class="dt">color =</span> category,</a>
 <a class="sourceLine" id="cb38-8" data-line-number="8">    <span class="dt">title =</span> <span class="st">&quot;Reciprocating Engines (Liquid Fuel): BY2011 Updates&quot;</span>,</a>
 <a class="sourceLine" id="cb38-9" data-line-number="9">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
@@ -348,6 +349,61 @@ This can create some confusion. It means that when someone is speaking about “
 <p><img src="Charting-Annual-Data_files/figure-html/BY_data-recip_eng-liquid_fuel-chart-2-1.svg" width="800" height="400" /></p>
 <p>From this, we can see that the bulk of the difference is due to a much lower estimate for the area-source component.</p>
 <p><strong>Using <code>filter_categories()</code> and <code>chart_annual_emissions()</code> together is powerful.</strong> With it, you can review updates to any related groups of categories from different BY inventories, regardless of how their <code>cat_id</code> identifiers might have changed.</p>
+</div>
+</div>
+<div id="more-examples" class="section level2">
+<h2><span class="header-section-number">9.4</span> More Examples</h2>
+<div id="residential-combustion-distillate-oil-relative-growth" class="section level3 unnumbered">
+<h3>Residential Combustion: Distillate Oil (Relative Growth)</h3>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">BY_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">    <span class="st">&quot;#287 Distillate Oil&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">287</span>, <span class="st">&quot;A287&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb39-5" data-line-number="5">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb39-6" data-line-number="6"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb39-7" data-line-number="7">    <span class="dt">opacity =</span> inventory,</a>
+<a class="sourceLine" id="cb39-8" data-line-number="8">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb39-9" data-line-number="9">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb39-10" data-line-number="10">    <span class="dt">title =</span> <span class="st">&quot;Residential Combustion&quot;</span>,</a>
+<a class="sourceLine" id="cb39-11" data-line-number="11">    <span class="dt">subtitle =</span> <span class="st">&quot;#287 Distillate Oil&quot;</span>)</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY_data-combust-domestic-liquid-chart-1.svg" width="800" height="400" /></p>
+</div>
+<div id="petroleum-refining-flares-and-blowdown-systems" class="section level3 unnumbered">
+<h3>Petroleum Refining: Flares and Blowdown Systems</h3>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">BY_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb40-3" data-line-number="3">    <span class="st">&quot;#15 Flares and Blowdown Systems&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="st">&quot;P15&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb40-5" data-line-number="5">    <span class="st">&quot;CO2&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb40-6" data-line-number="6"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
+<a class="sourceLine" id="cb40-7" data-line-number="7">    <span class="dt">opacity =</span> inventory,</a>
+<a class="sourceLine" id="cb40-8" data-line-number="8">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb40-9" data-line-number="9">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>, <span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb40-10" data-line-number="10">    <span class="dt">title =</span> <span class="st">&quot;Petroleum Refining&quot;</span>,</a>
+<a class="sourceLine" id="cb40-11" data-line-number="11">    <span class="dt">subtitle =</span> <span class="st">&quot;#15 Flares and Blowdown Systems&quot;</span>)</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY_data-petref-fac-general-1.svg" width="800" height="400" /></p>
+</div>
+<div id="small-bakeries" class="section level3 unnumbered">
+<h3>Small Bakeries</h3>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="co"># To remove redundant flags, pass `flag_unique = TRUE`. Notice how the value</span></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="co"># &quot;190.3 ton/yr&quot; is now only displayed once at CY1990. Please note: This</span></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="co"># behavior may be changed in future updates to `ggtools` --- don&#39;t use it (yet)</span></a>
+<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="co"># in production code.</span></a>
+<a class="sourceLine" id="cb41-6" data-line-number="6"><span class="co"># </span></a>
+<a class="sourceLine" id="cb41-7" data-line-number="7">BY_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb41-9" data-line-number="9">    <span class="st">&quot;#935 Small Bakeries&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">935</span>, <span class="st">&quot;A935&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-10" data-line-number="10"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb41-11" data-line-number="11">    <span class="st">&quot;TOG&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-12" data-line-number="12"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
+<a class="sourceLine" id="cb41-13" data-line-number="13">    <span class="dt">alpha =</span> inventory,</a>
+<a class="sourceLine" id="cb41-14" data-line-number="14">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb41-15" data-line-number="15">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>, <span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb41-16" data-line-number="16">    <span class="dt">flag_unique =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb41-17" data-line-number="17">    <span class="dt">title =</span> <span class="st">&quot;Industrial and Commercial Processes&quot;</span>,</a>
+<a class="sourceLine" id="cb41-18" data-line-number="18">    <span class="dt">subtitle =</span> <span class="st">&quot;#935 Small Bakeries&quot;</span>)</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY_data-indcom-bakery-small-1.svg" width="800" height="400" /></p>
 
 </div>
 </div>

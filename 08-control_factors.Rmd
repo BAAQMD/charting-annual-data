@@ -172,7 +172,7 @@ chart_data %>%
 chart_data %>%
   filter_pollutants(
     THESE_POLLUTANTS) %>%
-  chart_annual_growth_by(
+  chart_annual_emission_by(
     linetype = scenario,
     color = pollutant,
     facet_rows = "scenario",
