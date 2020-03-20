@@ -210,7 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="obtaining-throughput-data" class="section level2">
 <h2><span class="header-section-number">4.1</span> Obtaining throughput data</h2>
 <p>In the <a href="03-emissions.html#emissions">Emissions</a> chapter, we had a nice “published” dataset ready at hand: <code>BY2011_annual_emission_data</code>.</p>
-<p>Unfortunately, there are no analogously “published” area-source throughputs for <code>BY2011</code>. However, we can fairly easily (re-)produce CY1990-2040 area-source estimates from the information contained in the <code>BY2011</code> DataBank t-tables. Then, we can extract throughputs from those. That’s what we’ll do in the subsections below. Again, this is a bit of a digression — you can just skip ahead to <a href="04-throughputs.html#charting-annual-throughputs">Charting annual throughputs</a> and come back to this later, if you like.</p>
+<p>Unfortunately, there are no analogously “published” area-source throughputs for BY2011. However, we can fairly easily (re-)produce CY1990-2030 area-source estimates from the information contained in the BY2011 DataBank t-tables. Then, we can extract throughputs from those. That’s what we’ll do in the subsections below. Again, this is a bit of a digression — you can just skip ahead to <a href="04-throughputs.html#charting-annual-throughputs">Charting annual throughputs</a> and come back to this later, if you like.</p>
 <div id="recreating-by2011-area-source-projections" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Recreating BY2011 area-source projections</h3>
 <p>In the chunk of code below, we recreate the entire BY2011 area-source inventory, from CY1990 through CY2040. (It’s actually pretty fast.)</p>
@@ -367,7 +367,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="charting-annual-throughputs" class="section level2">
 <h2><span class="header-section-number">4.2</span> Charting annual throughputs</h2>
-<p>Let’s examine a category where the growth in throughput varies by county over time. A good example is <code>#761</code> “Sanitary Sewers”.</p>
+<p>Let’s examine a category where the growth in throughput varies by county over time. A good example is category #761 Sanitary Sewers.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co"># Even though the relevant throughputs appear twice in these data --- once for</span></a>
 <a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co"># `ROG` rows, and once for `CH4` --- `chart_annual_throughputs_by()` tries not</span></a>
@@ -375,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co"># </span></a>
 <a class="sourceLine" id="cb12-6" data-line-number="6">BY2011_area_source_projection_data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb12-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb12-8" data-line-number="8">    <span class="st">&quot;Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">    <span class="st">&quot;#761 Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb12-9" data-line-number="9"><span class="st">  </span><span class="kw">chart_annual_throughputs_by</span>(</a>
 <a class="sourceLine" id="cb12-10" data-line-number="10">    <span class="dt">color =</span> cnty_abbr,</a>
 <a class="sourceLine" id="cb12-11" data-line-number="11">    <span class="dt">title =</span> <span class="st">&quot;Sanitary Sewers&quot;</span>,</a>
@@ -383,8 +383,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb12-13" data-line-number="13">      <span class="st">&quot;Sanitary sewers (category #761) tracks with household population.&quot;</span>,</a>
 <a class="sourceLine" id="cb12-14" data-line-number="14">      <span class="st">&quot;The relevant growth profile (#657, in DataBank) also varies by county.&quot;</span>,</a>
 <a class="sourceLine" id="cb12-15" data-line-number="15">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
-<p><img src="Charting-Annual-Data_files/figure-html/BY2011_area_source_projection_data-283-284-chart_annual_throughputs_by-1.svg" width="800" height="400" /></p>
-<p>As you can see, the syntax for <code>chart_annual_throughputs_by()</code> is identical to that for <code>chart_annual_emissions_by()</code>. If you used <code>chart_annual_emissions()</code> and didn’t supply <code>color = cnty_abbr</code>, you would see the regional totals instead.</p>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_area_source_projection_data-283-284-chart_annual_throughputs_by-cnty_abbr-1.svg" width="800" height="400" /></p>
+<p>As you can see, the syntax for <code>chart_annual_throughputs_by()</code> is identical to that for <code>chart_annual_emissions_by()</code>. If you used <code>chart_annual_throughputs()</code> and didn’t supply <code>color = cnty_abbr</code>, you will see the regional totals instead (see below).</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co"># Even though the relevant throughputs appear twice in these data --- once for</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co"># `ROG` rows, and once for `CH4` --- `chart_annual_throughputs_by()` tries not</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co"># to double-count. See `help(&quot;chart_annual_throughputs_by&quot;)` for details.</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co"># </span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">BY2011_area_source_projection_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">    <span class="st">&quot;#761 Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="st">  </span><span class="kw">chart_annual_throughputs</span>(</a>
+<a class="sourceLine" id="cb13-10" data-line-number="10">    <span class="dt">title =</span> <span class="st">&quot;Sanitary Sewers&quot;</span>,</a>
+<a class="sourceLine" id="cb13-11" data-line-number="11">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">      <span class="st">&quot;Sanitary sewers (category #761) tracks with household population.&quot;</span>,</a>
+<a class="sourceLine" id="cb13-13" data-line-number="13">      <span class="st">&quot;The relevant growth profile (#657, in DataBank) also varies by county.&quot;</span>,</a>
+<a class="sourceLine" id="cb13-14" data-line-number="14">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/BY2011_area_source_projection_data-283-284-chart_annual_throughputs-1.svg" width="800" height="400" /></p>
 <div class="note">
 <p>
 Above, we’ve colored by <code>cnty_abbr</code>, rather than <code>cat_id</code>. This often makes sense when working with throughput data, since different categories often are estimated in terms of different throughput units. So, displaying throughputs for different categories on the same scale may not always make sense (although when the units are the same, it does).

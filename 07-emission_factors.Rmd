@@ -12,7 +12,7 @@ BY2011_ag_land_prep_ef_data <-
   filter_categories(
     "#749 Agricultural Land Prep" = 749) %>%
   annualize_DB_emission_factors(
-    years = CY(1990:2040),
+    years = CY(1990:2030),
     verbose = TRUE)
 ```
 

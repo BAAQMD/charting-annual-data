@@ -8,7 +8,7 @@ The first section in this chapter, [Obtaining throughput data] (below), is a bit
 
 In the [Emissions] chapter, we had a nice "published" dataset ready at hand: `BY2011_annual_emission_data`.
 
-Unfortunately, there are no analogously "published" area-source throughputs for `BY2011`. However, we can fairly easily (re-)produce CY1990-2040 area-source estimates from the information contained in the `BY2011` DataBank t-tables. Then, we can extract throughputs from those. That's what we'll do in the subsections below. Again, this is a bit of a digression --- you can just skip ahead to [Charting annual throughputs] and come back to this later, if you like.
+Unfortunately, there are no analogously "published" area-source throughputs for BY2011. However, we can fairly easily (re-)produce CY1990-2030 area-source estimates from the information contained in the BY2011 DataBank t-tables. Then, we can extract throughputs from those. That's what we'll do in the subsections below. Again, this is a bit of a digression --- you can just skip ahead to [Charting annual throughputs] and come back to this later, if you like.
 
 ### Recreating BY2011 area-source projections
 
@@ -71,9 +71,9 @@ Again, if you're reading in throughput data from a .CSV or .XLSX file, you won't
 
 ## Charting annual throughputs
 
-Let's examine a category where the growth in throughput varies by county over time. A good example is `#761` "Sanitary Sewers".
+Let's examine a category where the growth in throughput varies by county over time. A good example is category #761 Sanitary Sewers.
 
-```{r BY2011_area_source_projection_data-283-284-chart_annual_throughputs_by, cache=TRUE, dependson="BY2011_area_source_projection_data"}
+```{r BY2011_area_source_projection_data-283-284-chart_annual_throughputs_by-cnty_abbr, cache=TRUE, dependson="BY2011_area_source_projection_data"}
 #
 # Even though the relevant throughputs appear twice in these data --- once for
 # `ROG` rows, and once for `CH4` --- `chart_annual_throughputs_by()` tries not
@@ -81,8 +81,9 @@ Let's examine a category where the growth in throughput varies by county over ti
 # 
 BY2011_area_source_projection_data %>%
   filter_categories(
-    "Sanitary Sewers" = 761) %>%
+    "#761 Sanitary Sewers" = 761) %>%
   chart_annual_throughputs_by(
+    flag_years = CY(2011),
     color = cnty_abbr,
     title = "Sanitary Sewers",
     subtitle = str_c(
@@ -91,10 +92,30 @@ BY2011_area_source_projection_data %>%
       sep = "\n"))
 ```
 
-As you can see, the syntax for `chart_annual_throughputs_by()` is identical to that for `chart_annual_emissions_by()`. If you used `chart_annual_emissions()` and didn't supply `color = cnty_abbr`, you would see the regional totals instead.
+As you can see, the syntax for `chart_annual_throughputs_by()` is identical to that for `chart_annual_emissions_by()`. 
 
 ```{block type="note"}
 Above, we've colored by `cnty_abbr`, rather than `cat_id`. This often makes sense when working with throughput data, since different categories often are estimated in terms of different throughput units. So, displaying throughputs for different categories on the same scale may not always make sense (although when the units are the same, it does).
+```
+
+If you used `chart_annual_throughputs()` and didn't supply `color = cnty_abbr`, you will see the regional totals instead (see below).
+
+```{r BY2011_area_source_projection_data-283-284-chart_annual_throughputs, cache=TRUE, dependson="BY2011_area_source_projection_data"}
+#
+# Even though the relevant throughputs appear twice in these data --- once for
+# `ROG` rows, and once for `CH4` --- `chart_annual_throughputs_by()` tries not
+# to double-count. See `help("chart_annual_throughputs_by")` for details.
+# 
+BY2011_area_source_projection_data %>%
+  filter_categories(
+    "#761 Sanitary Sewers" = 761) %>%
+  chart_annual_throughputs(
+    flag_years = CY(2011),
+    title = "Sanitary Sewers",
+    subtitle = str_c(
+      "Sanitary sewers (category #761) tracks with household population.",
+      "The relevant growth profile (#657, in DataBank) also varies by county.",
+      sep = "\n"))
 ```
 
 What if we wanted to understand these throughputs in terms of percent change (%), rather than absolute units ("1000 Pounds")? Let's move on to the next two chapters, [Relative Changes] and [Growth Profiles].

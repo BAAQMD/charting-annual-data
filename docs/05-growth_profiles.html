@@ -217,55 +217,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We’ll use the ones beginning with <code>DB_</code> to fetch some growth profile data stored in DataBank. And, we’ll use <code>chart_annual_quantities_by()</code> to plot the raw (non-normalized) numbers behind a specific growth profile.</p>
 <div id="normalized-growth-factors" class="section level2">
 <h2><span class="header-section-number">5.1</span> Normalized growth factors</h2>
-<p>Let’s start by pulling normalized <code>BY2011</code> growth factors from DataBank.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co"># `DB_growth_profiles()` automatically normalizes BY2011 profiles to CY2011. If</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co"># you would like them normalized to a different year, just alter the value of</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co"># `ref_year`, below.</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co"># `DB_growth_profiles()` also does the work of linking profiles to categories,</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co"># consistent with the configuration stored in DataBank for the given base year.</span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co"># </span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9">BY2011_growth_profile_data &lt;-</a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="st">  </span><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="st">  </span><span class="kw">DB_growth_profiles</span>(</a>
-<a class="sourceLine" id="cb13-12" data-line-number="12">    <span class="dt">ref_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb13-13" data-line-number="13">    <span class="dt">years =</span> <span class="kw">CY</span>(<span class="dv">1990</span><span class="op">:</span><span class="dv">2040</span>),</a>
-<a class="sourceLine" id="cb13-14" data-line-number="14">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) </a></code></pre></div>
-<p>With these in hand, we can chart the profile for BY2011 category #283 “Residential Combustion”. We use the same function, <code>chart_annual_growth_by()</code>, that we learned about in the previous chapter.</p>
+<p>Let’s start by pulling BY2011 growth factors from DataBank. <code>DB_growth_profiles()</code> takes care of normalizing them, making the assumption that BY2011 should ne mornalized to CY2011.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># Chart the relative growth in these growth factors. </span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">BY2011_growth_profile_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">    <span class="dt">color =</span> cnty_abbr,</a>
-<a class="sourceLine" id="cb14-9" data-line-number="9">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb14-11" data-line-number="11">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>),</a>
-<a class="sourceLine" id="cb14-12" data-line-number="12">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
-<a class="sourceLine" id="cb14-13" data-line-number="13">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
-<a class="sourceLine" id="cb14-14" data-line-number="14">      <span class="st">&quot;This is the growth profile associated with category #283 in BY2011.&quot;</span>,</a>
-<a class="sourceLine" id="cb14-15" data-line-number="15">      <span class="st">&quot;There is a +9% change from CY2011 to CY2030.&quot;</span>,</a>
-<a class="sourceLine" id="cb14-16" data-line-number="16">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># `DB_growth_profiles()` automatically normalizes BY2011 profiles to CY2011. If</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co"># you would like them normalized to a different year, just alter the value of</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co"># `ref_year`, below.</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co"># `DB_growth_profiles()` also does the work of linking profiles to categories,</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co"># consistent with the configuration stored in DataBank for the given base year.</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co"># </span></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">BY2011_growth_profile_data &lt;-</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="st">  </span><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="st">  </span><span class="kw">DB_growth_profiles</span>(</a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">    <span class="dt">years =</span> <span class="kw">CY</span>(<span class="dv">1990</span><span class="op">:</span><span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) </a></code></pre></div>
+<p>With these in hand, we can chart the profile for BY2011 category #283 “Residential Combustion”. We use the same function, <code>chart_annual_growth_by()</code>, that we learned about in the previous chapter.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co"># Chart the relative growth in these growth factors. </span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">BY2011_growth_profile_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb15-8" data-line-number="8">    <span class="dt">color =</span> cnty_abbr,</a>
+<a class="sourceLine" id="cb15-9" data-line-number="9">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb15-10" data-line-number="10">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb15-11" data-line-number="11">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb15-12" data-line-number="12">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
+<a class="sourceLine" id="cb15-13" data-line-number="13">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb15-14" data-line-number="14">      <span class="st">&quot;This is the growth profile associated with category #283 in BY2011.&quot;</span>,</a>
+<a class="sourceLine" id="cb15-15" data-line-number="15">      <span class="st">&quot;There is a +9% change from CY2011 to CY2030.&quot;</span>,</a>
+<a class="sourceLine" id="cb15-16" data-line-number="16">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_growth_profile_data-cat_283-chart_annual_growth-1.svg" width="800" height="400" /></p>
 </div>
 <div id="county-specific-growth-profiles" class="section level2">
 <h2><span class="header-section-number">5.2</span> County-specific growth profiles</h2>
 <p>The above profile for natural gas usage doesn’t vary by county, but we can look at one that does. In DataBank, the growth profile associated with BY2011 category #761 “Sanitary Sewers” is a good example.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co"># Chart the *raw* growth profile data for profile #657 &quot;Household Population&quot;.</span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co"># Profile #657 was used to project BY2011 category #761 &quot;Sanitary Sewers&quot;.</span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5">BY2011_growth_profile_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb15-7" data-line-number="7">    <span class="st">&quot;#761 Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
-<a class="sourceLine" id="cb15-9" data-line-number="9">    <span class="dt">color =</span> cnty_abbr,</a>
-<a class="sourceLine" id="cb15-10" data-line-number="10">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb15-11" data-line-number="11">    <span class="dt">title =</span> <span class="st">&quot;Household Population (Growth Profile #657)&quot;</span>,</a>
-<a class="sourceLine" id="cb15-12" data-line-number="12">    <span class="dt">subtitle =</span> <span class="st">&#39;Used to project BY2011 category #761 &quot;Sanitary Sewers&quot;.&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># Chart the *raw* growth profile data for profile #657 &quot;Household Population&quot;.</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co"># Profile #657 was used to project BY2011 category #761 &quot;Sanitary Sewers&quot;.</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">BY2011_growth_profile_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">    <span class="st">&quot;#761 Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">    <span class="dt">color =</span> cnty_abbr,</a>
+<a class="sourceLine" id="cb16-10" data-line-number="10">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb16-11" data-line-number="11">    <span class="dt">title =</span> <span class="st">&quot;Household Population (Growth Profile #657)&quot;</span>,</a>
+<a class="sourceLine" id="cb16-12" data-line-number="12">    <span class="dt">subtitle =</span> <span class="st">&#39;Used to project BY2011 category #761 &quot;Sanitary Sewers&quot;.&#39;</span>)</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_raw_growth_profile_data-cat_716-chart_annual_quantities_by-cnty_abbr-1.svg" width="800" height="400" /></p>
 </div>
 <div id="raw-growth-profile-data" class="section level2">
@@ -285,31 +284,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>in some natural unit, like “persons” or “acres”.</li>
 </ul>
 <p>(It varies from profile to profile.)</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># By default, `BY2011_raw_growth_profile_data()` returns nested results.</span></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co"># Those are one row per profile, not one row per (profile, year, county). </span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co"># Here, we override that with `nested = FALSE`.</span></a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">#</span></a>
-<a class="sourceLine" id="cb16-7" data-line-number="7">BY2011_raw_growth_profile_data &lt;-</a>
-<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="st">  </span><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="st">  </span><span class="kw">DB_raw_growth_profiles</span>(</a>
-<a class="sourceLine" id="cb16-10" data-line-number="10">    <span class="dt">nested =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb16-11" data-line-number="11">    <span class="dt">years =</span> <span class="kw">CY</span>(<span class="dv">1990</span><span class="op">:</span><span class="dv">2040</span>),</a>
-<a class="sourceLine" id="cb16-12" data-line-number="12">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="co"># By default, `BY2011_raw_growth_profile_data()` returns nested results.</span></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co"># Those are one row per profile, not one row per (profile, year, county). </span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="co"># Here, we override that with `nested = FALSE`.</span></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="co">#</span></a>
+<a class="sourceLine" id="cb17-7" data-line-number="7">BY2011_raw_growth_profile_data &lt;-</a>
+<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="st">  </span><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-9" data-line-number="9"><span class="st">  </span><span class="kw">DB_raw_growth_profiles</span>(</a>
+<a class="sourceLine" id="cb17-10" data-line-number="10">    <span class="dt">nested =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb17-11" data-line-number="11">    <span class="dt">years =</span> <span class="kw">CY</span>(<span class="dv">1990</span><span class="op">:</span><span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb17-12" data-line-number="12">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="finding-the-profile-associated-with-a-by2011-category-id" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Finding the profile associated with a BY2011 category ID</h3>
 <p>Let’s look up the growth profile associated with BY2011 category #761 “Sanitary Sewers”.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="co"># Figure out the ID of the growth profile that&#39;s been associated with BY2011</span></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co"># category #761 &quot;Sanitary Sewers&quot;.</span></a>
-<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="st">  </span><span class="kw">DB_growth_profile_crosswalk</span>(</a>
-<a class="sourceLine" id="cb17-7" data-line-number="7">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb17-9" data-line-number="9">    <span class="st">&quot;#761 Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co"># Figure out the ID of the growth profile that&#39;s been associated with BY2011</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="co"># category #761 &quot;Sanitary Sewers&quot;.</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="st">  </span><span class="kw">DB_growth_profile_crosswalk</span>(</a>
+<a class="sourceLine" id="cb18-7" data-line-number="7">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb18-9" data-line-number="9">    <span class="st">&quot;#761 Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -333,14 +332,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Above, we can see that the relevant growth profile ID is #657. Now we can look up the metadata associated with it: <code>gpf_name</code> (name), <code>gpf_staff</code> (staff), etc.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">BY2011_raw_growth_profile_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3">    gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="st">  </span><span class="kw">distinct</span>(</a>
-<a class="sourceLine" id="cb18-5" data-line-number="5">    gpf_id,</a>
-<a class="sourceLine" id="cb18-6" data-line-number="6">    gpf_name,</a>
-<a class="sourceLine" id="cb18-7" data-line-number="7">    gpf_staff,</a>
-<a class="sourceLine" id="cb18-8" data-line-number="8">    gpf_date)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">BY2011_raw_growth_profile_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">    gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="st">  </span><span class="kw">distinct</span>(</a>
+<a class="sourceLine" id="cb19-5" data-line-number="5">    gpf_id,</a>
+<a class="sourceLine" id="cb19-6" data-line-number="6">    gpf_name,</a>
+<a class="sourceLine" id="cb19-7" data-line-number="7">    gpf_staff,</a>
+<a class="sourceLine" id="cb19-8" data-line-number="8">    gpf_date)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -363,23 +362,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="charting-the-un-normalized-raw-growth-profile-data" class="section level3">
 <h3><span class="header-section-number">5.3.3</span> Charting the un-normalized (“raw”) growth profile data</h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="co"># Still charting `BY2011_raw_growth_profile_data`, but using</span></a>
-<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="co"># `chart_annual_quantities_by()` instead of `chart_annual_growth_by()`.</span></a>
-<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="co">#</span></a>
-<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="co"># Now we can see the offsets, as well as the slopes, that are in the raw data.</span></a>
-<a class="sourceLine" id="cb19-6" data-line-number="6"><span class="co">#</span></a>
-<a class="sourceLine" id="cb19-7" data-line-number="7"><span class="co"># If we knew their units, we could label the y-axis ... but we don&#39;t.</span></a>
-<a class="sourceLine" id="cb19-8" data-line-number="8"><span class="co"># </span></a>
-<a class="sourceLine" id="cb19-9" data-line-number="9">BY2011_raw_growth_profile_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb19-10" data-line-number="10"><span class="st">  </span><span class="kw">filter</span>(</a>
-<a class="sourceLine" id="cb19-11" data-line-number="11">    gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb19-12" data-line-number="12"><span class="st">  </span><span class="kw">chart_annual_quantities_by</span>(</a>
-<a class="sourceLine" id="cb19-13" data-line-number="13">    <span class="dt">color =</span> cnty_abbr,</a>
-<a class="sourceLine" id="cb19-14" data-line-number="14">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb19-15" data-line-number="15">    <span class="dt">flag_labels =</span> <span class="st">&quot;{format(gf_qty, big.mark = &#39;,&#39;, digits = 4, trim = TRUE)}&quot;</span>,</a>
-<a class="sourceLine" id="cb19-16" data-line-number="16">    <span class="dt">title =</span> <span class="st">&quot;Household Population (Growth Profile #657)&quot;</span>,</a>
-<a class="sourceLine" id="cb19-17" data-line-number="17">    <span class="dt">subtitle =</span> <span class="st">&#39;Used to project BY2011 category #761 &quot;Sanitary Sewers&quot;.&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="co"># Still charting `BY2011_raw_growth_profile_data`, but using</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="co"># `chart_annual_quantities_by()` instead of `chart_annual_growth_by()`.</span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="co">#</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="co"># Now we can see the offsets, as well as the slopes, that are in the raw data.</span></a>
+<a class="sourceLine" id="cb20-6" data-line-number="6"><span class="co">#</span></a>
+<a class="sourceLine" id="cb20-7" data-line-number="7"><span class="co"># If we knew their units, we could label the y-axis ... but we don&#39;t.</span></a>
+<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="co"># </span></a>
+<a class="sourceLine" id="cb20-9" data-line-number="9">BY2011_raw_growth_profile_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb20-10" data-line-number="10"><span class="st">  </span><span class="kw">filter</span>(</a>
+<a class="sourceLine" id="cb20-11" data-line-number="11">    gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb20-12" data-line-number="12"><span class="st">  </span><span class="kw">chart_annual_quantities_by</span>(</a>
+<a class="sourceLine" id="cb20-13" data-line-number="13">    <span class="dt">color =</span> cnty_abbr,</a>
+<a class="sourceLine" id="cb20-14" data-line-number="14">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb20-15" data-line-number="15">    <span class="dt">flag_labels =</span> <span class="st">&quot;{format(gf_qty, big.mark = &#39;,&#39;, digits = 4, trim = TRUE)}&quot;</span>,</a>
+<a class="sourceLine" id="cb20-16" data-line-number="16">    <span class="dt">title =</span> <span class="st">&quot;Household Population (Growth Profile #657)&quot;</span>,</a>
+<a class="sourceLine" id="cb20-17" data-line-number="17">    <span class="dt">subtitle =</span> <span class="st">&#39;Used to project BY2011 category #761 &quot;Sanitary Sewers&quot;.&#39;</span>)</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_raw_growth_profile_data-gpf_657-chart_annual_quantities_by-cnty_abbr-1.svg" width="800" height="400" /></p>
 </div>
 <div id="a-note-on-county-fractions" class="section level3">

@@ -15,7 +15,7 @@ We'll use the ones beginning with `DB_` to fetch some growth profile data stored
 
 ## Normalized growth factors
 
-Let's start by pulling normalized `BY2011` growth factors from DataBank.
+Let's start by pulling BY2011 growth factors from DataBank. `DB_growth_profiles()` takes care of normalizing them, making the assumption that BY2011 should ne mornalized to CY2011.
 
 ```{r BY2011_growth_profile_data, cache=TRUE}
 #
@@ -29,8 +29,7 @@ Let's start by pulling normalized `BY2011` growth factors from DataBank.
 BY2011_growth_profile_data <-
   BY(2011) %>%
   DB_growth_profiles(
-    ref_year = CY(2011),
-    years = CY(1990:2040),
+    years = CY(1990:2030),
     verbose = TRUE) 
 ```
 
@@ -103,7 +102,7 @@ BY2011_raw_growth_profile_data <-
   BY(2011) %>%
   DB_raw_growth_profiles(
     nested = FALSE,
-    years = CY(1990:2040),
+    years = CY(1990:2030),
     verbose = TRUE)
 ```
 
