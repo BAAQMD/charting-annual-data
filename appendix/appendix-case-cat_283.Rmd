@@ -1,8 +1,8 @@
 ## Changes in forecasts for category #283 {#appendix-case-cat_283}
 
-You might have noticed that the throughput forecast, for category #283, doesn't follow the same trajectory as the NOx forecast.
+You might have noticed that the throughput forecast, for category #283, doesn't follow the same trajectory as the NO~x~ forecast.
 
-This is not because NOx emission factors were projected to increase after CY2011. Here's what happened:
+This is not because NO~x~ emission factors were projected to increase after CY2011. Here's what happened:
 
 1. The BY2011 criteria-pollutant calculations were completed. 
 2. The growth profile for this category, in DataBank, was updated.

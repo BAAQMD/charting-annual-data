@@ -24,7 +24,7 @@
 <meta name="author" content="David Holstius" />
 
 
-<meta name="date" content="2020-03-18" />
+<meta name="date" content="2020-03-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -218,16 +218,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.1</span> Key functions</h2>
 <p>This section relies on three key functions:</p>
 <ul>
-<li><code>chart_annual_emissions_by()</code></li>
 <li><code>filter_categories()</code></li>
 <li><code>filter_pollutants()</code></li>
+<li><code>chart_annual_emissions_by()</code></li>
 </ul>
-<p>The <code>chart_annual_emissions_by()</code> function — and its shorter form, <code>chart_annual_emissions()</code> — will be the foundation of this section. To learn more about <code>chart_annual_emissions_by()</code>, you can always type <code>help(&quot;chart_annual_emissions_by&quot;)</code>.</p>
 <p>If you have read the vignette <em>Introduction to BY Data</em><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> then you are already familiar with <code>filter_categories()</code> and <code>filter_pollutants()</code>.</p>
+<p>The <code>chart_annual_emissions_by()</code> function — and its shorter form, <code>chart_annual_emissions()</code> — will be the foundation of this section. To learn more about <code>chart_annual_emissions_by()</code>, you can always type <code>help(&quot;chart_annual_emissions_by&quot;)</code>.</p>
 </div>
 <div id="charting-annual-emissions" class="section level2">
 <h2><span class="header-section-number">3.2</span> Charting annual emissions</h2>
-<p>Let’s try it out on a relatively simple case: charting NOx emissions from BY2011 category <code>#283</code>, natural gas consumed for residential water heating.</p>
+<p>Let’s try it out on a relatively simple case: charting NO<sub>x</sub> emissions from BY2011 category #283 Water Heating.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># This is an absolutely minimal example for `chart_annual_emissions()`.</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co"># We&#39;re going to build on it, adding improvements as we go.</span></a>
@@ -243,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="coloring-by-category" class="section level2">
 <h2><span class="header-section-number">3.3</span> Coloring by category</h2>
-<p>If you want to chart more than one category, you’ll probably want a way to distinguish them visually. Let’s use <code>color</code>.</p>
+<p>If you want to chart more than one category, you’ll probably want a way to distinguish them visually. Let’s use <code>color</code> to distinguish (and compare) #283 Water Heating and #284 Space Heating.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># Here we&#39;ll color by `category`. You could also color by `cnty_abbr`. (Try it!)</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#</span></a>
@@ -265,10 +265,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb4-19" data-line-number="19"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
 <a class="sourceLine" id="cb4-20" data-line-number="20">    <span class="dt">color =</span> category)</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-1.svg" width="800" height="300" /></p>
-<p>The default colors are provided by <code>scale_color_tableau()</code>. You can try using a different color scheme if you like. Go to the “Help” pane in RStudio, and type “scale_color_”, then wait. You should see a list of choices pop up.</p>
 <div class="note">
 <p>
-If you wind up with more than ten colors, you may need to rethink the chart. Maybe grouping categories would be helpful? In later sections, we will learn how to easily do this.
+The default colors are provided by <code>scale_color_tableau()</code>. You can try using a different color scheme if you like. Go to the “Help” pane in RStudio, and type “scale_color_”, then wait. You should see a list of choices pop up.
+</p>
+<p>
+If you wind up with more than ten colors, rethink the chart. Maybe grouping categories would be helpful? In later sections, we will learn how.
 </p>
 </div>
 </div>
@@ -337,22 +339,28 @@ If you wind up with more than ten colors, you may need to rethink the chart. May
 <p>To create a stacked (“area”) chart, simply pass <code>fill = ...</code> instead of <code>color = ...</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co"># `fill` can be supplied in place of `color`.</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb8-9" data-line-number="9">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb8-11" data-line-number="11">    <span class="dt">fill =</span> category,</a>
-<a class="sourceLine" id="cb8-12" data-line-number="12">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
-<a class="sourceLine" id="cb8-13" data-line-number="13">    <span class="dt">subtitle =</span> <span class="st">&quot;Combined emissions from water and space heating have declined, but are projected to rise reach 1990 levels by 2030.&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co"># </span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co"># `subtitle = str_c(..., sep = &quot;\n&quot;)` means &quot;combine multiple lines of text&quot;.</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co"># We can use this to avoid subtitles running off the chart.</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
+<a class="sourceLine" id="cb8-14" data-line-number="14">    <span class="dt">fill =</span> category,</a>
+<a class="sourceLine" id="cb8-15" data-line-number="15">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
+<a class="sourceLine" id="cb8-16" data-line-number="16">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb8-17" data-line-number="17">      <span class="st">&quot;Combined emissions from water and space heating have declined.&quot;</span>,</a>
+<a class="sourceLine" id="cb8-18" data-line-number="18">      <span class="st">&quot;But, they are projected to return to 1990 levels by 2030.&quot;</span>,</a>
+<a class="sourceLine" id="cb8-19" data-line-number="19">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-fill_by_category-1.svg" width="800" height="400" /></p>
 </div>
 <div id="more-than-one-pollutant" class="section level2">
 <h2><span class="header-section-number">3.8</span> More than one pollutant</h2>
-<p>Above, we’ve kept things simple by just focusing on <code>NOx</code>. But you’ll often want to show more than one pollutant at the same time. You can definitely do that!</p>
+<p>Above, we’ve kept things simple by just focusing on NO<sub>x</sub>. But you’ll often want to show more than one pollutant at the same time. You can definitely do that!</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co"># If multiple pollutants are represented in the data that is passed to</span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co"># `chart_annual_emissions_by()`, it will try to be helpful by creating a</span></a>

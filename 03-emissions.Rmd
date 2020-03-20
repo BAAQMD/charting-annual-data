@@ -3,7 +3,7 @@
 **This chapter will show you how to create charts** showing annual emissions for one or more *categories* and one or more *pollutants*.
 
 It will also show you how to customize those charts with:
-    
+
 - a unique *color* for each category;
 - directly labeled *values* at specific years; and
 - reader-friendly *names* for categories.
@@ -16,17 +16,17 @@ All of what you learn will be extensible to the chapters on [Throughputs], [Grow
 
 This section relies on three key functions:
 
-- `chart_annual_emissions_by()`
 - `filter_categories()`
 - `filter_pollutants()`
-
-The `chart_annual_emissions_by()` function --- and its shorter form, `chart_annual_emissions()` --- will be the foundation of this section. To learn more about `chart_annual_emissions_by()`, you can always type `help("chart_annual_emissions_by")`.
+- `chart_annual_emissions_by()`
 
 If you have read the vignette *Introduction to BY Data*^[This is being migrated from an R vignette to a GitBook like this one. Stay tuned!] then you are already familiar with `filter_categories()` and `filter_pollutants()`.
 
+The `chart_annual_emissions_by()` function --- and its shorter form, `chart_annual_emissions()` --- will be the foundation of this section. To learn more about `chart_annual_emissions_by()`, you can always type `help("chart_annual_emissions_by")`.
+
 ## Charting annual emissions
 
-Let's try it out on a relatively simple case: charting NOx emissions from BY2011 category `#283`, natural gas consumed for residential water heating.
+Let's try it out on a relatively simple case: charting NO~x~ emissions from BY2011 category #283 Water Heating.
 
 ```{r BY2011_annual_emission_data-283-NOx, fig.height=3, out.height=300}
 #
@@ -45,7 +45,7 @@ That's a great first step!
 
 ## Coloring by category
 
-If you want to chart more than one category, you'll probably want a way to distinguish them visually. Let's use `color`. 
+If you want to chart more than one category, you'll probably want a way to distinguish them visually. Let's use `color` to distinguish (and compare) #283 Water Heating and #284 Space Heating.
 
 ```{r BY2011_annual_emission_data-283-284-NOx, fig.height=3, out.height=300}
 #
@@ -70,10 +70,10 @@ BY2011_annual_emission_data %>%
     color = category)
 ```
 
+```{block type="note"}
 The default colors are provided by `scale_color_tableau()`. You can try using a different color scheme if you like. Go to the "Help" pane in RStudio, and type "scale_color_", then wait. You should see a list of choices pop up.
 
-```{block type="note"}
-If you wind up with more than ten colors, you may need to rethink the chart. Maybe grouping categories would be helpful? In later sections, we will learn how to easily do this.
+If you wind up with more than ten colors, rethink the chart. Maybe grouping categories would be helpful? In later sections, we will learn how.
 ```
 
 ## Flagging specific values
@@ -151,6 +151,9 @@ To create a stacked ("area") chart, simply pass `fill = ...` instead of `color =
 ```{r BY2011_annual_emission_data-283-284-NOx-fill_by_category}
 #
 # `fill` can be supplied in place of `color`.
+# 
+# `subtitle = str_c(..., sep = "\n")` means "combine multiple lines of text".
+# We can use this to avoid subtitles running off the chart.
 #
 BY2011_annual_emission_data %>%
   filter_categories(
@@ -161,12 +164,15 @@ BY2011_annual_emission_data %>%
   chart_annual_emissions_by(
     fill = category,
     title = "Residential NG Combustion: Space and Water Heating",
-    subtitle = "Combined emissions from water and space heating have declined, but are projected to rise reach 1990 levels by 2030.")
+    subtitle = str_c(
+      "Combined emissions from water and space heating have declined.",
+      "But, they are projected to return to 1990 levels by 2030.",
+      sep = "\n"))
 ```
 
 ## More than one pollutant
 
-Above, we've kept things simple by just focusing on `NOx`. But you'll often want to show more than one pollutant at the same time. You can definitely do that!
+Above, we've kept things simple by just focusing on NO~x~. But you'll often want to show more than one pollutant at the same time. You can definitely do that!
 
 ```{r BY2011_annual_emission_data-283-284-multiple_pollutants, fig.height=6, out.height=600}
 #

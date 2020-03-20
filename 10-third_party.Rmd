@@ -6,7 +6,7 @@ This set of examples pulls from an R library, `ECDMS`, that contains tidied data
 
 To gain access, we just type `library(ECDMS)`.
 
-```{r library-ECDMS}
+```{r library-ECDMS, cache = FALSE}
 library(inventory)
 library(ECDMS)
 ```

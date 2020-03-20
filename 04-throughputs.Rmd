@@ -30,6 +30,7 @@ In the chunk of code below, we recreate the entire BY2011 area-source inventory,
 BY2011_area_source_projection_data <-
   BY(2011) %>%
   BY_area_source_projections(
+    years = BY2011_YEARS,
     verbose = TRUE)
 
 head(BY2011_area_source_projection_data)
