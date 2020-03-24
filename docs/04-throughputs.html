@@ -24,7 +24,7 @@
 <meta name="author" content="David Holstius" />
 
 
-<meta name="date" content="2020-03-20" />
+<meta name="date" content="2020-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -377,14 +377,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb12-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
 <a class="sourceLine" id="cb12-8" data-line-number="8">    <span class="st">&quot;#761 Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb12-9" data-line-number="9"><span class="st">  </span><span class="kw">chart_annual_throughputs_by</span>(</a>
-<a class="sourceLine" id="cb12-10" data-line-number="10">    <span class="dt">color =</span> cnty_abbr,</a>
-<a class="sourceLine" id="cb12-11" data-line-number="11">    <span class="dt">title =</span> <span class="st">&quot;Sanitary Sewers&quot;</span>,</a>
-<a class="sourceLine" id="cb12-12" data-line-number="12">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
-<a class="sourceLine" id="cb12-13" data-line-number="13">      <span class="st">&quot;Sanitary sewers (category #761) tracks with household population.&quot;</span>,</a>
-<a class="sourceLine" id="cb12-14" data-line-number="14">      <span class="st">&quot;The relevant growth profile (#657, in DataBank) also varies by county.&quot;</span>,</a>
-<a class="sourceLine" id="cb12-15" data-line-number="15">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb12-10" data-line-number="10">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb12-11" data-line-number="11">    <span class="dt">color =</span> cnty_abbr,</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12">    <span class="dt">title =</span> <span class="st">&quot;Sanitary Sewers&quot;</span>,</a>
+<a class="sourceLine" id="cb12-13" data-line-number="13">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb12-14" data-line-number="14">      <span class="st">&quot;Sanitary sewers (category #761) tracks with household population.&quot;</span>,</a>
+<a class="sourceLine" id="cb12-15" data-line-number="15">      <span class="st">&quot;The relevant growth profile (#657, in DataBank) also varies by county.&quot;</span>,</a>
+<a class="sourceLine" id="cb12-16" data-line-number="16">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_area_source_projection_data-283-284-chart_annual_throughputs_by-cnty_abbr-1.svg" width="800" height="400" /></p>
-<p>As you can see, the syntax for <code>chart_annual_throughputs_by()</code> is identical to that for <code>chart_annual_emissions_by()</code>. If you used <code>chart_annual_throughputs()</code> and didn’t supply <code>color = cnty_abbr</code>, you will see the regional totals instead (see below).</p>
+<p>As you can see, the syntax for <code>chart_annual_throughputs_by()</code> is identical to that for <code>chart_annual_emissions_by()</code>.</p>
+<div class="note">
+<p>
+Above, we’ve colored by <code>cnty_abbr</code>, rather than <code>cat_id</code>. This often makes sense when working with throughput data, since different categories often are estimated in terms of different throughput units. So, displaying throughputs for different categories on the same scale may not always make sense (although when the units are the same, it does).
+</p>
+</div>
+<p>If you used <code>chart_annual_throughputs()</code> and didn’t supply <code>color = cnty_abbr</code>, you will see the regional totals instead (see below).</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co">#</span></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co"># Even though the relevant throughputs appear twice in these data --- once for</span></a>
 <a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co"># `ROG` rows, and once for `CH4` --- `chart_annual_throughputs_by()` tries not</span></a>
@@ -394,17 +401,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb13-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
 <a class="sourceLine" id="cb13-8" data-line-number="8">    <span class="st">&quot;#761 Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb13-9" data-line-number="9"><span class="st">  </span><span class="kw">chart_annual_throughputs</span>(</a>
-<a class="sourceLine" id="cb13-10" data-line-number="10">    <span class="dt">title =</span> <span class="st">&quot;Sanitary Sewers&quot;</span>,</a>
-<a class="sourceLine" id="cb13-11" data-line-number="11">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
-<a class="sourceLine" id="cb13-12" data-line-number="12">      <span class="st">&quot;Sanitary sewers (category #761) tracks with household population.&quot;</span>,</a>
-<a class="sourceLine" id="cb13-13" data-line-number="13">      <span class="st">&quot;The relevant growth profile (#657, in DataBank) also varies by county.&quot;</span>,</a>
-<a class="sourceLine" id="cb13-14" data-line-number="14">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb13-10" data-line-number="10">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb13-11" data-line-number="11">    <span class="dt">title =</span> <span class="st">&quot;Sanitary Sewers&quot;</span>,</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb13-13" data-line-number="13">      <span class="st">&quot;Sanitary sewers (category #761) tracks with household population.&quot;</span>,</a>
+<a class="sourceLine" id="cb13-14" data-line-number="14">      <span class="st">&quot;The relevant growth profile (#657, in DataBank) also varies by county.&quot;</span>,</a>
+<a class="sourceLine" id="cb13-15" data-line-number="15">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_area_source_projection_data-283-284-chart_annual_throughputs-1.svg" width="800" height="400" /></p>
-<div class="note">
-<p>
-Above, we’ve colored by <code>cnty_abbr</code>, rather than <code>cat_id</code>. This often makes sense when working with throughput data, since different categories often are estimated in terms of different throughput units. So, displaying throughputs for different categories on the same scale may not always make sense (although when the units are the same, it does).
-</p>
-</div>
 <p>What if we wanted to understand these throughputs in terms of percent change (%), rather than absolute units (“1000 Pounds”)? Let’s move on to the next two chapters, <a href="06-relative_changes.html#relative-changes">Relative Changes</a> and <a href="05-growth_profiles.html#growth-profiles">Growth Profiles</a>.</p>
 
 </div>

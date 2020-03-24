@@ -15,7 +15,7 @@ We'll use the ones beginning with `DB_` to fetch some growth profile data stored
 
 ## Normalized growth factors
 
-Let's start by pulling BY2011 growth factors from DataBank. `DB_growth_profiles()` takes care of normalizing them, making the assumption that BY2011 should ne mornalized to CY2011.
+Let's start by pulling BY2011 growth factors from DataBank. `DB_growth_profiles()` takes care of normalizing them, making the assumption that BY2011 should be normalized to CY2011.
 
 ```{r BY2011_growth_profile_data, cache=TRUE}
 #

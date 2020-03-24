@@ -24,7 +24,7 @@
 <meta name="author" content="David Holstius" />
 
 
-<meta name="date" content="2020-03-20" />
+<meta name="date" content="2020-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -211,68 +211,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.1</span> Relative changes in emissions</h2>
 <p>We can easily examine relative growth using <code>chart_annual_growth_by()</code>. It expects the same input as <code>chart_annual_emissions()</code>; the only additional requirement is that you supply a <code>base_year</code>.</p>
 <p>Here is an example. It’s exactly the same as we saw in the <a href="03-emissions.html#emissions">Emissions</a> chapter, except that we’re swapping <code>chart_annual_growth_by()</code> in for <code>chart_annual_emissions_by()</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="co"># The `base_year` can be prefixed with `CY`, `BY`, `RY` or `PY`;</span></a>
-<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="co"># `chart_annual_growth_by()` will ignore the differences.</span></a>
-<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb21-5" data-line-number="5">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb21-7" data-line-number="7">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb21-8" data-line-number="8">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-9" data-line-number="9"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb21-10" data-line-number="10">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-11" data-line-number="11"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
-<a class="sourceLine" id="cb21-12" data-line-number="12">    <span class="dt">color =</span> category,</a>
-<a class="sourceLine" id="cb21-13" data-line-number="13">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>)) <span class="co"># required; can be BY or CY</span></a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="co"># The `base_year` can be prefixed with `CY`, `BY`, `RY` or `PY`;</span></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="co"># `chart_annual_growth_by()` will ignore the differences.</span></a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb23-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb23-7" data-line-number="7">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
+<a class="sourceLine" id="cb23-8" data-line-number="8">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb23-9" data-line-number="9"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb23-10" data-line-number="10">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb23-11" data-line-number="11"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb23-12" data-line-number="12">    <span class="dt">color =</span> category,</a>
+<a class="sourceLine" id="cb23-13" data-line-number="13">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>)) <span class="co"># required; can be BY or CY</span></a></code></pre></div>
+<pre><code>## # A tibble: 6 x 8
+##   year   cnty_abbr cat_id pol_abbr ems_qty ems_unit category           pollutant
+##   &lt;chr&gt;  &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;fct&gt;              &lt;fct&gt;    
+## 1 CY1990 ALA          283 NOx         677. ton/yr   #283 Space Heating NOx      
+## 2 CY1990 ALA          284 NOx         455. ton/yr   #284 Water Heating NOx      
+## 3 CY1990 CC           283 NOx         518. ton/yr   #283 Space Heating NOx      
+## 4 CY1990 CC           284 NOx         348. ton/yr   #284 Water Heating NOx      
+## 5 CY1990 MAR          283 NOx         163. ton/yr   #283 Space Heating NOx      
+## 6 CY1990 MAR          284 NOx         110. ton/yr   #284 Water Heating NOx</code></pre>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-chart_annual_growth_by-1.svg" width="800" height="400" /></p>
 <p>We can enhance it in exactly the same ways that we learned in the <a href="03-emissions.html#emissions">Emissions</a> chapter, too. Using <code>flag_years</code> can be especially helpful, because then we can read off the exact growth for a given future (or historical) year.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb22-3" data-line-number="3">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb22-4" data-line-number="4">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-5" data-line-number="5"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb22-6" data-line-number="6">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-7" data-line-number="7"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
-<a class="sourceLine" id="cb22-8" data-line-number="8">    <span class="dt">color =</span> category,</a>
-<a class="sourceLine" id="cb22-9" data-line-number="9">    <span class="dt">base_year =</span> <span class="kw">BY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb22-10" data-line-number="10">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2002</span>, <span class="dv">2030</span>),</a>
-<a class="sourceLine" id="cb22-11" data-line-number="11">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
-<a class="sourceLine" id="cb22-12" data-line-number="12">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
-<a class="sourceLine" id="cb22-13" data-line-number="13">      <span class="st">&quot;NOx emissions from water and space heating are projected to grow by +24% from CY2011 to CY2030.&quot;</span>,</a>
-<a class="sourceLine" id="cb22-14" data-line-number="14">      <span class="st">&quot;Labeled values are percent changes relative to the base year (CY2011).&quot;</span>,</a>
-<a class="sourceLine" id="cb22-15" data-line-number="15">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) <span class="co"># combine lines with a newline</span></a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
+<a class="sourceLine" id="cb25-4" data-line-number="4">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb25-7" data-line-number="7"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb25-8" data-line-number="8">    <span class="dt">color =</span> category,</a>
+<a class="sourceLine" id="cb25-9" data-line-number="9">    <span class="dt">base_year =</span> <span class="kw">BY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb25-10" data-line-number="10">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2002</span>, <span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb25-11" data-line-number="11">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
+<a class="sourceLine" id="cb25-12" data-line-number="12">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb25-13" data-line-number="13">      <span class="st">&quot;NOx emissions from water and space heating are projected to grow by +24% from CY2011 to CY2030.&quot;</span>,</a>
+<a class="sourceLine" id="cb25-14" data-line-number="14">      <span class="st">&quot;Labeled values are percent changes relative to the base year (CY2011).&quot;</span>,</a>
+<a class="sourceLine" id="cb25-15" data-line-number="15">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) <span class="co"># combine lines with a newline</span></a></code></pre></div>
+<pre><code>## # A tibble: 6 x 8
+##   year   cnty_abbr cat_id pol_abbr ems_qty ems_unit category           pollutant
+##   &lt;chr&gt;  &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;fct&gt;              &lt;fct&gt;    
+## 1 CY1990 ALA          283 NOx         677. ton/yr   #283 Space Heating NOx      
+## 2 CY1990 ALA          284 NOx         455. ton/yr   #284 Water Heating NOx      
+## 3 CY1990 CC           283 NOx         518. ton/yr   #283 Space Heating NOx      
+## 4 CY1990 CC           284 NOx         348. ton/yr   #284 Water Heating NOx      
+## 5 CY1990 MAR          283 NOx         163. ton/yr   #283 Space Heating NOx      
+## 6 CY1990 MAR          284 NOx         110. ton/yr   #284 Water Heating NOx</code></pre>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-chart_annual_growth_by-enhanced-1.svg" width="800" height="400" /></p>
 </div>
 <div id="relative-changes-in-throughputs" class="section level2">
 <h2><span class="header-section-number">6.2</span> Relative changes in throughputs</h2>
 <p>You can reuse the chunk above to work with throughput data, provided you drop the <code>filter_pollutants(...)</code> clause (two lines).</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">BY2011_area_source_throughput_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb23-3" data-line-number="3">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb23-4" data-line-number="4">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
-<a class="sourceLine" id="cb23-6" data-line-number="6">    <span class="dt">color =</span> category,</a>
-<a class="sourceLine" id="cb23-7" data-line-number="7">    <span class="dt">base_year =</span> <span class="kw">BY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb23-8" data-line-number="8">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2002</span>, <span class="dv">2030</span>),</a>
-<a class="sourceLine" id="cb23-9" data-line-number="9">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
-<a class="sourceLine" id="cb23-10" data-line-number="10">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
-<a class="sourceLine" id="cb23-11" data-line-number="11">      <span class="st">&quot;Natural gas consumed by water and space heating is projected to grow by +24% from CY2011 to CY2030.&quot;</span>,</a>
-<a class="sourceLine" id="cb23-12" data-line-number="12">      <span class="st">&quot;Labeled values are percent changes relative to the base year (CY2011).&quot;</span>,</a>
-<a class="sourceLine" id="cb23-13" data-line-number="13">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) <span class="co"># combine lines with a newline</span></a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">BY2011_area_source_throughput_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="st">  </span><span class="kw">chart_annual_growth_by</span>(</a>
+<a class="sourceLine" id="cb27-6" data-line-number="6">    <span class="dt">color =</span> category,</a>
+<a class="sourceLine" id="cb27-7" data-line-number="7">    <span class="dt">base_year =</span> <span class="kw">BY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb27-8" data-line-number="8">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2002</span>, <span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb27-9" data-line-number="9">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
+<a class="sourceLine" id="cb27-10" data-line-number="10">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb27-11" data-line-number="11">      <span class="st">&quot;Natural gas consumed by water and space heating is projected to grow by +24% from CY2011 to CY2030.&quot;</span>,</a>
+<a class="sourceLine" id="cb27-12" data-line-number="12">      <span class="st">&quot;Labeled values are percent changes relative to the base year (CY2011).&quot;</span>,</a>
+<a class="sourceLine" id="cb27-13" data-line-number="13">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) <span class="co"># combine lines with a newline</span></a></code></pre></div>
+<pre><code>## # A tibble: 6 x 6
+##   year   cat_id cnty_abbr tput_qty tput_unit        category          
+##   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;fct&gt;             
+## 1 CY1990    283 ALA         14390. Millions of ft3. #283 Space Heating
+## 2 CY1991    283 ALA         14918. Millions of ft3. #283 Space Heating
+## 3 CY1992    283 ALA         13201. Millions of ft3. #283 Space Heating
+## 4 CY1993    283 ALA         14390. Millions of ft3. #283 Space Heating
+## 5 CY1994    283 ALA         13862. Millions of ft3. #283 Space Heating
+## 6 CY1995    283 ALA         13466. Millions of ft3. #283 Space Heating</code></pre>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_area_source_throughput_data-283-284-chart_annual_growth_by-cat_id-1.svg" width="800" height="400" /></p>
 <p>We can also look at the trend in total throughput for these two caegories, instead of splitting them apart. Just omit the <code>color = cat_id</code>, and swap in <code>chart_annual_growth()</code> (without the suffix <code>_by()</code>).</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">BY2011_area_source_throughput_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb24-3" data-line-number="3">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb24-4" data-line-number="4">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb24-5" data-line-number="5"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
-<a class="sourceLine" id="cb24-6" data-line-number="6">    <span class="dt">base_year =</span> <span class="kw">BY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb24-7" data-line-number="7">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2002</span>, <span class="dv">2030</span>),</a>
-<a class="sourceLine" id="cb24-8" data-line-number="8">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
-<a class="sourceLine" id="cb24-9" data-line-number="9">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
-<a class="sourceLine" id="cb24-10" data-line-number="10">      <span class="st">&quot;Natural gas consumed by water and space heating is projected to grow by +24% from CY2011 to CY2030.&quot;</span>,</a>
-<a class="sourceLine" id="cb24-11" data-line-number="11">      <span class="st">&quot;Labeled values are percent changes relative to the base year (CY2011).&quot;</span>,</a>
-<a class="sourceLine" id="cb24-12" data-line-number="12">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) <span class="co"># combine lines with a newline</span></a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">BY2011_area_source_throughput_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
+<a class="sourceLine" id="cb29-4" data-line-number="4">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
+<a class="sourceLine" id="cb29-6" data-line-number="6">    <span class="dt">base_year =</span> <span class="kw">BY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb29-7" data-line-number="7">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2002</span>, <span class="dv">2030</span>),</a>
+<a class="sourceLine" id="cb29-8" data-line-number="8">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
+<a class="sourceLine" id="cb29-9" data-line-number="9">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb29-10" data-line-number="10">      <span class="st">&quot;Natural gas consumed by water and space heating is projected to grow by +24% from CY2011 to CY2030.&quot;</span>,</a>
+<a class="sourceLine" id="cb29-11" data-line-number="11">      <span class="st">&quot;Labeled values are percent changes relative to the base year (CY2011).&quot;</span>,</a>
+<a class="sourceLine" id="cb29-12" data-line-number="12">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)) <span class="co"># combine lines with a newline</span></a></code></pre></div>
+<pre><code>## # A tibble: 6 x 6
+##   year   cat_id cnty_abbr tput_qty tput_unit        category          
+##   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;fct&gt;             
+## 1 CY1990    283 ALA         14390. Millions of ft3. #283 Space Heating
+## 2 CY1991    283 ALA         14918. Millions of ft3. #283 Space Heating
+## 3 CY1992    283 ALA         13201. Millions of ft3. #283 Space Heating
+## 4 CY1993    283 ALA         14390. Millions of ft3. #283 Space Heating
+## 5 CY1994    283 ALA         13862. Millions of ft3. #283 Space Heating
+## 6 CY1995    283 ALA         13466. Millions of ft3. #283 Space Heating</code></pre>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_area_source_throughput_data-283-284-chart_annual_growth-1.svg" width="800" height="400" /></p>
 <div class="note">
 <p>
