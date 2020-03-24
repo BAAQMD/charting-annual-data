@@ -212,16 +212,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="sanitary-sewers-example" class="section level3 unnumbered">
 <h3>Sanitary Sewers example</h3>
 <p>Let’s try this with our “Sanitary Sewers” example (which was linked to growth profile <code>#657</code>).</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb71-2" data-line-number="2"><span class="co"># Double-check the crosswalk. Category #761 &quot;Sanitary Sewers&quot; should be</span></a>
-<a class="sourceLine" id="cb71-3" data-line-number="3"><span class="co"># associated with growth profile #657 &quot;Household Population&quot;.</span></a>
-<a class="sourceLine" id="cb71-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb71-5" data-line-number="5"><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb71-6" data-line-number="6"><span class="st">  </span><span class="kw">DB_growth_profile_crosswalk</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb71-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb71-8" data-line-number="8">    <span class="st">&quot;Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb71-9" data-line-number="9"><span class="st">  </span><span class="kw">ensure</span>(</a>
-<a class="sourceLine" id="cb71-10" data-line-number="10">    .<span class="op">$</span>gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb58-2" data-line-number="2"><span class="co"># Double-check the crosswalk. Category #761 &quot;Sanitary Sewers&quot; should be</span></a>
+<a class="sourceLine" id="cb58-3" data-line-number="3"><span class="co"># associated with growth profile #657 &quot;Household Population&quot;.</span></a>
+<a class="sourceLine" id="cb58-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb58-5" data-line-number="5"><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb58-6" data-line-number="6"><span class="st">  </span><span class="kw">DB_growth_profile_crosswalk</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb58-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb58-8" data-line-number="8">    <span class="st">&quot;Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb58-9" data-line-number="9"><span class="st">  </span><span class="kw">ensure</span>(</a>
+<a class="sourceLine" id="cb58-10" data-line-number="10">    .<span class="op">$</span>gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -244,19 +244,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="co"># Compute county fractions from the raw growth profile data.</span></a>
-<a class="sourceLine" id="cb72-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb72-4" data-line-number="4"><span class="co"># - Extract just the CY2011 values.</span></a>
-<a class="sourceLine" id="cb72-5" data-line-number="5"><span class="co"># - Create a new column `cnty_frac`.</span></a>
-<a class="sourceLine" id="cb72-6" data-line-number="6"><span class="co">#</span></a>
-<a class="sourceLine" id="cb72-7" data-line-number="7">BY2011_raw_growth_profile_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-8" data-line-number="8"><span class="st">  </span><span class="kw">filter</span>(</a>
-<a class="sourceLine" id="cb72-9" data-line-number="9">    gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-10" data-line-number="10"><span class="st">  </span><span class="kw">filter_years</span>(</a>
-<a class="sourceLine" id="cb72-11" data-line-number="11">    <span class="kw">CY</span>(<span class="dv">2011</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-12" data-line-number="12"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb72-13" data-line-number="13">    <span class="dt">cnty_frac =</span> gf_qty <span class="op">/</span><span class="st"> </span><span class="kw">total</span>(gf_qty))</a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="co"># Compute county fractions from the raw growth profile data.</span></a>
+<a class="sourceLine" id="cb59-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb59-4" data-line-number="4"><span class="co"># - Extract just the CY2011 values.</span></a>
+<a class="sourceLine" id="cb59-5" data-line-number="5"><span class="co"># - Create a new column `cnty_frac`.</span></a>
+<a class="sourceLine" id="cb59-6" data-line-number="6"><span class="co">#</span></a>
+<a class="sourceLine" id="cb59-7" data-line-number="7">BY2011_raw_growth_profile_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb59-8" data-line-number="8"><span class="st">  </span><span class="kw">filter</span>(</a>
+<a class="sourceLine" id="cb59-9" data-line-number="9">    gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb59-10" data-line-number="10"><span class="st">  </span><span class="kw">filter_years</span>(</a>
+<a class="sourceLine" id="cb59-11" data-line-number="11">    <span class="kw">CY</span>(<span class="dv">2011</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb59-12" data-line-number="12"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb59-13" data-line-number="13">    <span class="dt">cnty_frac =</span> gf_qty <span class="op">/</span><span class="st"> </span><span class="kw">total</span>(gf_qty))</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -378,14 +378,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="county-fractions-pulled-from-databank" class="section level3 unnumbered">
 <h3>County fractions pulled from DataBank</h3>
 <p>Now, let’s compare those to what’s stored in DataBank as “published” (file t1325, accessed via <code>DB_county_fractions()</code>).</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="co"># Pull the &quot;published&quot; county fractions for BY2011 (stored in `t1325`).</span></a>
-<a class="sourceLine" id="cb73-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb73-4" data-line-number="4"><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb73-5" data-line-number="5"><span class="st">  </span><span class="kw">DB_county_fractions</span>(</a>
-<a class="sourceLine" id="cb73-6" data-line-number="6">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb73-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(</a>
-<a class="sourceLine" id="cb73-8" data-line-number="8">    cat_id <span class="op">==</span><span class="st"> </span><span class="dv">761</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2"><span class="co"># Pull the &quot;published&quot; county fractions for BY2011 (stored in `t1325`).</span></a>
+<a class="sourceLine" id="cb60-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb60-4" data-line-number="4"><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb60-5" data-line-number="5"><span class="st">  </span><span class="kw">DB_county_fractions</span>(</a>
+<a class="sourceLine" id="cb60-6" data-line-number="6">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb60-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(</a>
+<a class="sourceLine" id="cb60-8" data-line-number="8">    cat_id <span class="op">==</span><span class="st"> </span><span class="dv">761</span>)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -468,94 +468,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The BY2011 GHG calculations were completed.</li>
 </ol>
 <p>Here are some basic exercises (and charts) that may shed some light.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="co"># This is the growth in NOx emissions from BY2011 category #283, via the</span></a>
-<a class="sourceLine" id="cb74-3" data-line-number="3"><span class="co"># published inventory (`BY2011_annual_emission_data`).</span></a>
-<a class="sourceLine" id="cb74-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb74-5" data-line-number="5">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb74-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb74-7" data-line-number="7">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb74-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb74-9" data-line-number="9">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb74-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
-<a class="sourceLine" id="cb74-11" data-line-number="11">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb74-12" data-line-number="12">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
-<pre><code>## # A tibble: 6 x 8
-##   year   cnty_abbr cat_id pol_abbr ems_qty ems_unit category pollutant
-##   &lt;chr&gt;  &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;fct&gt;    &lt;fct&gt;    
-## 1 CY1990 ALA          283 NOx        677.  ton/yr   #283     NOx      
-## 2 CY1990 CC           283 NOx        518.  ton/yr   #283     NOx      
-## 3 CY1990 MAR          283 NOx        163.  ton/yr   #283     NOx      
-## 4 CY1990 NAP          283 NOx         62.1 ton/yr   #283     NOx      
-## 5 CY1990 SF           283 NOx        440.  ton/yr   #283     NOx      
-## 6 CY1990 SM           283 NOx        386.  ton/yr   #283     NOx</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="co"># This is the growth in NOx emissions from BY2011 category #283, via the</span></a>
+<a class="sourceLine" id="cb61-3" data-line-number="3"><span class="co"># published inventory (`BY2011_annual_emission_data`).</span></a>
+<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb61-5" data-line-number="5">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb61-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb61-7" data-line-number="7">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb61-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb61-9" data-line-number="9">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb61-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
+<a class="sourceLine" id="cb61-11" data-line-number="11">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb61-12" data-line-number="12">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_annual_emission_data-283-NOx-1.svg" width="800" height="400" /></p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="co"># This is the growth profile assigned to category #283 via file `t1325`. </span></a>
-<a class="sourceLine" id="cb76-3" data-line-number="3"><span class="co"># It&#39;s not consistent with the published emission forecast (above).</span></a>
-<a class="sourceLine" id="cb76-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb76-5" data-line-number="5">BY2011_growth_profile_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb76-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb76-7" data-line-number="7">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb76-8" data-line-number="8"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
-<a class="sourceLine" id="cb76-9" data-line-number="9">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb76-10" data-line-number="10">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
-<pre><code>## # A tibble: 6 x 6
-##   cat_id cnty_abbr year   gpf_id gf_qty category
-##    &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;int&gt;  &lt;dbl&gt; &lt;fct&gt;   
-## 1    283 TOT       CY1990    555  1.06  #283    
-## 2    283 TOT       CY1991    555  1.09  #283    
-## 3    283 TOT       CY1992    555  0.969 #283    
-## 4    283 TOT       CY1993    555  1.06  #283    
-## 5    283 TOT       CY1994    555  1.02  #283    
-## 6    283 TOT       CY1995    555  0.988 #283</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="co"># This is the growth profile assigned to category #283 via file `t1325`. </span></a>
+<a class="sourceLine" id="cb62-3" data-line-number="3"><span class="co"># It&#39;s not consistent with the published emission forecast (above).</span></a>
+<a class="sourceLine" id="cb62-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb62-5" data-line-number="5">BY2011_growth_profile_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb62-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb62-7" data-line-number="7">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb62-8" data-line-number="8"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
+<a class="sourceLine" id="cb62-9" data-line-number="9">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb62-10" data-line-number="10">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/appendix-growth_profile-283-1.svg" width="800" height="400" /></p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="co"># This is the growth in emissions, via the reproduced inventory. It&#39;s consistent</span></a>
-<a class="sourceLine" id="cb78-3" data-line-number="3"><span class="co"># with the assigned growth profile, but not with the published forecast.</span></a>
-<a class="sourceLine" id="cb78-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb78-5" data-line-number="5">BY2011_area_source_projection_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb78-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb78-7" data-line-number="7">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb78-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb78-9" data-line-number="9">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb78-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
-<a class="sourceLine" id="cb78-11" data-line-number="11">    <span class="dt">qty_var =</span> <span class="st">&quot;ems_qty&quot;</span>,</a>
-<a class="sourceLine" id="cb78-12" data-line-number="12">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb78-13" data-line-number="13">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
-<pre><code>## # A tibble: 6 x 14
-##   year  cat_id cnty_abbr tput_qty tput_unit pol_id pol_abbr ef_qty ef_unit
-##   &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
-## 1 CY19…    283 ALA         14390. Millions…   2990 NOx          94 lb/tput
-## 2 CY19…    283 ALA         14918. Millions…   2990 NOx          94 lb/tput
-## 3 CY19…    283 ALA         13201. Millions…   2990 NOx          94 lb/tput
-## 4 CY19…    283 ALA         14390. Millions…   2990 NOx          94 lb/tput
-## 5 CY19…    283 ALA         13862. Millions…   2990 NOx          94 lb/tput
-## 6 CY19…    283 ALA         13466. Millions…   2990 NOx          94 lb/tput
-## # … with 5 more variables: cf_qty &lt;dbl&gt;, ems_qty &lt;dbl&gt;, ems_unit &lt;chr&gt;,
-## #   category &lt;fct&gt;, pollutant &lt;fct&gt;</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="co"># This is the growth in emissions, via the reproduced inventory. It&#39;s consistent</span></a>
+<a class="sourceLine" id="cb63-3" data-line-number="3"><span class="co"># with the assigned growth profile, but not with the published forecast.</span></a>
+<a class="sourceLine" id="cb63-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb63-5" data-line-number="5">BY2011_area_source_projection_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb63-7" data-line-number="7">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
+<a class="sourceLine" id="cb63-9" data-line-number="9">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
+<a class="sourceLine" id="cb63-11" data-line-number="11">    <span class="dt">qty_var =</span> <span class="st">&quot;ems_qty&quot;</span>,</a>
+<a class="sourceLine" id="cb63-12" data-line-number="12">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb63-13" data-line-number="13">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_area_source_projection_data-283-NOx-1.svg" width="800" height="400" /></p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="co"># This is the growth in throughputs, via the reproduced inventory. It&#39;s also</span></a>
-<a class="sourceLine" id="cb80-3" data-line-number="3"><span class="co"># consistent with the assigned growth profile, and with the reproduced</span></a>
-<a class="sourceLine" id="cb80-4" data-line-number="4"><span class="co"># emissions, but not with the published forecast.</span></a>
-<a class="sourceLine" id="cb80-5" data-line-number="5"><span class="co"># </span></a>
-<a class="sourceLine" id="cb80-6" data-line-number="6">BY2011_area_source_throughput_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb80-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb80-8" data-line-number="8">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb80-9" data-line-number="9"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
-<a class="sourceLine" id="cb80-10" data-line-number="10">    <span class="dt">qty_var =</span> <span class="st">&quot;tput_qty&quot;</span>,  <span class="co"># changed from &quot;ems_qty&quot; to &quot;tput_qty&quot;</span></a>
-<a class="sourceLine" id="cb80-11" data-line-number="11">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb80-12" data-line-number="12">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
-<pre><code>## # A tibble: 6 x 6
-##   year   cat_id cnty_abbr tput_qty tput_unit        category
-##   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;fct&gt;   
-## 1 CY1990    283 ALA         14390. Millions of ft3. #283    
-## 2 CY1991    283 ALA         14918. Millions of ft3. #283    
-## 3 CY1992    283 ALA         13201. Millions of ft3. #283    
-## 4 CY1993    283 ALA         14390. Millions of ft3. #283    
-## 5 CY1994    283 ALA         13862. Millions of ft3. #283    
-## 6 CY1995    283 ALA         13466. Millions of ft3. #283</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="co"># This is the growth in throughputs, via the reproduced inventory. It&#39;s also</span></a>
+<a class="sourceLine" id="cb64-3" data-line-number="3"><span class="co"># consistent with the assigned growth profile, and with the reproduced</span></a>
+<a class="sourceLine" id="cb64-4" data-line-number="4"><span class="co"># emissions, but not with the published forecast.</span></a>
+<a class="sourceLine" id="cb64-5" data-line-number="5"><span class="co"># </span></a>
+<a class="sourceLine" id="cb64-6" data-line-number="6">BY2011_area_source_throughput_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
+<a class="sourceLine" id="cb64-8" data-line-number="8">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-9" data-line-number="9"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
+<a class="sourceLine" id="cb64-10" data-line-number="10">    <span class="dt">qty_var =</span> <span class="st">&quot;tput_qty&quot;</span>,  <span class="co"># changed from &quot;ems_qty&quot; to &quot;tput_qty&quot;</span></a>
+<a class="sourceLine" id="cb64-11" data-line-number="11">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
+<a class="sourceLine" id="cb64-12" data-line-number="12">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_area_source_throughput_data-283-1.svg" width="800" height="400" /></p>
 <p>If it still doesn’t make sense, please feel free to raise a question at one of our meetings!</p>
 </div>
@@ -569,7 +531,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><strong><code>DB_control_factors()</code></strong> is a legacy-format API for DataBank (<code>t0326</code>). In its output, <strong><code>Cd</code>, <code>Ed</code>, and <code>Ep</code></strong> are key. See <code>help(t0326)</code> as well.</p></li>
 <li><p><strong><code>annualize_DB_control_factors()</code></strong>, which itself depends on <strong><code>calculate_Fd_and_Fc()</code></strong>, implements the annualization algorithm mentioned in the chapter on <a href="appendix.html#appendix-doc-control_factors">Control factors</a>. The References section of <code>help(calculate_Fd_and_Fc)</code> contains a reference to a PDF that describes the algorithm in several pages.</p></li>
 </ul>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw">help</span>(DB_control_factors)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">help</span>(DB_control_factors)</a></code></pre></div>
 <div class="r-help-page">
 <table width="100%" summary="page for DB_control_factors">
 <tr>
@@ -788,7 +750,7 @@ Examples
 
 </pre>
 </div>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="kw">help</span>(annualize_DB_control_factors)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">help</span>(annualize_DB_control_factors)</a></code></pre></div>
 <div class="r-help-page">
 <table width="100%" summary="page for annualize_DB_control_factors">
 <tr>
@@ -896,7 +858,7 @@ See Also
 </li>
 </ul>
 </div>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="kw">help</span>(calculate_Fd_and_Fc)</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">help</span>(calculate_Fd_and_Fc)</a></code></pre></div>
 <div class="r-help-page">
 <table width="100%" summary="page for calculate_Fd">
 <tr>

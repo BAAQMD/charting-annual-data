@@ -159,8 +159,7 @@ PGE_gas_plan_data %>%
 PGE_gas_plan_data %>%
   chart_annual_growth_by(
     color = sector,
-    base_year = CY(2011),
-    flag_years = CY(1990))
+    base_year = CY(2011))
 ```
 
 If we like, we can collapse these sectors into "Residential", "Industrial/Commercial", and "Other".
@@ -176,7 +175,7 @@ PGE_gas_plan_data %>%
         "Industry", 
         "Commercial Building",
         "Commercial Other"),
-      group_other = TRUE)) %>%
+      other_level = "Other")) %>%
   chart_annual_growth_by(
     color = sector,
     base_year = CY(2011),
