@@ -1,0 +1,76 @@
+# Changes in Methodology
+
+```{r SFBA_VMT_data, include = FALSE}
+SFBA_VMT_data <-
+  read_csv(
+    here::here(
+      "data",
+      "SFBA-VMT-data.csv")) %>%
+  transmute(
+    year = CY(calendar_year),
+    vtype = vtype,
+    vmt_unit = "VMT/yr",
+    vmt_qty = round(1e9 * vmt_qty))
+```
+
+```{r chart_data, include = FALSE}
+chart_data <-
+  SFBA_VMT_data %>%
+  mutate(
+    vmt_basis = if_else(
+      year < CY(2000),
+      "EMFAC2011",
+      "EMFAC2017"))
+```
+
+"Changes in methodology" can be shown visually. Here, we do this for VMT data. 
+In our dataset, `vmt_basis` is either "EMFAC2011" (for years CY1990-1999) or "EMFAC2017" (for years CY2000 onward). We use `vmt_basis` as the variable to color by. This introduces a visual break.
+
+```{r SFBA_VMT_data-chart}
+#
+# NOTE: here we're omitting the usual titling and captioning ... just so that we
+# can see that `color = vmt_basis` is the key piece.
+# 
+chart_data %>%
+  chart_annual_quantities_by(
+    color = vmt_basis)
+```
+
+The visual break is perhaps uncomfortable, but it is meaningful. It means that we don't actually have an estimate of the year-over-year change between CY1999 and CY2000! The reader should not be able to see a downward-sloping segment between those two years, unless we have reason to believe that there actually was a decrease.
+
+## Annotating Your Data with `*_basis`
+
+This is assuming we already have our `chart_data` in tidy form. Suppose we have our data in this form, but without a `*_basis` column.
+
+```{r SFBA_VMT_data-show}
+show(head(SFBA_VMT_data))
+```
+
+The key component is the `vmt_basis` column. For emission data, this might be `ems_basis`; for throughput data, it might be `tput_basis`. If you don't already have this in your data, you can add it using a combination of (a) `mutate()` and (b) either `if_else()` or `case_when()`.
+
+```{r SFBA_VMT_data-mutate-if_else}
+#
+# Here is an example using `if_else()`.
+#
+chart_data <-
+  SFBA_VMT_data %>%
+  mutate(
+    vmt_basis = if_else(
+      year < CY(2000),
+      true = "EMFAC2011",
+      false = "EMFAC2017",
+      missing = "Unknown"))
+```
+
+```{r SFBA_VMT_data-mutate-case_when}
+#
+# Here is an example using `case_when()`.
+#
+chart_data <-
+  SFBA_VMT_data %>%
+  mutate(
+    vmt_basis = case_when(
+      year < CY(2000) ~ "EMFAC2011",
+      year >= CY(2000) ~ "EMFAC2017",
+      TRUE ~ "Unknown"))
+```

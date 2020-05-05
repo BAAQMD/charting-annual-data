@@ -10,6 +10,7 @@ rmd_files: [
   "08-control_factors.Rmd",
   "09-comparing_inventories.Rmd",
   "10-third_party.Rmd",
+  "11-discontinuities.Rmd",
   "appendix/appendix.Rmd"]
 before_chapter_script: "chapter-setup.R"
 after_chapter_script: "chapter-teardown.R"

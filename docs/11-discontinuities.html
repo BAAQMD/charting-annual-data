@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Charting Annual Emissions</title>
+  <title>11 Changes in Methodology | Charting Annual Emissions</title>
   <meta name="description" content="This is an introduction to charting annual emissions inventory data." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Charting Annual Emissions" />
+  <meta property="og:title" content="11 Changes in Methodology | Charting Annual Emissions" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Charting Annual Emissions" />
+  <meta name="twitter:title" content="11 Changes in Methodology | Charting Annual Emissions" />
   
   <meta name="twitter:description" content="This is an introduction to charting annual emissions inventory data." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="02-setup.html"/>
+<link rel="prev" href="10-third_party.html"/>
+<link rel="next" href="appendix.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -206,31 +206,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Charting Annual Emissions</h1>
-<p class="author"><em>David Holstius</em></p>
-<p class="date"><em>2020-05-05</em></p>
-</div>
-<div id="introduction" class="section level1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
-<p>After working through the material in this cookbook, you will understand how to chart:</p>
-<ul>
-<li>annual emission estimates, like those in <code>BY</code> or <code>RY</code> data;</li>
-<li>annual growth factors, normalized to any year;</li>
-<li>annual throughputs;</li>
-<li>annual emission factors; and</li>
-<li>annualized control factors.</li>
-</ul>
-<p>To demonstrate, we’ll use some data from the <code>BY2011</code> package. Everything will work in <strong>exactly the same way with RY, PY, or BY2015 data</strong>.</p>
+<div id="changes-in-methodology" class="section level1">
+<h1><span class="header-section-number">11</span> Changes in Methodology</h1>
+<p>“Changes in methodology” can be shown visually. Here, we do this for VMT data.
+In our dataset, <code>vmt_basis</code> is either “EMFAC2011” (for years CY1990-1999) or “EMFAC2017” (for years CY2000 onward). We use <code>vmt_basis</code> as the variable to color by. This introduces a visual break.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb58-2" data-line-number="2"><span class="co"># </span><span class="al">NOTE</span><span class="co">: here we&#39;re omitting the usual titling and captioning ... just so that we</span></a>
+<a class="sourceLine" id="cb58-3" data-line-number="3"><span class="co"># can see that `color = vmt_basis` is the key piece.</span></a>
+<a class="sourceLine" id="cb58-4" data-line-number="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb58-5" data-line-number="5">chart_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb58-6" data-line-number="6"><span class="st">  </span><span class="kw">chart_annual_quantities_by</span>(</a>
+<a class="sourceLine" id="cb58-7" data-line-number="7">    <span class="dt">color =</span> vmt_basis)</a></code></pre></div>
+<p><img src="Charting-Annual-Data_files/figure-html/SFBA_VMT_data-chart-1.svg" width="800" height="400" /></p>
+<p>The visual break is perhaps uncomfortable, but it is meaningful. It means that we don’t actually have an estimate of the year-over-year change between CY1999 and CY2000! The reader should not be able to see a downward-sloping segment between those two years, unless we have reason to believe that there actually was a decrease.</p>
+<div id="annotating-your-data-with-_basis" class="section level2">
+<h2><span class="header-section-number">11.1</span> Annotating Your Data with <code>*_basis</code></h2>
+<p>This is assuming we already have our <code>chart_data</code> in tidy form. Suppose we have our data in this form, but without a <code>*_basis</code> column.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">show</span>(<span class="kw">head</span>(SFBA_VMT_data))</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   year   vtype              vmt_unit     vmt_qty
+##   &lt;CY&gt;   &lt;chr&gt;              &lt;chr&gt;          &lt;dbl&gt;
+## 1 CY1990 All vehicles       VMT/yr   46633785580
+## 2 CY1990 Passenger vehicles VMT/yr   44241653360
+## 3 CY1990 Trucks             VMT/yr    2014887248
+## 4 CY1991 All vehicles       VMT/yr   47805484120
+## 5 CY1991 Passenger vehicles VMT/yr   45464314230
+## 6 CY1991 Trucks             VMT/yr    1981000432</code></pre>
+<p>The key component is the <code>vmt_basis</code> column. For emission data, this might be <code>ems_basis</code>; for throughput data, it might be <code>tput_basis</code>. If you don’t already have this in your data, you can add it using a combination of (a) <code>mutate()</code> and (b) either <code>if_else()</code> or <code>case_when()</code>.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="co"># Here is an example using `if_else()`.</span></a>
+<a class="sourceLine" id="cb61-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb61-4" data-line-number="4">chart_data &lt;-</a>
+<a class="sourceLine" id="cb61-5" data-line-number="5"><span class="st">  </span>SFBA_VMT_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb61-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb61-7" data-line-number="7">    <span class="dt">vmt_basis =</span> <span class="kw">if_else</span>(</a>
+<a class="sourceLine" id="cb61-8" data-line-number="8">      year <span class="op">&lt;</span><span class="st"> </span><span class="kw">CY</span>(<span class="dv">2000</span>),</a>
+<a class="sourceLine" id="cb61-9" data-line-number="9">      <span class="dt">true =</span> <span class="st">&quot;EMFAC2011&quot;</span>,</a>
+<a class="sourceLine" id="cb61-10" data-line-number="10">      <span class="dt">false =</span> <span class="st">&quot;EMFAC2017&quot;</span>,</a>
+<a class="sourceLine" id="cb61-11" data-line-number="11">      <span class="dt">missing =</span> <span class="st">&quot;Unknown&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="co"># Here is an example using `case_when()`.</span></a>
+<a class="sourceLine" id="cb62-3" data-line-number="3"><span class="co">#</span></a>
+<a class="sourceLine" id="cb62-4" data-line-number="4">chart_data &lt;-</a>
+<a class="sourceLine" id="cb62-5" data-line-number="5"><span class="st">  </span>SFBA_VMT_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb62-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb62-7" data-line-number="7">    <span class="dt">vmt_basis =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb62-8" data-line-number="8">      year <span class="op">&lt;</span><span class="st"> </span><span class="kw">CY</span>(<span class="dv">2000</span>) <span class="op">~</span><span class="st"> &quot;EMFAC2011&quot;</span>,</a>
+<a class="sourceLine" id="cb62-9" data-line-number="9">      year <span class="op">&gt;=</span><span class="st"> </span><span class="kw">CY</span>(<span class="dv">2000</span>) <span class="op">~</span><span class="st"> &quot;EMFAC2017&quot;</span>,</a>
+<a class="sourceLine" id="cb62-10" data-line-number="10">      <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Unknown&quot;</span>))</a></code></pre></div>
 
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="02-setup.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="10-third_party.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -261,7 +297,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BAAQMD/charting-annual-data/edit/master/index.Rmd",
+"link": "https://github.com/BAAQMD/charting-annual-data/edit/master/11-discontinuities.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -269,7 +305,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/BAAQMD/charting-annual-data/blob/master/index.Rmd",
+"link": "https://github.com/BAAQMD/charting-annual-data/blob/master/11-discontinuities.Rmd",
 "text": null
 },
 "download": null,
