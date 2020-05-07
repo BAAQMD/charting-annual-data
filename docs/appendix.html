@@ -24,7 +24,7 @@
 <meta name="author" content="David Holstius" />
 
 
-<meta name="date" content="2020-05-05" />
+<meta name="date" content="2020-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="11-discontinuities.html"/>
 
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,11 +134,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="02-setup.html"><a href="02-setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
+<li class="chapter" data-level="2" data-path="02-setup.html"><a href="02-setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="02-setup.html"><a href="02-setup.html#loading-required-libraries"><i class="fa fa-check"></i><b>2.1</b> Loading required libraries</a></li>
 <li class="chapter" data-level="2.2" data-path="02-setup.html"><a href="02-setup.html#peeking-at-data"><i class="fa fa-check"></i><b>2.2</b> Peeking at data</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="03-emissions.html"><a href="03-emissions.html"><i class="fa fa-check"></i><b>3</b> Emissions</a><ul>
+<li class="chapter" data-level="3" data-path="03-emissions.html"><a href="03-emissions.html"><i class="fa fa-check"></i><b>3</b> Emissions</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="03-emissions.html"><a href="03-emissions.html#key-functions"><i class="fa fa-check"></i><b>3.1</b> Key functions</a></li>
 <li class="chapter" data-level="3.2" data-path="03-emissions.html"><a href="03-emissions.html#charting-annual-emissions"><i class="fa fa-check"></i><b>3.2</b> Charting annual emissions</a></li>
 <li class="chapter" data-level="3.3" data-path="03-emissions.html"><a href="03-emissions.html#coloring-by-category"><i class="fa fa-check"></i><b>3.3</b> Coloring by category</a></li>
@@ -146,45 +150,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.7" data-path="03-emissions.html"><a href="03-emissions.html#making-an-area-chart"><i class="fa fa-check"></i><b>3.7</b> Making an area chart</a></li>
 <li class="chapter" data-level="3.8" data-path="03-emissions.html"><a href="03-emissions.html#more-than-one-pollutant"><i class="fa fa-check"></i><b>3.8</b> More than one pollutant</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="04-throughputs.html"><a href="04-throughputs.html"><i class="fa fa-check"></i><b>4</b> Throughputs</a><ul>
+<li class="chapter" data-level="4" data-path="04-throughputs.html"><a href="04-throughputs.html"><i class="fa fa-check"></i><b>4</b> Throughputs</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="04-throughputs.html"><a href="04-throughputs.html#obtaining-throughput-data"><i class="fa fa-check"></i><b>4.1</b> Obtaining throughput data</a></li>
 <li class="chapter" data-level="4.2" data-path="04-throughputs.html"><a href="04-throughputs.html#charting-annual-throughputs"><i class="fa fa-check"></i><b>4.2</b> Charting annual throughputs</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html"><i class="fa fa-check"></i><b>5</b> Growth Profiles</a><ul>
+<li class="chapter" data-level="5" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html"><i class="fa fa-check"></i><b>5</b> Growth Profiles</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#normalized-growth-factors"><i class="fa fa-check"></i><b>5.1</b> Normalized growth factors</a></li>
 <li class="chapter" data-level="5.2" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#county-specific-growth-profiles"><i class="fa fa-check"></i><b>5.2</b> County-specific growth profiles</a></li>
 <li class="chapter" data-level="5.3" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#raw-growth-profile-data"><i class="fa fa-check"></i><b>5.3</b> Raw growth profile data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="06-relative_changes.html"><a href="06-relative_changes.html"><i class="fa fa-check"></i><b>6</b> Relative Changes</a><ul>
+<li class="chapter" data-level="6" data-path="06-relative_changes.html"><a href="06-relative_changes.html"><i class="fa fa-check"></i><b>6</b> Relative Changes</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="06-relative_changes.html"><a href="06-relative_changes.html#relative-changes-in-emissions"><i class="fa fa-check"></i><b>6.1</b> Relative changes in emissions</a></li>
 <li class="chapter" data-level="6.2" data-path="06-relative_changes.html"><a href="06-relative_changes.html#relative-changes-in-throughputs"><i class="fa fa-check"></i><b>6.2</b> Relative changes in throughputs</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="07-emission_factors.html"><a href="07-emission_factors.html"><i class="fa fa-check"></i><b>7</b> Emission Factors</a></li>
-<li class="chapter" data-level="8" data-path="08-control_factors.html"><a href="08-control_factors.html"><i class="fa fa-check"></i><b>8</b> Control Factors</a><ul>
+<li class="chapter" data-level="8" data-path="08-control_factors.html"><a href="08-control_factors.html"><i class="fa fa-check"></i><b>8</b> Control Factors</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="08-control_factors.html"><a href="08-control_factors.html#example-domestic-woodstoves"><i class="fa fa-check"></i><b>8.1</b> Example: domestic woodstoves</a></li>
 <li class="chapter" data-level="8.2" data-path="08-control_factors.html"><a href="08-control_factors.html#example-gasoline-filling-stations"><i class="fa fa-check"></i><b>8.2</b> Example: gasoline filling stations</a></li>
-<li class="chapter" data-level="8.3" data-path="08-control_factors.html"><a href="08-control_factors.html#control-effectiveness-vs.annualized-control-factors"><i class="fa fa-check"></i><b>8.3</b> Control effectiveness vs. annualized control factors</a></li>
+<li class="chapter" data-level="8.3" data-path="08-control_factors.html"><a href="08-control_factors.html#control-effectiveness-vs.-annualized-control-factors"><i class="fa fa-check"></i><b>8.3</b> Control effectiveness vs. annualized control factors</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html"><i class="fa fa-check"></i><b>9</b> Comparing Inventories</a><ul>
+<li class="chapter" data-level="9" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html"><i class="fa fa-check"></i><b>9</b> Comparing Inventories</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#binding-inventories-together"><i class="fa fa-check"></i><b>9.1</b> Binding inventories together</a></li>
 <li class="chapter" data-level="9.2" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#comparing-two-versions-of-a-single-category"><i class="fa fa-check"></i><b>9.2</b> Comparing two versions of a single category</a></li>
 <li class="chapter" data-level="9.3" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#multiple-categories"><i class="fa fa-check"></i><b>9.3</b> Groups of categories</a></li>
 <li class="chapter" data-level="9.4" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#more-examples"><i class="fa fa-check"></i><b>9.4</b> More Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="10-third_party.html"><a href="10-third_party.html"><i class="fa fa-check"></i><b>10</b> Third-Party Data</a><ul>
+<li class="chapter" data-level="10" data-path="10-third_party.html"><a href="10-third_party.html"><i class="fa fa-check"></i><b>10</b> Third-Party Data</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="10-third_party.html"><a href="10-third_party.html#natural-gas-consumption"><i class="fa fa-check"></i><b>10.1</b> Natural Gas Consumption</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="11-discontinuities.html"><a href="11-discontinuities.html"><i class="fa fa-check"></i><b>11</b> Changes in Methodology</a><ul>
+<li class="chapter" data-level="11" data-path="11-discontinuities.html"><a href="11-discontinuities.html"><i class="fa fa-check"></i><b>11</b> Changes in Methodology</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="11-discontinuities.html"><a href="11-discontinuities.html#annotating-your-data-with-_basis"><i class="fa fa-check"></i><b>11.1</b> Annotating Your Data with <code>*_basis</code></a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>A</b> Advanced Usage</a><ul>
+<li class="chapter" data-level="A" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>A</b> Advanced Usage</a>
+<ul>
 <li class="chapter" data-level="A.1" data-path="appendix.html"><a href="appendix.html#appendix-howto-county_fractions"><i class="fa fa-check"></i><b>A.1</b> Calculating county fractions from raw growth profile data</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="appendix.html"><a href="appendix.html#special-cases"><i class="fa fa-check"></i><b>B</b> Special Cases</a><ul>
+<li class="chapter" data-level="B" data-path="appendix.html"><a href="appendix.html#special-cases"><i class="fa fa-check"></i><b>B</b> Special Cases</a>
+<ul>
 <li class="chapter" data-level="B.1" data-path="appendix.html"><a href="appendix.html#appendix-case-cat_283"><i class="fa fa-check"></i><b>B.1</b> Changes in forecasts for category #283</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="appendix.html"><a href="appendix.html#technical-documentation"><i class="fa fa-check"></i><b>C</b> Technical Documentation</a><ul>
+<li class="chapter" data-level="C" data-path="appendix.html"><a href="appendix.html#technical-documentation"><i class="fa fa-check"></i><b>C</b> Technical Documentation</a>
+<ul>
 <li class="chapter" data-level="C.1" data-path="appendix.html"><a href="appendix.html#appendix-doc-control_factors"><i class="fa fa-check"></i><b>C.1</b> Control factors</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -206,25 +220,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="advanced-usage" class="section level1">
+<div id="advanced-usage" class="section level1" number="12">
 <h1><span class="header-section-number">A</span> Advanced Usage</h1>
-<div id="appendix-howto-county_fractions" class="section level2">
+<div id="appendix-howto-county_fractions" class="section level2" number="12.1">
 <h2><span class="header-section-number">A.1</span> Calculating county fractions from raw growth profile data</h2>
 <p>In the chapter on <a href="05-growth_profiles.html#growth-profiles">Growth profiles</a>, things ended with a look at “raw” county-specific growth profile data for BY2011 category #761 “Sanitary Sewers”. And, we could see that the raw data looked a lot like population counts.</p>
 <p>This means that we can double-check the BY2011 county fractions, stored in file t1325, against fractions that we compute right here using the raw growth profile data.</p>
-<div id="sanitary-sewers-example" class="section level3 unnumbered">
+<div id="sanitary-sewers-example" class="section level3 unnumbered" number="">
 <h3>Sanitary Sewers example</h3>
 <p>Let’s try this with our “Sanitary Sewers” example (which was linked to growth profile <code>#657</code>).</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="co"># Double-check the crosswalk. Category #761 &quot;Sanitary Sewers&quot; should be</span></a>
-<a class="sourceLine" id="cb63-3" data-line-number="3"><span class="co"># associated with growth profile #657 &quot;Household Population&quot;.</span></a>
-<a class="sourceLine" id="cb63-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb63-5" data-line-number="5"><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb63-6" data-line-number="6"><span class="st">  </span><span class="kw">DB_growth_profile_crosswalk</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb63-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb63-8" data-line-number="8">    <span class="st">&quot;Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb63-9" data-line-number="9"><span class="st">  </span><span class="kw">ensure</span>(</a>
-<a class="sourceLine" id="cb63-10" data-line-number="10">    .<span class="op">$</span>gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="appendix.html#cb63-1"></a><span class="co">#</span></span>
+<span id="cb63-2"><a href="appendix.html#cb63-2"></a><span class="co"># Double-check the crosswalk. Category #761 &quot;Sanitary Sewers&quot; should be</span></span>
+<span id="cb63-3"><a href="appendix.html#cb63-3"></a><span class="co"># associated with growth profile #657 &quot;Household Population&quot;.</span></span>
+<span id="cb63-4"><a href="appendix.html#cb63-4"></a><span class="co"># </span></span>
+<span id="cb63-5"><a href="appendix.html#cb63-5"></a><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></span>
+<span id="cb63-6"><a href="appendix.html#cb63-6"></a><span class="st">  </span><span class="kw">DB_growth_profile_crosswalk</span>() <span class="op">%&gt;%</span></span>
+<span id="cb63-7"><a href="appendix.html#cb63-7"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb63-8"><a href="appendix.html#cb63-8"></a>    <span class="st">&quot;Sanitary Sewers&quot;</span> =<span class="st"> </span><span class="dv">761</span>) <span class="op">%&gt;%</span></span>
+<span id="cb63-9"><a href="appendix.html#cb63-9"></a><span class="st">  </span><span class="kw">ensure</span>(</span>
+<span id="cb63-10"><a href="appendix.html#cb63-10"></a>    .<span class="op">$</span>gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -247,19 +261,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="co"># Compute county fractions from the raw growth profile data.</span></a>
-<a class="sourceLine" id="cb64-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb64-4" data-line-number="4"><span class="co"># - Extract just the CY2011 values.</span></a>
-<a class="sourceLine" id="cb64-5" data-line-number="5"><span class="co"># - Create a new column `cnty_frac`.</span></a>
-<a class="sourceLine" id="cb64-6" data-line-number="6"><span class="co">#</span></a>
-<a class="sourceLine" id="cb64-7" data-line-number="7">BY2011_raw_growth_profile_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-8" data-line-number="8"><span class="st">  </span><span class="kw">filter</span>(</a>
-<a class="sourceLine" id="cb64-9" data-line-number="9">    gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-10" data-line-number="10"><span class="st">  </span><span class="kw">filter_years</span>(</a>
-<a class="sourceLine" id="cb64-11" data-line-number="11">    <span class="kw">CY</span>(<span class="dv">2011</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-12" data-line-number="12"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb64-13" data-line-number="13">    <span class="dt">cnty_frac =</span> gf_qty <span class="op">/</span><span class="st"> </span><span class="kw">total</span>(gf_qty))</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="appendix.html#cb64-1"></a><span class="co">#</span></span>
+<span id="cb64-2"><a href="appendix.html#cb64-2"></a><span class="co"># Compute county fractions from the raw growth profile data.</span></span>
+<span id="cb64-3"><a href="appendix.html#cb64-3"></a><span class="co">#</span></span>
+<span id="cb64-4"><a href="appendix.html#cb64-4"></a><span class="co"># - Extract just the CY2011 values.</span></span>
+<span id="cb64-5"><a href="appendix.html#cb64-5"></a><span class="co"># - Create a new column `cnty_frac`.</span></span>
+<span id="cb64-6"><a href="appendix.html#cb64-6"></a><span class="co">#</span></span>
+<span id="cb64-7"><a href="appendix.html#cb64-7"></a>BY2011_raw_growth_profile_data <span class="op">%&gt;%</span></span>
+<span id="cb64-8"><a href="appendix.html#cb64-8"></a><span class="st">  </span><span class="kw">filter</span>(</span>
+<span id="cb64-9"><a href="appendix.html#cb64-9"></a>    gpf_id <span class="op">==</span><span class="st"> </span><span class="dv">657</span>) <span class="op">%&gt;%</span></span>
+<span id="cb64-10"><a href="appendix.html#cb64-10"></a><span class="st">  </span><span class="kw">filter_years</span>(</span>
+<span id="cb64-11"><a href="appendix.html#cb64-11"></a>    <span class="kw">CY</span>(<span class="dv">2011</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb64-12"><a href="appendix.html#cb64-12"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
+<span id="cb64-13"><a href="appendix.html#cb64-13"></a>    <span class="dt">cnty_frac =</span> gf_qty <span class="op">/</span><span class="st"> </span><span class="kw">total</span>(gf_qty))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -284,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="left">Household Population</td>
 <td align="left">Minh H Nguyen</td>
 <td align="left">2010-02-25</td>
-<td align="right">0.2168986</td>
+<td align="right">0.21690</td>
 </tr>
 <tr class="even">
 <td align="left">t0336</td>
@@ -295,7 +309,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="left">Household Population</td>
 <td align="left">Minh H Nguyen</td>
 <td align="left">2010-02-25</td>
-<td align="right">0.1535139</td>
+<td align="right">0.15351</td>
 </tr>
 <tr class="odd">
 <td align="left">t0336</td>
@@ -306,7 +320,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="left">Household Population</td>
 <td align="left">Minh H Nguyen</td>
 <td align="left">2010-02-25</td>
-<td align="right">0.0347053</td>
+<td align="right">0.03471</td>
 </tr>
 <tr class="even">
 <td align="left">t0336</td>
@@ -317,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="left">Household Population</td>
 <td align="left">Minh H Nguyen</td>
 <td align="left">2010-02-25</td>
-<td align="right">0.0189389</td>
+<td align="right">0.01894</td>
 </tr>
 <tr class="odd">
 <td align="left">t0336</td>
@@ -328,7 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="left">Household Population</td>
 <td align="left">Minh H Nguyen</td>
 <td align="left">2010-02-25</td>
-<td align="right">0.1122320</td>
+<td align="right">0.11223</td>
 </tr>
 <tr class="even">
 <td align="left">t0336</td>
@@ -339,7 +353,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="left">Household Population</td>
 <td align="left">Minh H Nguyen</td>
 <td align="left">2010-02-25</td>
-<td align="right">0.1028530</td>
+<td align="right">0.10285</td>
 </tr>
 <tr class="odd">
 <td align="left">t0336</td>
@@ -350,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="left">Household Population</td>
 <td align="left">Minh H Nguyen</td>
 <td align="left">2010-02-25</td>
-<td align="right">0.2564686</td>
+<td align="right">0.25647</td>
 </tr>
 <tr class="even">
 <td align="left">t0336</td>
@@ -361,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="left">Household Population</td>
 <td align="left">Minh H Nguyen</td>
 <td align="left">2010-02-25</td>
-<td align="right">0.0436577</td>
+<td align="right">0.04366</td>
 </tr>
 <tr class="odd">
 <td align="left">t0336</td>
@@ -372,23 +386,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="left">Household Population</td>
 <td align="left">Minh H Nguyen</td>
 <td align="left">2010-02-25</td>
-<td align="right">0.0607321</td>
+<td align="right">0.06073</td>
 </tr>
 </tbody>
 </table>
 <p>In the new <code>cnty_frac</code> column, we can see percentages of 21.7%, 15.4%, 3.5%, 1.9%, 11.2%, 10.3%, 25.6%, 4.4%, and 6.1%, respectively.</p>
 </div>
-<div id="county-fractions-pulled-from-databank" class="section level3 unnumbered">
+<div id="county-fractions-pulled-from-databank" class="section level3 unnumbered" number="">
 <h3>County fractions pulled from DataBank</h3>
 <p>Now, let’s compare those to what’s stored in DataBank as “published” (file t1325, accessed via <code>DB_county_fractions()</code>).</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="co"># Pull the &quot;published&quot; county fractions for BY2011 (stored in `t1325`).</span></a>
-<a class="sourceLine" id="cb65-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb65-4" data-line-number="4"><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-5" data-line-number="5"><span class="st">  </span><span class="kw">DB_county_fractions</span>(</a>
-<a class="sourceLine" id="cb65-6" data-line-number="6">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(</a>
-<a class="sourceLine" id="cb65-8" data-line-number="8">    cat_id <span class="op">==</span><span class="st"> </span><span class="dv">761</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="appendix.html#cb65-1"></a><span class="co">#</span></span>
+<span id="cb65-2"><a href="appendix.html#cb65-2"></a><span class="co"># Pull the &quot;published&quot; county fractions for BY2011 (stored in `t1325`).</span></span>
+<span id="cb65-3"><a href="appendix.html#cb65-3"></a><span class="co">#</span></span>
+<span id="cb65-4"><a href="appendix.html#cb65-4"></a><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></span>
+<span id="cb65-5"><a href="appendix.html#cb65-5"></a><span class="st">  </span><span class="kw">DB_county_fractions</span>(</span>
+<span id="cb65-6"><a href="appendix.html#cb65-6"></a>    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb65-7"><a href="appendix.html#cb65-7"></a><span class="st">  </span><span class="kw">filter</span>(</span>
+<span id="cb65-8"><a href="appendix.html#cb65-8"></a>    cat_id <span class="op">==</span><span class="st"> </span><span class="dv">761</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -403,55 +417,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="left">BY2011</td>
 <td align="right">761</td>
 <td align="left">ALA</td>
-<td align="right">0.2185224</td>
+<td align="right">0.21852</td>
 </tr>
 <tr class="even">
 <td align="left">BY2011</td>
 <td align="right">761</td>
 <td align="left">CC</td>
-<td align="right">0.1331767</td>
+<td align="right">0.13318</td>
 </tr>
 <tr class="odd">
 <td align="left">BY2011</td>
 <td align="right">761</td>
 <td align="left">MAR</td>
-<td align="right">0.0401685</td>
+<td align="right">0.04017</td>
 </tr>
 <tr class="even">
 <td align="left">BY2011</td>
 <td align="right">761</td>
 <td align="left">NAP</td>
-<td align="right">0.0188647</td>
+<td align="right">0.01886</td>
 </tr>
 <tr class="odd">
 <td align="left">BY2011</td>
 <td align="right">761</td>
 <td align="left">SF</td>
-<td align="right">0.1298252</td>
+<td align="right">0.12983</td>
 </tr>
 <tr class="even">
 <td align="left">BY2011</td>
 <td align="right">761</td>
 <td align="left">SM</td>
-<td align="right">0.1096952</td>
+<td align="right">0.10970</td>
 </tr>
 <tr class="odd">
 <td align="left">BY2011</td>
 <td align="right">761</td>
 <td align="left">SNC</td>
-<td align="right">0.2560921</td>
+<td align="right">0.25609</td>
 </tr>
 <tr class="even">
 <td align="left">BY2011</td>
 <td align="right">761</td>
 <td align="left">SOL</td>
-<td align="right">0.0394379</td>
+<td align="right">0.03944</td>
 </tr>
 <tr class="odd">
 <td align="left">BY2011</td>
 <td align="right">761</td>
 <td align="left">SON</td>
-<td align="right">0.0542175</td>
+<td align="right">0.05422</td>
 </tr>
 </tbody>
 </table>
@@ -459,9 +473,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div id="special-cases" class="section level1">
+<div id="special-cases" class="section level1" number="13">
 <h1><span class="header-section-number">B</span> Special Cases</h1>
-<div id="appendix-case-cat_283" class="section level2">
+<div id="appendix-case-cat_283" class="section level2" number="13.1">
 <h2><span class="header-section-number">B.1</span> Changes in forecasts for category #283</h2>
 <p>You might have noticed that the throughput forecast, for category #283, doesn’t follow the same trajectory as the NO<sub>x</sub> forecast.</p>
 <p>This is not because NO<sub>x</sub> emission factors were projected to increase after CY2011. Here’s what happened:</p>
@@ -471,487 +485,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The BY2011 GHG calculations were completed.</li>
 </ol>
 <p>Here are some basic exercises (and charts) that may shed some light.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="co"># This is the growth in NOx emissions from BY2011 category #283, via the</span></a>
-<a class="sourceLine" id="cb66-3" data-line-number="3"><span class="co"># published inventory (`BY2011_annual_emission_data`).</span></a>
-<a class="sourceLine" id="cb66-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb66-5" data-line-number="5">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb66-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb66-7" data-line-number="7">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb66-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb66-9" data-line-number="9">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb66-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
-<a class="sourceLine" id="cb66-11" data-line-number="11">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb66-12" data-line-number="12">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="appendix.html#cb66-1"></a><span class="co">#</span></span>
+<span id="cb66-2"><a href="appendix.html#cb66-2"></a><span class="co"># This is the growth in NOx emissions from BY2011 category #283, via the</span></span>
+<span id="cb66-3"><a href="appendix.html#cb66-3"></a><span class="co"># published inventory (`BY2011_annual_emission_data`).</span></span>
+<span id="cb66-4"><a href="appendix.html#cb66-4"></a><span class="co"># </span></span>
+<span id="cb66-5"><a href="appendix.html#cb66-5"></a>BY2011_annual_emission_data <span class="op">%&gt;%</span></span>
+<span id="cb66-6"><a href="appendix.html#cb66-6"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb66-7"><a href="appendix.html#cb66-7"></a>    <span class="dv">283</span>) <span class="op">%&gt;%</span></span>
+<span id="cb66-8"><a href="appendix.html#cb66-8"></a><span class="st">  </span><span class="kw">filter_pollutants</span>(</span>
+<span id="cb66-9"><a href="appendix.html#cb66-9"></a>    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb66-10"><a href="appendix.html#cb66-10"></a><span class="st">  </span><span class="kw">chart_annual_growth</span>(</span>
+<span id="cb66-11"><a href="appendix.html#cb66-11"></a>    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</span>
+<span id="cb66-12"><a href="appendix.html#cb66-12"></a>    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_annual_emission_data-283-NOx-1.svg" width="800" height="400" /></p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="co"># This is the growth profile assigned to category #283 via file `t1325`. </span></a>
-<a class="sourceLine" id="cb67-3" data-line-number="3"><span class="co"># It&#39;s not consistent with the published emission forecast (above).</span></a>
-<a class="sourceLine" id="cb67-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb67-5" data-line-number="5">BY2011_growth_profile_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb67-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb67-7" data-line-number="7">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb67-8" data-line-number="8"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
-<a class="sourceLine" id="cb67-9" data-line-number="9">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb67-10" data-line-number="10">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="appendix.html#cb67-1"></a><span class="co">#</span></span>
+<span id="cb67-2"><a href="appendix.html#cb67-2"></a><span class="co"># This is the growth profile assigned to category #283 via file `t1325`. </span></span>
+<span id="cb67-3"><a href="appendix.html#cb67-3"></a><span class="co"># It&#39;s not consistent with the published emission forecast (above).</span></span>
+<span id="cb67-4"><a href="appendix.html#cb67-4"></a><span class="co"># </span></span>
+<span id="cb67-5"><a href="appendix.html#cb67-5"></a>BY2011_growth_profile_data <span class="op">%&gt;%</span></span>
+<span id="cb67-6"><a href="appendix.html#cb67-6"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb67-7"><a href="appendix.html#cb67-7"></a>    <span class="dv">283</span>) <span class="op">%&gt;%</span></span>
+<span id="cb67-8"><a href="appendix.html#cb67-8"></a><span class="st">  </span><span class="kw">chart_annual_growth</span>(</span>
+<span id="cb67-9"><a href="appendix.html#cb67-9"></a>    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</span>
+<span id="cb67-10"><a href="appendix.html#cb67-10"></a>    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/appendix-growth_profile-283-1.svg" width="800" height="400" /></p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="co"># This is the growth in emissions, via the reproduced inventory. It&#39;s consistent</span></a>
-<a class="sourceLine" id="cb68-3" data-line-number="3"><span class="co"># with the assigned growth profile, but not with the published forecast.</span></a>
-<a class="sourceLine" id="cb68-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb68-5" data-line-number="5">BY2011_area_source_projection_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb68-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb68-7" data-line-number="7">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb68-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb68-9" data-line-number="9">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb68-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
-<a class="sourceLine" id="cb68-11" data-line-number="11">    <span class="dt">qty_var =</span> <span class="st">&quot;ems_qty&quot;</span>,</a>
-<a class="sourceLine" id="cb68-12" data-line-number="12">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb68-13" data-line-number="13">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="appendix.html#cb68-1"></a><span class="co">#</span></span>
+<span id="cb68-2"><a href="appendix.html#cb68-2"></a><span class="co"># This is the growth in emissions, via the reproduced inventory. It&#39;s consistent</span></span>
+<span id="cb68-3"><a href="appendix.html#cb68-3"></a><span class="co"># with the assigned growth profile, but not with the published forecast.</span></span>
+<span id="cb68-4"><a href="appendix.html#cb68-4"></a><span class="co"># </span></span>
+<span id="cb68-5"><a href="appendix.html#cb68-5"></a>BY2011_area_source_projection_data <span class="op">%&gt;%</span></span>
+<span id="cb68-6"><a href="appendix.html#cb68-6"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb68-7"><a href="appendix.html#cb68-7"></a>    <span class="dv">283</span>) <span class="op">%&gt;%</span></span>
+<span id="cb68-8"><a href="appendix.html#cb68-8"></a><span class="st">  </span><span class="kw">filter_pollutants</span>(</span>
+<span id="cb68-9"><a href="appendix.html#cb68-9"></a>    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb68-10"><a href="appendix.html#cb68-10"></a><span class="st">  </span><span class="kw">chart_annual_growth</span>(</span>
+<span id="cb68-11"><a href="appendix.html#cb68-11"></a>    <span class="dt">qty_var =</span> <span class="st">&quot;ems_qty&quot;</span>,</span>
+<span id="cb68-12"><a href="appendix.html#cb68-12"></a>    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</span>
+<span id="cb68-13"><a href="appendix.html#cb68-13"></a>    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_area_source_projection_data-283-NOx-1.svg" width="800" height="400" /></p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb69-2" data-line-number="2"><span class="co"># This is the growth in throughputs, via the reproduced inventory. It&#39;s also</span></a>
-<a class="sourceLine" id="cb69-3" data-line-number="3"><span class="co"># consistent with the assigned growth profile, and with the reproduced</span></a>
-<a class="sourceLine" id="cb69-4" data-line-number="4"><span class="co"># emissions, but not with the published forecast.</span></a>
-<a class="sourceLine" id="cb69-5" data-line-number="5"><span class="co"># </span></a>
-<a class="sourceLine" id="cb69-6" data-line-number="6">BY2011_area_source_throughput_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb69-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb69-8" data-line-number="8">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb69-9" data-line-number="9"><span class="st">  </span><span class="kw">chart_annual_growth</span>(</a>
-<a class="sourceLine" id="cb69-10" data-line-number="10">    <span class="dt">qty_var =</span> <span class="st">&quot;tput_qty&quot;</span>,  <span class="co"># changed from &quot;ems_qty&quot; to &quot;tput_qty&quot;</span></a>
-<a class="sourceLine" id="cb69-11" data-line-number="11">    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</a>
-<a class="sourceLine" id="cb69-12" data-line-number="12">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="appendix.html#cb69-1"></a><span class="co">#</span></span>
+<span id="cb69-2"><a href="appendix.html#cb69-2"></a><span class="co"># This is the growth in throughputs, via the reproduced inventory. It&#39;s also</span></span>
+<span id="cb69-3"><a href="appendix.html#cb69-3"></a><span class="co"># consistent with the assigned growth profile, and with the reproduced</span></span>
+<span id="cb69-4"><a href="appendix.html#cb69-4"></a><span class="co"># emissions, but not with the published forecast.</span></span>
+<span id="cb69-5"><a href="appendix.html#cb69-5"></a><span class="co"># </span></span>
+<span id="cb69-6"><a href="appendix.html#cb69-6"></a>BY2011_area_source_throughput_data <span class="op">%&gt;%</span></span>
+<span id="cb69-7"><a href="appendix.html#cb69-7"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb69-8"><a href="appendix.html#cb69-8"></a>    <span class="dv">283</span>) <span class="op">%&gt;%</span></span>
+<span id="cb69-9"><a href="appendix.html#cb69-9"></a><span class="st">  </span><span class="kw">chart_annual_growth</span>(</span>
+<span id="cb69-10"><a href="appendix.html#cb69-10"></a>    <span class="dt">qty_var =</span> <span class="st">&quot;tput_qty&quot;</span>,  <span class="co"># changed from &quot;ems_qty&quot; to &quot;tput_qty&quot;</span></span>
+<span id="cb69-11"><a href="appendix.html#cb69-11"></a>    <span class="dt">base_year =</span> <span class="kw">CY</span>(<span class="dv">2011</span>),</span>
+<span id="cb69-12"><a href="appendix.html#cb69-12"></a>    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">2020</span>)) </span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/appendix-BY2011_area_source_throughput_data-283-1.svg" width="800" height="400" /></p>
 <p>If it still doesn’t make sense, please feel free to raise a question at one of our meetings!</p>
 </div>
 </div>
-<div id="technical-documentation" class="section level1">
+<div id="technical-documentation" class="section level1" number="14">
 <h1><span class="header-section-number">C</span> Technical Documentation</h1>
-<div id="appendix-doc-control_factors" class="section level2">
+<div id="appendix-doc-control_factors" class="section level2" number="14.1">
 <h2><span class="header-section-number">C.1</span> Control factors</h2>
 <p>Documentation for three key functions is printed out below.</p>
 <ul>
 <li><p><strong><code>DB_control_factors()</code></strong> is a legacy-format API for DataBank (<code>t0326</code>). In its output, <strong><code>Cd</code>, <code>Ed</code>, and <code>Ep</code></strong> are key. See <code>help(t0326)</code> as well.</p></li>
 <li><p><strong><code>annualize_DB_control_factors()</code></strong>, which itself depends on <strong><code>calculate_Fd_and_Fc()</code></strong>, implements the annualization algorithm mentioned in the chapter on <a href="appendix.html#appendix-doc-control_factors">Control factors</a>. The References section of <code>help(calculate_Fd_and_Fc)</code> contains a reference to a PDF that describes the algorithm in several pages.</p></li>
 </ul>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">help</span>(DB_control_factors)</a></code></pre></div>
-<div class="r-help-page">
-<table width="100%" summary="page for DB_control_factors">
-<tr>
-<td>
-DB_control_factors
-</td>
-<td style="text-align: right;">
-R Documentation
-</td>
-</tr>
-</table>
-<h2>
-DB_control_factors
-</h2>
-<h3>
-Description
-</h3>
-<p>
-Retrieve control factors (keyed by category and date) for a given base year.
-</p>
-<p>
-You have two choices:
-</p>
-<ul>
-<li>
-<p>
-<code>DB_raw_control_factors()</code>, for data organized in legacy format; or
-</p>
-</li>
-<li>
-<p>
-<code>DB_control_factors()</code>, for a tidier version of the same information.
-</p>
-</li>
-</ul>
-<p>
-Usage of the latter is recommended. You will generally want to pipe its result through
-<code>annualize_DB_control_factors()</code> before (a) supplying it to
-<code>BY_area_source_projections()</code>, (b) charting it, or (c) combining it with other
-annual data.
-</p>
-<p>
-See the Details and Examples, below, as well as the documentation for the functions above.
-</p>
-<h3>
-Usage
-</h3>
-<pre class="r">
-DB_control_factors(base_year, na.rm = TRUE, verbose = getOption("verbose"))
-
-DB_raw_control_factors(base_year, verbose = getOption("verbose"))
-</pre>
-<h3>
-Arguments
-</h3>
-<table summary="R argblock">
-<tr valign="top">
-<td>
-<code>base_year</code>
-</td>
-<td>
-<p>
-see <code>BY()</code>
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>na.rm</code>
-</td>
-<td>
-<p>
-drop records where <code>Cd</code> is zero (“uncontrolled”)
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>verbose</code>
-</td>
-<td>
-<p>
-display informative messages
-</p>
-</td>
-</tr>
-</table>
-<h3>
-Details
-</h3>
-<p>
-<strong>IMPORTANT</strong>: <code>cf_qty</code> is the <em>uncontrolled</em> fraction, not the controlled fraction.
-You should multiply things by <code>cf_qty</code>, <em>not</em> <code>(1 - cf_qty)</code>.
-</p>
-<p>
-In the data returned by <code>DB_control_factors()</code>, <code>Cd</code> is “the maximum percent
-emission reduction expected from all the changes in equipment, materials and
-operations due to the regulation.”
-</p>
-<p>
-In the data returned by <code>DB_raw_control_factors()</code>, the values <code>PM</code> through
-<code>CO</code> correspond to the same <code>Cd</code> for each controlled pollutant, respectively.
-(Same data, but in “wide”, rather than “long”, format.) They are also returned
-as percentages (between 0 and 100), rather than fractions (between 0.0 and 1.0).
-</p>
-<h3>
-Value
-</h3>
-<p>
-Tabular data, with the following columns:
-</p>
-<ul>
-<li>
-<p>
-<code>cat_id</code> is the relevant (DataBank) category.
-</p>
-</li>
-<li>
-<p>
-<code>pol_id</code> (and <code>pol_abbr</code>) is the relevant pollutant. There may be more than one, for a given regulation.
-</p>
-</li>
-<li>
-<p>
-<code>Ed</code> is “Regulation Effectiveness. It represents the degree of compliance, in percent, for a given pollutant, or the degree to which the actual control approaches <code>Cd</code>.”
-</p>
-</li>
-<li>
-<p>
-<code>Ep</code> is “Previous Regulation Effectiveness, in percent (equals O if emissions previously uncontrolled).”
-</p>
-</li>
-<li>
-<p>
-<code>cf_date</code> is the effective date of the relevant regulation.
-</p>
-</li>
-<li>
-<p>
-<code>cf_desc</code> is a description or note entered by staff.
-</p>
-</li>
-<li>
-<p>
-<code>reg_abbr</code> is a more human-readable version of <code>reg_id</code>.
-</p>
-</li>
-<li>
-<p>
-<code>reg_name</code> is the full name of the relevant regulation.
-</p>
-</li>
-</ul>
-<h3>
-Functions
-</h3>
-<ul>
-<li>
-<p>
-<code>DB_control_factors</code>: provides data organized in “legacy format” (slightly tidier than <code>t0326</code>, with <code>Cd</code> pivoted by <code>pol_abbr</code>).
-</p>
-</li>
-<li>
-<p>
-<code>DB_raw_control_factors</code>: provides data in the same format as <code>t0326</code>.
-</p>
-</li>
-</ul>
-<h3>
-References
-</h3>
-<ul>
-<li>
-<p>
-See <code style="white-space: pre;">Tracking Emissions_Regulatory Control Levels_Effectiveness.pdf</code>, located in the <code style="white-space: pre;">References/</code> subfolder of this package.
-</p>
-</li>
-</ul>
-<h3>
-See Also
-</h3>
-<ul>
-<li>
-<p>
-<code>annualize_DB_control_factors()</code>
-</p>
-</li>
-<li>
-<p>
-<code>calculate_Fc_and_Fd()</code>
-</p>
-</li>
-<li>
-<p>
-<code>calculate_F_wt()</code>
-</p>
-</li>
-<li>
-<p>
-<code>calculate_F_avg()</code>
-</p>
-</li>
-<li>
-<p>
-<code>DB_CTLFAC_CONCORDANCE</code>
-</p>
-</li>
-</ul>
-<h3>
-Examples
-</h3>
-<pre class="r">
-  DB_control_factor_data &lt;- BY(2011) %&gt;% DB_control_factors()
-  DB_control_factor_data %&gt;% calculate_Fd_and_Fc()
-  DB_control_factor_data %&gt;% annualize_DB_control_factors()
-
-</pre>
-</div>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">help</span>(annualize_DB_control_factors)</a></code></pre></div>
-<div class="r-help-page">
-<table width="100%" summary="page for annualize_DB_control_factors">
-<tr>
-<td>
-annualize_DB_control_factors
-</td>
-<td style="text-align: right;">
-R Documentation
-</td>
-</tr>
-</table>
-<h2>
-Annualize control factors
-</h2>
-<h3>
-Description
-</h3>
-<p>
-Convert “legacy style” control-factor data, such as that
-supplied by <code>DB_control_factors()</code>, into annualized uncontrolled fractions.
-</p>
-<h3>
-Usage
-</h3>
-<pre class="r">
-annualize_DB_control_factors(
-  DB_control_factor_data,
-  years = CY(1990:2050),
-  na.rm = TRUE,
-  verbose = getOption("verbose")
-)
-
-calculate_F_avg(Fc, F_wt)
-
-calculate_F_wt(yday, n_days = 365)
-</pre>
-<h3>
-Arguments
-</h3>
-<table summary="R argblock">
-<tr valign="top">
-<td>
-<code>DB_control_factor_data</code>
-</td>
-<td>
-<p>
-(tabular data) must have columns <code>Cd</code>, <code>Ed</code>, and <code>Ep</code> (see <code>DB_control_factors()</code>)
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>years</code>
-</td>
-<td>
-<p>
-(CY) years for which output is desired; use <code>CY(…)</code>
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>na.rm</code>
-</td>
-<td>
-<p>
-(logical) currently unused
-</p>
-</td>
-</tr>
-<tr valign="top">
-<td>
-<code>verbose</code>
-</td>
-<td>
-<p>
-(logical) display messages
-</p>
-</td>
-</tr>
-</table>
-<h3>
-Functions
-</h3>
-<ul>
-<li>
-<p>
-<code>calculate_F_avg</code>: calculates <code>F_avg</code> as the mean of <code>Fc</code>, weighted by <code>F_wt</code>.
-</p>
-</li>
-<li>
-<p>
-<code>calculate_F_wt</code>: calculates <code>F_wt</code> as the fraction of the calendar year up until <code>yday</code>.
-</p>
-</li>
-</ul>
-<h3>
-See Also
-</h3>
-<ul>
-<li>
-<p>
-<code>DB_control_factors()</code>
-</p>
-</li>
-</ul>
-</div>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">help</span>(calculate_Fd_and_Fc)</a></code></pre></div>
-<div class="r-help-page">
-<table width="100%" summary="page for calculate_Fd">
-<tr>
-<td>
-calculate_Fd
-</td>
-<td style="text-align: right;">
-R Documentation
-</td>
-</tr>
-</table>
-<h2>
-calculate_Fd_and_Fc
-</h2>
-<h3>
-Description
-</h3>
-<ul>
-<li>
-<p>
-<code>Fd</code> is &quot;the fraction of emissions remaining after the effect of a change in regulation control or its effectiveness.
-</p>
-</li>
-<li>
-<p>
-<code>Fc</code> is the cumulative product of <code>Fd</code>.
-</p>
-</li>
-</ul>
-<h3>
-Usage
-</h3>
-<pre class="r">
-calculate_Fd(Cd, Ed, Ep)
-
-calculate_Fc(Fd)
-
-calculate_Fd_and_Fc(legacy_data, verbose = getOption("verbose"))
-</pre>
-<h3>
-Functions
-</h3>
-<ul>
-<li>
-<p>
-<code>calculate_Fd</code>: calculates <code>Fd</code> from <code>Cd</code>, <code>Ed</code>, and <code>Ep</code>.
-</p>
-</li>
-<li>
-<p>
-<code>calculate_Fc</code>: calculates <code>Fc</code> as the cumulative product of <code>Fd</code>.
-</p>
-</li>
-</ul>
-<h3>
-Note
-</h3>
-<p>
-<code>DB_control_factors()</code> depends on this function.
-</p>
-<h3>
-References
-</h3>
-<p>
-Mangat T., Nguyen M., and Schultz S. (1999) Tracking Emission Levels Using Regulatory Controls and Effectiveness Factors. (See <code style="white-space: pre;">References/</code> in this package.)
-</p>
-<h3>
-See Also
-</h3>
-<ul>
-<li>
-<p>
-<code>DB_control_factors()</code>
-</p>
-</li>
-<li>
-<p>
-<code>annualize_DB_control_factors()</code>
-</p>
-</li>
-</ul>
-<h3>
-Examples
-</h3>
-<pre class="r">
-legacy_data &lt;- BY(2011) %&gt;% DB_control_factors()
-legacy_data %&gt;% calculate_Fd_and_Fc()
-
-</pre>
-</div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="appendix.html#cb70-1"></a><span class="kw">help</span>(DB_control_factors)</span></code></pre></div>
+<pre><code>## No documentation for &#39;DB_control_factors&#39; in specified packages and libraries</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="appendix.html#cb72-1"></a><span class="kw">help</span>(annualize_DB_control_factors)</span></code></pre></div>
+<pre><code>## No documentation for &#39;annualize_DB_control_factors&#39; in specified packages and libraries</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="appendix.html#cb74-1"></a><span class="kw">help</span>(calculate_Fd_and_Fc)</span></code></pre></div>
+<pre><code>## No documentation for &#39;calculate_Fd_and_Fc&#39; in specified packages and libraries</code></pre>
 
 </div>
 </div>

@@ -24,7 +24,7 @@
 <meta name="author" content="David Holstius" />
 
 
-<meta name="date" content="2020-05-05" />
+<meta name="date" content="2020-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="02-setup.html"/>
 <link rel="next" href="04-throughputs.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,11 +134,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="02-setup.html"><a href="02-setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
+<li class="chapter" data-level="2" data-path="02-setup.html"><a href="02-setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="02-setup.html"><a href="02-setup.html#loading-required-libraries"><i class="fa fa-check"></i><b>2.1</b> Loading required libraries</a></li>
 <li class="chapter" data-level="2.2" data-path="02-setup.html"><a href="02-setup.html#peeking-at-data"><i class="fa fa-check"></i><b>2.2</b> Peeking at data</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="03-emissions.html"><a href="03-emissions.html"><i class="fa fa-check"></i><b>3</b> Emissions</a><ul>
+<li class="chapter" data-level="3" data-path="03-emissions.html"><a href="03-emissions.html"><i class="fa fa-check"></i><b>3</b> Emissions</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="03-emissions.html"><a href="03-emissions.html#key-functions"><i class="fa fa-check"></i><b>3.1</b> Key functions</a></li>
 <li class="chapter" data-level="3.2" data-path="03-emissions.html"><a href="03-emissions.html#charting-annual-emissions"><i class="fa fa-check"></i><b>3.2</b> Charting annual emissions</a></li>
 <li class="chapter" data-level="3.3" data-path="03-emissions.html"><a href="03-emissions.html#coloring-by-category"><i class="fa fa-check"></i><b>3.3</b> Coloring by category</a></li>
@@ -146,45 +150,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.7" data-path="03-emissions.html"><a href="03-emissions.html#making-an-area-chart"><i class="fa fa-check"></i><b>3.7</b> Making an area chart</a></li>
 <li class="chapter" data-level="3.8" data-path="03-emissions.html"><a href="03-emissions.html#more-than-one-pollutant"><i class="fa fa-check"></i><b>3.8</b> More than one pollutant</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="04-throughputs.html"><a href="04-throughputs.html"><i class="fa fa-check"></i><b>4</b> Throughputs</a><ul>
+<li class="chapter" data-level="4" data-path="04-throughputs.html"><a href="04-throughputs.html"><i class="fa fa-check"></i><b>4</b> Throughputs</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="04-throughputs.html"><a href="04-throughputs.html#obtaining-throughput-data"><i class="fa fa-check"></i><b>4.1</b> Obtaining throughput data</a></li>
 <li class="chapter" data-level="4.2" data-path="04-throughputs.html"><a href="04-throughputs.html#charting-annual-throughputs"><i class="fa fa-check"></i><b>4.2</b> Charting annual throughputs</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html"><i class="fa fa-check"></i><b>5</b> Growth Profiles</a><ul>
+<li class="chapter" data-level="5" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html"><i class="fa fa-check"></i><b>5</b> Growth Profiles</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#normalized-growth-factors"><i class="fa fa-check"></i><b>5.1</b> Normalized growth factors</a></li>
 <li class="chapter" data-level="5.2" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#county-specific-growth-profiles"><i class="fa fa-check"></i><b>5.2</b> County-specific growth profiles</a></li>
 <li class="chapter" data-level="5.3" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#raw-growth-profile-data"><i class="fa fa-check"></i><b>5.3</b> Raw growth profile data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="06-relative_changes.html"><a href="06-relative_changes.html"><i class="fa fa-check"></i><b>6</b> Relative Changes</a><ul>
+<li class="chapter" data-level="6" data-path="06-relative_changes.html"><a href="06-relative_changes.html"><i class="fa fa-check"></i><b>6</b> Relative Changes</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="06-relative_changes.html"><a href="06-relative_changes.html#relative-changes-in-emissions"><i class="fa fa-check"></i><b>6.1</b> Relative changes in emissions</a></li>
 <li class="chapter" data-level="6.2" data-path="06-relative_changes.html"><a href="06-relative_changes.html#relative-changes-in-throughputs"><i class="fa fa-check"></i><b>6.2</b> Relative changes in throughputs</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="07-emission_factors.html"><a href="07-emission_factors.html"><i class="fa fa-check"></i><b>7</b> Emission Factors</a></li>
-<li class="chapter" data-level="8" data-path="08-control_factors.html"><a href="08-control_factors.html"><i class="fa fa-check"></i><b>8</b> Control Factors</a><ul>
+<li class="chapter" data-level="8" data-path="08-control_factors.html"><a href="08-control_factors.html"><i class="fa fa-check"></i><b>8</b> Control Factors</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="08-control_factors.html"><a href="08-control_factors.html#example-domestic-woodstoves"><i class="fa fa-check"></i><b>8.1</b> Example: domestic woodstoves</a></li>
 <li class="chapter" data-level="8.2" data-path="08-control_factors.html"><a href="08-control_factors.html#example-gasoline-filling-stations"><i class="fa fa-check"></i><b>8.2</b> Example: gasoline filling stations</a></li>
-<li class="chapter" data-level="8.3" data-path="08-control_factors.html"><a href="08-control_factors.html#control-effectiveness-vs.annualized-control-factors"><i class="fa fa-check"></i><b>8.3</b> Control effectiveness vs. annualized control factors</a></li>
+<li class="chapter" data-level="8.3" data-path="08-control_factors.html"><a href="08-control_factors.html#control-effectiveness-vs.-annualized-control-factors"><i class="fa fa-check"></i><b>8.3</b> Control effectiveness vs. annualized control factors</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html"><i class="fa fa-check"></i><b>9</b> Comparing Inventories</a><ul>
+<li class="chapter" data-level="9" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html"><i class="fa fa-check"></i><b>9</b> Comparing Inventories</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#binding-inventories-together"><i class="fa fa-check"></i><b>9.1</b> Binding inventories together</a></li>
 <li class="chapter" data-level="9.2" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#comparing-two-versions-of-a-single-category"><i class="fa fa-check"></i><b>9.2</b> Comparing two versions of a single category</a></li>
 <li class="chapter" data-level="9.3" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#multiple-categories"><i class="fa fa-check"></i><b>9.3</b> Groups of categories</a></li>
 <li class="chapter" data-level="9.4" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#more-examples"><i class="fa fa-check"></i><b>9.4</b> More Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="10-third_party.html"><a href="10-third_party.html"><i class="fa fa-check"></i><b>10</b> Third-Party Data</a><ul>
+<li class="chapter" data-level="10" data-path="10-third_party.html"><a href="10-third_party.html"><i class="fa fa-check"></i><b>10</b> Third-Party Data</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="10-third_party.html"><a href="10-third_party.html#natural-gas-consumption"><i class="fa fa-check"></i><b>10.1</b> Natural Gas Consumption</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="11-discontinuities.html"><a href="11-discontinuities.html"><i class="fa fa-check"></i><b>11</b> Changes in Methodology</a><ul>
+<li class="chapter" data-level="11" data-path="11-discontinuities.html"><a href="11-discontinuities.html"><i class="fa fa-check"></i><b>11</b> Changes in Methodology</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="11-discontinuities.html"><a href="11-discontinuities.html#annotating-your-data-with-_basis"><i class="fa fa-check"></i><b>11.1</b> Annotating Your Data with <code>*_basis</code></a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>A</b> Advanced Usage</a><ul>
+<li class="chapter" data-level="A" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>A</b> Advanced Usage</a>
+<ul>
 <li class="chapter" data-level="A.1" data-path="appendix.html"><a href="appendix.html#appendix-howto-county_fractions"><i class="fa fa-check"></i><b>A.1</b> Calculating county fractions from raw growth profile data</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="appendix.html"><a href="appendix.html#special-cases"><i class="fa fa-check"></i><b>B</b> Special Cases</a><ul>
+<li class="chapter" data-level="B" data-path="appendix.html"><a href="appendix.html#special-cases"><i class="fa fa-check"></i><b>B</b> Special Cases</a>
+<ul>
 <li class="chapter" data-level="B.1" data-path="appendix.html"><a href="appendix.html#appendix-case-cat_283"><i class="fa fa-check"></i><b>B.1</b> Changes in forecasts for category #283</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="appendix.html"><a href="appendix.html#technical-documentation"><i class="fa fa-check"></i><b>C</b> Technical Documentation</a><ul>
+<li class="chapter" data-level="C" data-path="appendix.html"><a href="appendix.html#technical-documentation"><i class="fa fa-check"></i><b>C</b> Technical Documentation</a>
+<ul>
 <li class="chapter" data-level="C.1" data-path="appendix.html"><a href="appendix.html#appendix-doc-control_factors"><i class="fa fa-check"></i><b>C.1</b> Control factors</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -206,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="emissions" class="section level1">
+<div id="emissions" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Emissions</h1>
 <p><strong>This chapter will show you how to create charts</strong> showing annual emissions for one or more <em>categories</em> and one or more <em>pollutants</em>.</p>
 <p>It will also show you how to customize those charts with:</p>
@@ -217,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Finally, it will show you how to create <em>area charts</em>, consistent with all of the above.</p>
 <p>All of what you learn will be extensible to the chapters on <a href="04-throughputs.html#throughputs">Throughputs</a>, <a href="05-growth_profiles.html#growth-profiles">Growth Profiles</a>, <a href="07-emission_factors.html#emission-factors">Emission Factors</a>, and <a href="appendix.html#appendix-doc-control_factors">Control Factors</a>.</p>
-<div id="key-functions" class="section level2">
+<div id="key-functions" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Key functions</h2>
 <p>This section relies on three key functions:</p>
 <ul>
@@ -226,47 +240,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>chart_annual_emissions_by()</code></li>
 </ul>
 <p>If you have read the vignette <em>Introduction to BY Data</em><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> then you are already familiar with <code>filter_categories()</code> and <code>filter_pollutants()</code>.</p>
-<p>The <code>chart_annual_emissions_by()</code> function — and its shorter form, <code>chart_annual_emissions()</code> — will be the foundation of this section. To learn more about <code>chart_annual_emissions_by()</code>, you can always type <code>help(&quot;chart_annual_emissions_by&quot;)</code>.</p>
+<p>The <code>chart_annual_emissions_by()</code> function — and its shorter form, <code>chart_annual_emissions()</code> — will be the foundation of this section. To learn more about <code>chart_annual_emissions_by()</code>, you can always type <code>help("chart_annual_emissions_by")</code>.</p>
 </div>
-<div id="charting-annual-emissions" class="section level2">
+<div id="charting-annual-emissions" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Charting annual emissions</h2>
 <p>Let’s try it out on a relatively simple case: charting NO<sub>x</sub> emissions from BY2011 category #283 Water Heating.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># This is an absolutely minimal example for `chart_annual_emissions()`.</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co"># We&#39;re going to build on it, adding improvements as we go.</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">    <span class="dv">283</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_emissions</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="03-emissions.html#cb3-1"></a><span class="co">#</span></span>
+<span id="cb3-2"><a href="03-emissions.html#cb3-2"></a><span class="co"># This is an absolutely minimal example for `chart_annual_emissions()`.</span></span>
+<span id="cb3-3"><a href="03-emissions.html#cb3-3"></a><span class="co"># We&#39;re going to build on it, adding improvements as we go.</span></span>
+<span id="cb3-4"><a href="03-emissions.html#cb3-4"></a><span class="co">#</span></span>
+<span id="cb3-5"><a href="03-emissions.html#cb3-5"></a>BY2011_annual_emission_data <span class="op">%&gt;%</span></span>
+<span id="cb3-6"><a href="03-emissions.html#cb3-6"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb3-7"><a href="03-emissions.html#cb3-7"></a>    <span class="dv">283</span>) <span class="op">%&gt;%</span></span>
+<span id="cb3-8"><a href="03-emissions.html#cb3-8"></a><span class="st">  </span><span class="kw">filter_pollutants</span>(</span>
+<span id="cb3-9"><a href="03-emissions.html#cb3-9"></a>    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb3-10"><a href="03-emissions.html#cb3-10"></a><span class="st">  </span><span class="kw">chart_annual_emissions</span>()</span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-NOx-1.svg" width="800" height="300" /></p>
 <p>That’s a great first step!</p>
 </div>
-<div id="coloring-by-category" class="section level2">
+<div id="coloring-by-category" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Coloring by category</h2>
 <p>If you want to chart more than one category, you’ll probably want a way to distinguish them visually. Let’s use <code>color</code> to distinguish (and compare) #283 Water Heating and #284 Space Heating.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># Here we&#39;ll color by `category`. You could also color by `cnty_abbr`. (Try it!)</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co"># By default, `filter_categories()` adds a new column `category`. If you don&#39;t</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co"># name the categories --- which we will do, further along --- then they are </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co"># simply prefixed with &quot;#&quot;. So, for example, when `cat_id` is 283, the default </span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co"># for `category` will be &quot;#283&quot;.</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co"># The suffix `_by()` --- on `chart_annual_emissions_by()` --- is mostly just</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co"># there for readability. Things should still work if you forget and use</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co"># `chart_annual_emissions()` instead.</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co"># </span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb4-15" data-line-number="15">    <span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb4-16" data-line-number="16">    <span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb4-18" data-line-number="18">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb4-20" data-line-number="20">    <span class="dt">color =</span> category)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="03-emissions.html#cb4-1"></a><span class="co">#</span></span>
+<span id="cb4-2"><a href="03-emissions.html#cb4-2"></a><span class="co"># Here we&#39;ll color by `category`. You could also color by `cnty_abbr`. (Try it!)</span></span>
+<span id="cb4-3"><a href="03-emissions.html#cb4-3"></a><span class="co">#</span></span>
+<span id="cb4-4"><a href="03-emissions.html#cb4-4"></a><span class="co"># By default, `filter_categories()` adds a new column `category`. If you don&#39;t</span></span>
+<span id="cb4-5"><a href="03-emissions.html#cb4-5"></a><span class="co"># name the categories --- which we will do, further along --- then they are </span></span>
+<span id="cb4-6"><a href="03-emissions.html#cb4-6"></a><span class="co"># simply prefixed with &quot;#&quot;. So, for example, when `cat_id` is 283, the default </span></span>
+<span id="cb4-7"><a href="03-emissions.html#cb4-7"></a><span class="co"># for `category` will be &quot;#283&quot;.</span></span>
+<span id="cb4-8"><a href="03-emissions.html#cb4-8"></a><span class="co">#</span></span>
+<span id="cb4-9"><a href="03-emissions.html#cb4-9"></a><span class="co"># The suffix `_by()` --- on `chart_annual_emissions_by()` --- is mostly just</span></span>
+<span id="cb4-10"><a href="03-emissions.html#cb4-10"></a><span class="co"># there for readability. Things should still work if you forget and use</span></span>
+<span id="cb4-11"><a href="03-emissions.html#cb4-11"></a><span class="co"># `chart_annual_emissions()` instead.</span></span>
+<span id="cb4-12"><a href="03-emissions.html#cb4-12"></a><span class="co"># </span></span>
+<span id="cb4-13"><a href="03-emissions.html#cb4-13"></a>BY2011_annual_emission_data <span class="op">%&gt;%</span></span>
+<span id="cb4-14"><a href="03-emissions.html#cb4-14"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb4-15"><a href="03-emissions.html#cb4-15"></a>    <span class="dv">283</span>, </span>
+<span id="cb4-16"><a href="03-emissions.html#cb4-16"></a>    <span class="dv">284</span>) <span class="op">%&gt;%</span></span>
+<span id="cb4-17"><a href="03-emissions.html#cb4-17"></a><span class="st">  </span><span class="kw">filter_pollutants</span>(</span>
+<span id="cb4-18"><a href="03-emissions.html#cb4-18"></a>    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb4-19"><a href="03-emissions.html#cb4-19"></a><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</span>
+<span id="cb4-20"><a href="03-emissions.html#cb4-20"></a>    <span class="dt">color =</span> category)</span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-1.svg" width="800" height="300" /></p>
 <div class="note">
 <p>
@@ -277,109 +291,109 @@ If you wind up with more than ten colors, rethink the chart. Maybe grouping cate
 </p>
 </div>
 </div>
-<div id="flagging-specific-values" class="section level2">
+<div id="flagging-specific-values" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Flagging specific values</h2>
 <p>Displaying exact values on a chart can be helpful to the reader. Then, they don’t have to consult a separate table.</p>
 <p>To do this, simply supply <code>flag_years</code>. If you want to change the template for what exactly is displayed — digits, text, etc. — you can supply <code>flag_labels</code> too. See the <a href="#appendix-howto-flag_labels">Appendix</a>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co"># Use `flag_years` to display values directly in the chart.</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">    <span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11">    <span class="dt">color =</span> category,</a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="03-emissions.html#cb5-1"></a><span class="co">#</span></span>
+<span id="cb5-2"><a href="03-emissions.html#cb5-2"></a><span class="co"># Use `flag_years` to display values directly in the chart.</span></span>
+<span id="cb5-3"><a href="03-emissions.html#cb5-3"></a><span class="co">#</span></span>
+<span id="cb5-4"><a href="03-emissions.html#cb5-4"></a>BY2011_annual_emission_data <span class="op">%&gt;%</span></span>
+<span id="cb5-5"><a href="03-emissions.html#cb5-5"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb5-6"><a href="03-emissions.html#cb5-6"></a>    <span class="dv">283</span>, </span>
+<span id="cb5-7"><a href="03-emissions.html#cb5-7"></a>    <span class="dv">284</span>) <span class="op">%&gt;%</span></span>
+<span id="cb5-8"><a href="03-emissions.html#cb5-8"></a><span class="st">  </span><span class="kw">filter_pollutants</span>(</span>
+<span id="cb5-9"><a href="03-emissions.html#cb5-9"></a>    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb5-10"><a href="03-emissions.html#cb5-10"></a><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</span>
+<span id="cb5-11"><a href="03-emissions.html#cb5-11"></a>    <span class="dt">color =</span> category,</span>
+<span id="cb5-12"><a href="03-emissions.html#cb5-12"></a>    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>))</span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-flag_years-1.svg" width="800" height="300" /></p>
 </div>
-<div id="humanizing-category-names" class="section level2">
+<div id="humanizing-category-names" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> Humanizing category names</h2>
 <p>You can also, in the process of filtering, supply more human-readable names for the categories.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co"># Names supplied to `filter_categories()` appear in the data as a new column,</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co"># `category`. Following that, we can ask `chart_annual_emissions_by()` to use</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co"># `category` as the basis for coloring.</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co"># </span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb6-13" data-line-number="13">    <span class="dt">color =</span> category,</a>
-<a class="sourceLine" id="cb6-14" data-line-number="14">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="03-emissions.html#cb6-1"></a><span class="co">#</span></span>
+<span id="cb6-2"><a href="03-emissions.html#cb6-2"></a><span class="co"># Names supplied to `filter_categories()` appear in the data as a new column,</span></span>
+<span id="cb6-3"><a href="03-emissions.html#cb6-3"></a><span class="co"># `category`. Following that, we can ask `chart_annual_emissions_by()` to use</span></span>
+<span id="cb6-4"><a href="03-emissions.html#cb6-4"></a><span class="co"># `category` as the basis for coloring.</span></span>
+<span id="cb6-5"><a href="03-emissions.html#cb6-5"></a><span class="co"># </span></span>
+<span id="cb6-6"><a href="03-emissions.html#cb6-6"></a>BY2011_annual_emission_data <span class="op">%&gt;%</span></span>
+<span id="cb6-7"><a href="03-emissions.html#cb6-7"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb6-8"><a href="03-emissions.html#cb6-8"></a>    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </span>
+<span id="cb6-9"><a href="03-emissions.html#cb6-9"></a>    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></span>
+<span id="cb6-10"><a href="03-emissions.html#cb6-10"></a><span class="st">  </span><span class="kw">filter_pollutants</span>(</span>
+<span id="cb6-11"><a href="03-emissions.html#cb6-11"></a>    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb6-12"><a href="03-emissions.html#cb6-12"></a><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</span>
+<span id="cb6-13"><a href="03-emissions.html#cb6-13"></a>    <span class="dt">color =</span> category,</span>
+<span id="cb6-14"><a href="03-emissions.html#cb6-14"></a>    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>))</span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-humanize_category_names-1.svg" width="800" height="300" /></p>
 </div>
-<div id="titling-and-captioning" class="section level2">
+<div id="titling-and-captioning" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Titling and captioning</h2>
 <p>Last but not least, you can provide a <code>title</code>, <code>subtitle</code>, and/or <code>caption</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co"># An explicit `title`, `subtitle`, and/or `caption` can be supplied to</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co"># `chart_annual_emissions_by()`. This is strongly encouraged!!</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co"># The default caption is just &quot;DRAFT YYYY-mm-dd.&quot;</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co"># </span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb7-12" data-line-number="12">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb7-14" data-line-number="14">    <span class="dt">color =</span> category,</a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>),</a>
-<a class="sourceLine" id="cb7-16" data-line-number="16">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
-<a class="sourceLine" id="cb7-17" data-line-number="17">    <span class="dt">subtitle =</span> <span class="st">&quot;Between CY1993-2002, controls on NOx from water heating were strengthened.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="03-emissions.html#cb7-1"></a><span class="co">#</span></span>
+<span id="cb7-2"><a href="03-emissions.html#cb7-2"></a><span class="co"># An explicit `title`, `subtitle`, and/or `caption` can be supplied to</span></span>
+<span id="cb7-3"><a href="03-emissions.html#cb7-3"></a><span class="co"># `chart_annual_emissions_by()`. This is strongly encouraged!!</span></span>
+<span id="cb7-4"><a href="03-emissions.html#cb7-4"></a><span class="co">#</span></span>
+<span id="cb7-5"><a href="03-emissions.html#cb7-5"></a><span class="co"># The default caption is just &quot;DRAFT YYYY-mm-dd.&quot;</span></span>
+<span id="cb7-6"><a href="03-emissions.html#cb7-6"></a><span class="co"># </span></span>
+<span id="cb7-7"><a href="03-emissions.html#cb7-7"></a>BY2011_annual_emission_data <span class="op">%&gt;%</span></span>
+<span id="cb7-8"><a href="03-emissions.html#cb7-8"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb7-9"><a href="03-emissions.html#cb7-9"></a>    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </span>
+<span id="cb7-10"><a href="03-emissions.html#cb7-10"></a>    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></span>
+<span id="cb7-11"><a href="03-emissions.html#cb7-11"></a><span class="st">  </span><span class="kw">filter_pollutants</span>(</span>
+<span id="cb7-12"><a href="03-emissions.html#cb7-12"></a>    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb7-13"><a href="03-emissions.html#cb7-13"></a><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</span>
+<span id="cb7-14"><a href="03-emissions.html#cb7-14"></a>    <span class="dt">color =</span> category,</span>
+<span id="cb7-15"><a href="03-emissions.html#cb7-15"></a>    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1993</span>, <span class="dv">2011</span>, <span class="dv">2030</span>),</span>
+<span id="cb7-16"><a href="03-emissions.html#cb7-16"></a>    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</span>
+<span id="cb7-17"><a href="03-emissions.html#cb7-17"></a>    <span class="dt">subtitle =</span> <span class="st">&quot;Between CY1993-2002, controls on NOx from water heating were strengthened.&quot;</span>)</span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-chart_annual_emissions_by-category-with_title-1.svg" width="800" height="400" /></p>
 </div>
-<div id="making-an-area-chart" class="section level2">
+<div id="making-an-area-chart" class="section level2" number="3.7">
 <h2><span class="header-section-number">3.7</span> Making an area chart</h2>
 <p>Stacking can be a good way to show how the total and the proportions vary over time. (Compare with the line-charts above, which are not stacked.)</p>
 <p>To create a stacked (“area”) chart, simply pass <code>fill = ...</code> instead of <code>color = ...</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co"># `fill` can be supplied in place of `color`.</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co"># </span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co"># `subtitle = str_c(..., sep = &quot;\n&quot;)` means &quot;combine multiple lines of text&quot;.</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co"># We can use this to avoid subtitles running off the chart.</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb8-9" data-line-number="9">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb8-10" data-line-number="10">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb8-12" data-line-number="12">    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb8-14" data-line-number="14">    <span class="dt">fill =</span> category,</a>
-<a class="sourceLine" id="cb8-15" data-line-number="15">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
-<a class="sourceLine" id="cb8-16" data-line-number="16">    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</a>
-<a class="sourceLine" id="cb8-17" data-line-number="17">      <span class="st">&quot;Combined emissions from water and space heating have declined.&quot;</span>,</a>
-<a class="sourceLine" id="cb8-18" data-line-number="18">      <span class="st">&quot;But, they are projected to return to 1990 levels by 2030.&quot;</span>,</a>
-<a class="sourceLine" id="cb8-19" data-line-number="19">      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="03-emissions.html#cb8-1"></a><span class="co">#</span></span>
+<span id="cb8-2"><a href="03-emissions.html#cb8-2"></a><span class="co"># `fill` can be supplied in place of `color`.</span></span>
+<span id="cb8-3"><a href="03-emissions.html#cb8-3"></a><span class="co"># </span></span>
+<span id="cb8-4"><a href="03-emissions.html#cb8-4"></a><span class="co"># `subtitle = str_c(..., sep = &quot;\n&quot;)` means &quot;combine multiple lines of text&quot;.</span></span>
+<span id="cb8-5"><a href="03-emissions.html#cb8-5"></a><span class="co"># We can use this to avoid subtitles running off the chart.</span></span>
+<span id="cb8-6"><a href="03-emissions.html#cb8-6"></a><span class="co">#</span></span>
+<span id="cb8-7"><a href="03-emissions.html#cb8-7"></a>BY2011_annual_emission_data <span class="op">%&gt;%</span></span>
+<span id="cb8-8"><a href="03-emissions.html#cb8-8"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb8-9"><a href="03-emissions.html#cb8-9"></a>    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </span>
+<span id="cb8-10"><a href="03-emissions.html#cb8-10"></a>    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></span>
+<span id="cb8-11"><a href="03-emissions.html#cb8-11"></a><span class="st">  </span><span class="kw">filter_pollutants</span>(</span>
+<span id="cb8-12"><a href="03-emissions.html#cb8-12"></a>    <span class="st">&quot;NOx&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb8-13"><a href="03-emissions.html#cb8-13"></a><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</span>
+<span id="cb8-14"><a href="03-emissions.html#cb8-14"></a>    <span class="dt">fill =</span> category,</span>
+<span id="cb8-15"><a href="03-emissions.html#cb8-15"></a>    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</span>
+<span id="cb8-16"><a href="03-emissions.html#cb8-16"></a>    <span class="dt">subtitle =</span> <span class="kw">str_c</span>(</span>
+<span id="cb8-17"><a href="03-emissions.html#cb8-17"></a>      <span class="st">&quot;Combined emissions from water and space heating have declined.&quot;</span>,</span>
+<span id="cb8-18"><a href="03-emissions.html#cb8-18"></a>      <span class="st">&quot;But, they are projected to return to 1990 levels by 2030.&quot;</span>,</span>
+<span id="cb8-19"><a href="03-emissions.html#cb8-19"></a>      <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-NOx-fill_by_category-1.svg" width="800" height="400" /></p>
 </div>
-<div id="more-than-one-pollutant" class="section level2">
+<div id="more-than-one-pollutant" class="section level2" number="3.8">
 <h2><span class="header-section-number">3.8</span> More than one pollutant</h2>
 <p>Above, we’ve kept things simple by just focusing on NO<sub>x</sub>. But you’ll often want to show more than one pollutant at the same time. You can definitely do that!</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co"># If multiple pollutants are represented in the data that is passed to</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co"># `chart_annual_emissions_by()`, it will try to be helpful by creating a</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co"># sub-plot for each pollutant. This ought to be a safe approach.</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co"># </span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">BY2011_annual_emission_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb9-11" data-line-number="11">    <span class="st">&quot;NOx&quot;</span>,</a>
-<a class="sourceLine" id="cb9-12" data-line-number="12">    <span class="st">&quot;PM10&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</a>
-<a class="sourceLine" id="cb9-14" data-line-number="14">    <span class="dt">color =</span> category,</a>
-<a class="sourceLine" id="cb9-15" data-line-number="15">    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</a>
-<a class="sourceLine" id="cb9-16" data-line-number="16">    <span class="dt">subtitle =</span> <span class="st">&quot;Between CY1993-2002, controls on NOx from water heating were strengthened.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="03-emissions.html#cb9-1"></a><span class="co">#</span></span>
+<span id="cb9-2"><a href="03-emissions.html#cb9-2"></a><span class="co"># If multiple pollutants are represented in the data that is passed to</span></span>
+<span id="cb9-3"><a href="03-emissions.html#cb9-3"></a><span class="co"># `chart_annual_emissions_by()`, it will try to be helpful by creating a</span></span>
+<span id="cb9-4"><a href="03-emissions.html#cb9-4"></a><span class="co"># sub-plot for each pollutant. This ought to be a safe approach.</span></span>
+<span id="cb9-5"><a href="03-emissions.html#cb9-5"></a><span class="co"># </span></span>
+<span id="cb9-6"><a href="03-emissions.html#cb9-6"></a>BY2011_annual_emission_data <span class="op">%&gt;%</span></span>
+<span id="cb9-7"><a href="03-emissions.html#cb9-7"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb9-8"><a href="03-emissions.html#cb9-8"></a>    <span class="st">&quot;#283 Space Heating&quot;</span> =<span class="st"> </span><span class="dv">283</span>, </span>
+<span id="cb9-9"><a href="03-emissions.html#cb9-9"></a>    <span class="st">&quot;#284 Water Heating&quot;</span> =<span class="st"> </span><span class="dv">284</span>) <span class="op">%&gt;%</span></span>
+<span id="cb9-10"><a href="03-emissions.html#cb9-10"></a><span class="st">  </span><span class="kw">filter_pollutants</span>(</span>
+<span id="cb9-11"><a href="03-emissions.html#cb9-11"></a>    <span class="st">&quot;NOx&quot;</span>,</span>
+<span id="cb9-12"><a href="03-emissions.html#cb9-12"></a>    <span class="st">&quot;PM10&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb9-13"><a href="03-emissions.html#cb9-13"></a><span class="st">  </span><span class="kw">chart_annual_emissions_by</span>(</span>
+<span id="cb9-14"><a href="03-emissions.html#cb9-14"></a>    <span class="dt">color =</span> category,</span>
+<span id="cb9-15"><a href="03-emissions.html#cb9-15"></a>    <span class="dt">title =</span> <span class="st">&quot;Residential NG Combustion: Space and Water Heating&quot;</span>,</span>
+<span id="cb9-16"><a href="03-emissions.html#cb9-16"></a>    <span class="dt">subtitle =</span> <span class="st">&quot;Between CY1993-2002, controls on NOx from water heating were strengthened.&quot;</span>)</span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_annual_emission_data-283-284-multiple_pollutants-1.svg" width="800" height="600" /></p>
 
 </div>
@@ -387,7 +401,7 @@ If you wind up with more than ten colors, rethink the chart. Maybe grouping cate
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>This is being migrated from an R vignette to a GitBook like this one. Stay tuned!<a href="03-emissions.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>This is being migrated from an R vignette to a GitBook like this one. Stay tuned!<a href="03-emissions.html#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
