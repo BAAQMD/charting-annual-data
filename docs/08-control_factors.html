@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Control Factors | Charting Annual Emissions</title>
   <meta name="description" content="This is an introduction to charting annual emissions inventory data." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Control Factors | Charting Annual Emissions" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="David Holstius" />
 
 
-<meta name="date" content="2020-05-05" />
+<meta name="date" content="2020-10-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="07-emission_factors.html"/>
 <link rel="next" href="09-comparing_inventories.html"/>
+<script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,28 +51,31 @@
 
 
 
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +84,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,11 +136,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="02-setup.html"><a href="02-setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
+<li class="chapter" data-level="2" data-path="02-setup.html"><a href="02-setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="02-setup.html"><a href="02-setup.html#loading-required-libraries"><i class="fa fa-check"></i><b>2.1</b> Loading required libraries</a></li>
 <li class="chapter" data-level="2.2" data-path="02-setup.html"><a href="02-setup.html#peeking-at-data"><i class="fa fa-check"></i><b>2.2</b> Peeking at data</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="03-emissions.html"><a href="03-emissions.html"><i class="fa fa-check"></i><b>3</b> Emissions</a><ul>
+<li class="chapter" data-level="3" data-path="03-emissions.html"><a href="03-emissions.html"><i class="fa fa-check"></i><b>3</b> Emissions</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="03-emissions.html"><a href="03-emissions.html#key-functions"><i class="fa fa-check"></i><b>3.1</b> Key functions</a></li>
 <li class="chapter" data-level="3.2" data-path="03-emissions.html"><a href="03-emissions.html#charting-annual-emissions"><i class="fa fa-check"></i><b>3.2</b> Charting annual emissions</a></li>
 <li class="chapter" data-level="3.3" data-path="03-emissions.html"><a href="03-emissions.html#coloring-by-category"><i class="fa fa-check"></i><b>3.3</b> Coloring by category</a></li>
@@ -146,45 +152,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.7" data-path="03-emissions.html"><a href="03-emissions.html#making-an-area-chart"><i class="fa fa-check"></i><b>3.7</b> Making an area chart</a></li>
 <li class="chapter" data-level="3.8" data-path="03-emissions.html"><a href="03-emissions.html#more-than-one-pollutant"><i class="fa fa-check"></i><b>3.8</b> More than one pollutant</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="04-throughputs.html"><a href="04-throughputs.html"><i class="fa fa-check"></i><b>4</b> Throughputs</a><ul>
+<li class="chapter" data-level="4" data-path="04-throughputs.html"><a href="04-throughputs.html"><i class="fa fa-check"></i><b>4</b> Throughputs</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="04-throughputs.html"><a href="04-throughputs.html#obtaining-throughput-data"><i class="fa fa-check"></i><b>4.1</b> Obtaining throughput data</a></li>
 <li class="chapter" data-level="4.2" data-path="04-throughputs.html"><a href="04-throughputs.html#charting-annual-throughputs"><i class="fa fa-check"></i><b>4.2</b> Charting annual throughputs</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html"><i class="fa fa-check"></i><b>5</b> Growth Profiles</a><ul>
+<li class="chapter" data-level="5" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html"><i class="fa fa-check"></i><b>5</b> Growth Profiles</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#normalized-growth-factors"><i class="fa fa-check"></i><b>5.1</b> Normalized growth factors</a></li>
 <li class="chapter" data-level="5.2" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#county-specific-growth-profiles"><i class="fa fa-check"></i><b>5.2</b> County-specific growth profiles</a></li>
 <li class="chapter" data-level="5.3" data-path="05-growth_profiles.html"><a href="05-growth_profiles.html#raw-growth-profile-data"><i class="fa fa-check"></i><b>5.3</b> Raw growth profile data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="06-relative_changes.html"><a href="06-relative_changes.html"><i class="fa fa-check"></i><b>6</b> Relative Changes</a><ul>
+<li class="chapter" data-level="6" data-path="06-relative_changes.html"><a href="06-relative_changes.html"><i class="fa fa-check"></i><b>6</b> Relative Changes</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="06-relative_changes.html"><a href="06-relative_changes.html#relative-changes-in-emissions"><i class="fa fa-check"></i><b>6.1</b> Relative changes in emissions</a></li>
 <li class="chapter" data-level="6.2" data-path="06-relative_changes.html"><a href="06-relative_changes.html#relative-changes-in-throughputs"><i class="fa fa-check"></i><b>6.2</b> Relative changes in throughputs</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="07-emission_factors.html"><a href="07-emission_factors.html"><i class="fa fa-check"></i><b>7</b> Emission Factors</a></li>
-<li class="chapter" data-level="8" data-path="08-control_factors.html"><a href="08-control_factors.html"><i class="fa fa-check"></i><b>8</b> Control Factors</a><ul>
+<li class="chapter" data-level="8" data-path="08-control_factors.html"><a href="08-control_factors.html"><i class="fa fa-check"></i><b>8</b> Control Factors</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="08-control_factors.html"><a href="08-control_factors.html#example-domestic-woodstoves"><i class="fa fa-check"></i><b>8.1</b> Example: domestic woodstoves</a></li>
 <li class="chapter" data-level="8.2" data-path="08-control_factors.html"><a href="08-control_factors.html#example-gasoline-filling-stations"><i class="fa fa-check"></i><b>8.2</b> Example: gasoline filling stations</a></li>
-<li class="chapter" data-level="8.3" data-path="08-control_factors.html"><a href="08-control_factors.html#control-effectiveness-vs.annualized-control-factors"><i class="fa fa-check"></i><b>8.3</b> Control effectiveness vs. annualized control factors</a></li>
+<li class="chapter" data-level="8.3" data-path="08-control_factors.html"><a href="08-control_factors.html#control-effectiveness-vs.-annualized-control-factors"><i class="fa fa-check"></i><b>8.3</b> Control effectiveness vs. annualized control factors</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html"><i class="fa fa-check"></i><b>9</b> Comparing Inventories</a><ul>
+<li class="chapter" data-level="9" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html"><i class="fa fa-check"></i><b>9</b> Comparing Inventories</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#binding-inventories-together"><i class="fa fa-check"></i><b>9.1</b> Binding inventories together</a></li>
 <li class="chapter" data-level="9.2" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#comparing-two-versions-of-a-single-category"><i class="fa fa-check"></i><b>9.2</b> Comparing two versions of a single category</a></li>
 <li class="chapter" data-level="9.3" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#multiple-categories"><i class="fa fa-check"></i><b>9.3</b> Groups of categories</a></li>
 <li class="chapter" data-level="9.4" data-path="09-comparing_inventories.html"><a href="09-comparing_inventories.html#more-examples"><i class="fa fa-check"></i><b>9.4</b> More Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="10-third_party.html"><a href="10-third_party.html"><i class="fa fa-check"></i><b>10</b> Third-Party Data</a><ul>
+<li class="chapter" data-level="10" data-path="10-third_party.html"><a href="10-third_party.html"><i class="fa fa-check"></i><b>10</b> Third-Party Data</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="10-third_party.html"><a href="10-third_party.html#natural-gas-consumption"><i class="fa fa-check"></i><b>10.1</b> Natural Gas Consumption</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="11-discontinuities.html"><a href="11-discontinuities.html"><i class="fa fa-check"></i><b>11</b> Changes in Methodology</a><ul>
+<li class="chapter" data-level="11" data-path="11-discontinuities.html"><a href="11-discontinuities.html"><i class="fa fa-check"></i><b>11</b> Changes in Methodology</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="11-discontinuities.html"><a href="11-discontinuities.html#annotating-your-data-with-_basis"><i class="fa fa-check"></i><b>11.1</b> Annotating Your Data with <code>*_basis</code></a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>A</b> Advanced Usage</a><ul>
+<li class="chapter" data-level="A" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>A</b> Advanced Usage</a>
+<ul>
 <li class="chapter" data-level="A.1" data-path="appendix.html"><a href="appendix.html#appendix-howto-county_fractions"><i class="fa fa-check"></i><b>A.1</b> Calculating county fractions from raw growth profile data</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="appendix.html"><a href="appendix.html#special-cases"><i class="fa fa-check"></i><b>B</b> Special Cases</a><ul>
-<li class="chapter" data-level="B.1" data-path="appendix.html"><a href="appendix.html#appendix-case-cat_283"><i class="fa fa-check"></i><b>B.1</b> Changes in forecasts for category #283</a></li>
+<li class="chapter" data-level="B" data-path="appendix.html"><a href="appendix.html#special-cases"><i class="fa fa-check"></i><b>B</b> Special Cases</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="appendix.html"><a href="appendix.html#appendix-case-cat_284"><i class="fa fa-check"></i><b>B.1</b> Changes in forecasts for category #284</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="appendix.html"><a href="appendix.html#technical-documentation"><i class="fa fa-check"></i><b>C</b> Technical Documentation</a><ul>
+<li class="chapter" data-level="C" data-path="appendix.html"><a href="appendix.html#technical-documentation"><i class="fa fa-check"></i><b>C</b> Technical Documentation</a>
+<ul>
 <li class="chapter" data-level="C.1" data-path="appendix.html"><a href="appendix.html#appendix-doc-control_factors"><i class="fa fa-check"></i><b>C.1</b> Control factors</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -206,84 +222,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="control-factors" class="section level1">
+<div id="control-factors" class="section level1" number="8">
 <h1><span class="header-section-number">8</span> Control Factors</h1>
 <p>This chapter is very similar to the one on <a href="07-emission_factors.html#emission-factors">Emission factors</a>. Here we employ a function, <code>annualize_DB_control_factors()</code>, that’s analogous to <code>annualize_DB_emission_factors()</code>.</p>
 <p>There is one notable difference. For a given category, emission factors can vary by quite a bit from pollutant to pollutant. The default behavior for <code>chart_annual_emission_factors_by()</code>, as we saw in the <a href="07-emission_factors.html#emission-factors">previous chapter</a>, is therefore to generate a different sub-plot for each pollutant, so that the y-scales can vary by pollutant. Control factors, in contrast, always range from 0% to 100%, so we can safely plot them all on the same y-scale. This works well when we set <code>color = pol_abbr</code>, as we do in the examples below.</p>
-<div id="example-domestic-woodstoves" class="section level2">
+<div id="example-domestic-woodstoves" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> Example: domestic woodstoves</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="co"># Using `filter_categories()` before `annualize_DB_control_factors()` saves time.</span></a>
-<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb27-4" data-line-number="4">BY2011_woodstove_cf_data &lt;-</a>
-<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="st">  </span><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="st">  </span><span class="kw">DB_control_factors</span>(</a>
-<a class="sourceLine" id="cb27-7" data-line-number="7">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb27-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb27-9" data-line-number="9">    <span class="st">&quot;#288 Domestic Wood Stoves&quot;</span> =<span class="st"> </span><span class="dv">288</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb27-10" data-line-number="10"><span class="st">  </span><span class="kw">annualize_DB_control_factors</span>(</a>
-<a class="sourceLine" id="cb27-11" data-line-number="11">    <span class="dt">years =</span> <span class="kw">CY</span>(<span class="dv">1990</span><span class="op">:</span><span class="dv">2030</span>),</a>
-<a class="sourceLine" id="cb27-12" data-line-number="12">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) </a></code></pre></div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="co"># We can see that in CY1990, these emissions were already controlled by a small</span></a>
-<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="co"># amount. By CY2011, controls had increased by quite a bit.</span></a>
-<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb28-5" data-line-number="5">BY2011_woodstove_cf_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb28-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb28-7" data-line-number="7">    <span class="st">&quot;CO&quot;</span>,</a>
-<a class="sourceLine" id="cb28-8" data-line-number="8">    <span class="st">&quot;PM&quot;</span>,</a>
-<a class="sourceLine" id="cb28-9" data-line-number="9">    <span class="st">&quot;TOG&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb28-10" data-line-number="10"><span class="st">  </span><span class="kw">chart_annual_control_factors_by</span>(</a>
-<a class="sourceLine" id="cb28-11" data-line-number="11">    <span class="dt">color =</span> pollutant,</a>
-<a class="sourceLine" id="cb28-12" data-line-number="12">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="08-control_factors.html#cb27-1" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb27-2"><a href="08-control_factors.html#cb27-2" aria-hidden="true"></a><span class="co"># Using `filter_categories()` before `annualize_DB_control_factors()` saves time.</span></span>
+<span id="cb27-3"><a href="08-control_factors.html#cb27-3" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb27-4"><a href="08-control_factors.html#cb27-4" aria-hidden="true"></a>BY2011_woodstove_cf_data &lt;-</span>
+<span id="cb27-5"><a href="08-control_factors.html#cb27-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></span>
+<span id="cb27-6"><a href="08-control_factors.html#cb27-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">DB_control_factors</span>(</span>
+<span id="cb27-7"><a href="08-control_factors.html#cb27-7" aria-hidden="true"></a>    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb27-8"><a href="08-control_factors.html#cb27-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb27-9"><a href="08-control_factors.html#cb27-9" aria-hidden="true"></a>    <span class="st">&quot;#288 Domestic Wood Stoves&quot;</span> =<span class="st"> </span><span class="dv">288</span>) <span class="op">%&gt;%</span></span>
+<span id="cb27-10"><a href="08-control_factors.html#cb27-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">annualize_DB_control_factors</span>(</span>
+<span id="cb27-11"><a href="08-control_factors.html#cb27-11" aria-hidden="true"></a>    <span class="dt">years =</span> <span class="kw">CY</span>(<span class="dv">1990</span><span class="op">:</span><span class="dv">2030</span>),</span>
+<span id="cb27-12"><a href="08-control_factors.html#cb27-12" aria-hidden="true"></a>    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="08-control_factors.html#cb28-1" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb28-2"><a href="08-control_factors.html#cb28-2" aria-hidden="true"></a><span class="co"># We can see that in CY1990, these emissions were already controlled by a small</span></span>
+<span id="cb28-3"><a href="08-control_factors.html#cb28-3" aria-hidden="true"></a><span class="co"># amount. By CY2011, controls had increased by quite a bit.</span></span>
+<span id="cb28-4"><a href="08-control_factors.html#cb28-4" aria-hidden="true"></a><span class="co"># </span></span>
+<span id="cb28-5"><a href="08-control_factors.html#cb28-5" aria-hidden="true"></a>BY2011_woodstove_cf_data <span class="op">%&gt;%</span></span>
+<span id="cb28-6"><a href="08-control_factors.html#cb28-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter_pollutants</span>(</span>
+<span id="cb28-7"><a href="08-control_factors.html#cb28-7" aria-hidden="true"></a>    <span class="st">&quot;CO&quot;</span>,</span>
+<span id="cb28-8"><a href="08-control_factors.html#cb28-8" aria-hidden="true"></a>    <span class="st">&quot;PM&quot;</span>,</span>
+<span id="cb28-9"><a href="08-control_factors.html#cb28-9" aria-hidden="true"></a>    <span class="st">&quot;TOG&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb28-10"><a href="08-control_factors.html#cb28-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">chart_annual_control_factors_by</span>(</span>
+<span id="cb28-11"><a href="08-control_factors.html#cb28-11" aria-hidden="true"></a>    <span class="dt">color =</span> pollutant,</span>
+<span id="cb28-12"><a href="08-control_factors.html#cb28-12" aria-hidden="true"></a>    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>))</span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_woodstove_cf_data-chart_annual_quantities_by-pol_abbr-1.svg" width="800" height="400" /></p>
 </div>
-<div id="example-gasoline-filling-stations" class="section level2">
+<div id="example-gasoline-filling-stations" class="section level2" number="8.2">
 <h2><span class="header-section-number">8.2</span> Example: gasoline filling stations</h2>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="co"># Using `filter_categories()` before `annualize_DB_control_factors()` saves time.</span></a>
-<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb29-4" data-line-number="4">BY2011_gasoline_spillage_cf_data &lt;-</a>
-<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="st">  </span><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="st">  </span><span class="kw">DB_control_factors</span>(</a>
-<a class="sourceLine" id="cb29-7" data-line-number="7">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb29-8" data-line-number="8"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb29-9" data-line-number="9">    <span class="st">&quot;#66 Gasoline Spillage&quot;</span> =<span class="st"> </span><span class="dv">66</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb29-10" data-line-number="10"><span class="st">  </span><span class="kw">annualize_DB_control_factors</span>(</a>
-<a class="sourceLine" id="cb29-11" data-line-number="11">    <span class="dt">years =</span> <span class="kw">CY</span>(<span class="dv">1990</span><span class="op">:</span><span class="dv">2030</span>),</a>
-<a class="sourceLine" id="cb29-12" data-line-number="12">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) </a></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="co"># Again we can see that in CY1990, these emissions were already controlled by a</span></a>
-<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="co"># small amount. And, by CY2011, controls had increased by quite a bit.</span></a>
-<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb30-5" data-line-number="5">BY2011_gasoline_spillage_cf_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb30-6" data-line-number="6"><span class="st">  </span><span class="kw">filter_pollutants</span>(</a>
-<a class="sourceLine" id="cb30-7" data-line-number="7">    <span class="st">&quot;TOG&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb30-8" data-line-number="8"><span class="st">  </span><span class="kw">chart_annual_control_factors_by</span>(</a>
-<a class="sourceLine" id="cb30-9" data-line-number="9">    <span class="dt">color =</span> pollutant,</a>
-<a class="sourceLine" id="cb30-10" data-line-number="10">    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="08-control_factors.html#cb29-1" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb29-2"><a href="08-control_factors.html#cb29-2" aria-hidden="true"></a><span class="co"># Using `filter_categories()` before `annualize_DB_control_factors()` saves time.</span></span>
+<span id="cb29-3"><a href="08-control_factors.html#cb29-3" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb29-4"><a href="08-control_factors.html#cb29-4" aria-hidden="true"></a>BY2011_gasoline_spillage_cf_data &lt;-</span>
+<span id="cb29-5"><a href="08-control_factors.html#cb29-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></span>
+<span id="cb29-6"><a href="08-control_factors.html#cb29-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">DB_control_factors</span>(</span>
+<span id="cb29-7"><a href="08-control_factors.html#cb29-7" aria-hidden="true"></a>    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb29-8"><a href="08-control_factors.html#cb29-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb29-9"><a href="08-control_factors.html#cb29-9" aria-hidden="true"></a>    <span class="st">&quot;#66 Gasoline Spillage&quot;</span> =<span class="st"> </span><span class="dv">66</span>) <span class="op">%&gt;%</span></span>
+<span id="cb29-10"><a href="08-control_factors.html#cb29-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">annualize_DB_control_factors</span>(</span>
+<span id="cb29-11"><a href="08-control_factors.html#cb29-11" aria-hidden="true"></a>    <span class="dt">years =</span> <span class="kw">CY</span>(<span class="dv">1990</span><span class="op">:</span><span class="dv">2030</span>),</span>
+<span id="cb29-12"><a href="08-control_factors.html#cb29-12" aria-hidden="true"></a>    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="08-control_factors.html#cb30-1" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb30-2"><a href="08-control_factors.html#cb30-2" aria-hidden="true"></a><span class="co"># Again we can see that in CY1990, these emissions were already controlled by a</span></span>
+<span id="cb30-3"><a href="08-control_factors.html#cb30-3" aria-hidden="true"></a><span class="co"># small amount. And, by CY2011, controls had increased by quite a bit.</span></span>
+<span id="cb30-4"><a href="08-control_factors.html#cb30-4" aria-hidden="true"></a><span class="co"># </span></span>
+<span id="cb30-5"><a href="08-control_factors.html#cb30-5" aria-hidden="true"></a>BY2011_gasoline_spillage_cf_data <span class="op">%&gt;%</span></span>
+<span id="cb30-6"><a href="08-control_factors.html#cb30-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter_pollutants</span>(</span>
+<span id="cb30-7"><a href="08-control_factors.html#cb30-7" aria-hidden="true"></a>    <span class="st">&quot;TOG&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb30-8"><a href="08-control_factors.html#cb30-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">chart_annual_control_factors_by</span>(</span>
+<span id="cb30-9"><a href="08-control_factors.html#cb30-9" aria-hidden="true"></a>    <span class="dt">color =</span> pollutant,</span>
+<span id="cb30-10"><a href="08-control_factors.html#cb30-10" aria-hidden="true"></a>    <span class="dt">flag_years =</span> <span class="kw">CY</span>(<span class="dv">1990</span>, <span class="dv">2011</span>))</span></code></pre></div>
 <p><img src="Charting-Annual-Data_files/figure-html/BY2011_gasoline_spillage_cf_data-chart_annual_quantities_by-pol_abbr-1.svg" width="800" height="400" /></p>
 </div>
-<div id="control-effectiveness-vs.annualized-control-factors" class="section level2">
+<div id="control-effectiveness-vs.-annualized-control-factors" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> Control effectiveness vs. annualized control factors</h2>
 <p>“Control factors” can mean several different things. Above, we looked at control factors in terms of annualized uncontrolled fractions.</p>
 <p>Historically, BAAQMD emission inventory staff have estimated both (a) the “maximum effectiveness of” a given regulation, and (b) the real-world “compliance with” said regulation. Sometimes these are tied to mid-year dates, rathen than January 1. Staff have then relied on an algorithm, implemented in DataBank, to transform these into cumulative and annualized control factors.</p>
 <p>Those underlying “maximum effectiveness” and “compliance” estimates can be inspected by just avoiding the invocation of <code>annualize_DB_control_factors()</code>.</p>
 <p>Let’s dig a little further into the “gasoline spillage” example above:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co">#</span></a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="co"># Here we are simply omitting the lines:</span></a>
-<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="co">#</span></a>
-<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="co">#   annualize_DB_control_factors(</span></a>
-<a class="sourceLine" id="cb31-5" data-line-number="5"><span class="co">#     years = CY(1990:2030),</span></a>
-<a class="sourceLine" id="cb31-6" data-line-number="6"><span class="co">#     verbose = TRUE) </span></a>
-<a class="sourceLine" id="cb31-7" data-line-number="7"><span class="co">#</span></a>
-<a class="sourceLine" id="cb31-8" data-line-number="8"><span class="co"># ... in other words, we&#39;re omitting the last step in the pipeline above.</span></a>
-<a class="sourceLine" id="cb31-9" data-line-number="9"><span class="co">#</span></a>
-<a class="sourceLine" id="cb31-10" data-line-number="10"><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb31-11" data-line-number="11"><span class="st">  </span><span class="kw">DB_control_factors</span>(</a>
-<a class="sourceLine" id="cb31-12" data-line-number="12">    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb31-13" data-line-number="13"><span class="st">  </span><span class="kw">filter_categories</span>(</a>
-<a class="sourceLine" id="cb31-14" data-line-number="14">    <span class="st">&quot;#66 Gasoline Spillage&quot;</span> =<span class="st"> </span><span class="dv">66</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="08-control_factors.html#cb31-1" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb31-2"><a href="08-control_factors.html#cb31-2" aria-hidden="true"></a><span class="co"># Here we are simply omitting the lines:</span></span>
+<span id="cb31-3"><a href="08-control_factors.html#cb31-3" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb31-4"><a href="08-control_factors.html#cb31-4" aria-hidden="true"></a><span class="co">#   annualize_DB_control_factors(</span></span>
+<span id="cb31-5"><a href="08-control_factors.html#cb31-5" aria-hidden="true"></a><span class="co">#     years = CY(1990:2030),</span></span>
+<span id="cb31-6"><a href="08-control_factors.html#cb31-6" aria-hidden="true"></a><span class="co">#     verbose = TRUE) </span></span>
+<span id="cb31-7"><a href="08-control_factors.html#cb31-7" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb31-8"><a href="08-control_factors.html#cb31-8" aria-hidden="true"></a><span class="co"># ... in other words, we&#39;re omitting the last step in the pipeline above.</span></span>
+<span id="cb31-9"><a href="08-control_factors.html#cb31-9" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb31-10"><a href="08-control_factors.html#cb31-10" aria-hidden="true"></a><span class="kw">BY</span>(<span class="dv">2011</span>) <span class="op">%&gt;%</span></span>
+<span id="cb31-11"><a href="08-control_factors.html#cb31-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">DB_control_factors</span>(</span>
+<span id="cb31-12"><a href="08-control_factors.html#cb31-12" aria-hidden="true"></a>    <span class="dt">verbose =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb31-13"><a href="08-control_factors.html#cb31-13" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter_categories</span>(</span>
+<span id="cb31-14"><a href="08-control_factors.html#cb31-14" aria-hidden="true"></a>    <span class="st">&quot;#66 Gasoline Spillage&quot;</span> =<span class="st"> </span><span class="dv">66</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
