@@ -35,7 +35,7 @@ BY2011_growth_profile_data <-
 
 With these in hand, we can chart the profile for BY2011 category #283 "Residential Combustion". We use the same function, `chart_annual_growth_by()`, that we learned about in the previous chapter.
 
-```{r BY2011_growth_profile_data-cat_283-chart_annual_growth}
+```{r BY2011_growth_profile_data-cat_284-chart_annual_growth}
 #
 # Chart the relative growth in these growth factors. 
 #

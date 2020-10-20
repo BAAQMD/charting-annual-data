@@ -10,7 +10,7 @@
 
 # Special Cases
 
-```{r child="appendix/appendix-case-cat_283.Rmd"}
+```{r child="appendix/appendix-case-cat_284.Rmd"}
 ```
 
 # Technical Documentation
